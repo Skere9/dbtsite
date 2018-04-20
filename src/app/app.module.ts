@@ -3,14 +3,20 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { DbtHomeComponent } from './components/dbt-home/dbt-home.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { DbtListComponent } from './components/dbt-list/dbt-list.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DbtHomeComponent,
+    DbtListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
