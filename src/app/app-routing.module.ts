@@ -6,6 +6,7 @@ import { DbtListComponent } from './components/dbt-list/dbt-list.component';
 import { DbtAboutComponent } from './components/dbt-about/dbt-about.component';
 import { DbtLoginComponent } from './components/dbt-login/dbt-login.component';
 import { DbtUserProfileComponent } from './components/dbt-user-profile/dbt-user-profile.component';
+import { DbtForgotPasswordComponent } from './components/dbt-forgot-password/dbt-forgot-password.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: DbtLoginComponent
+  },
+  {
+    path: 'forgot-password',
+    component: DbtForgotPasswordComponent
   },
   {
     path: 'user-profile',

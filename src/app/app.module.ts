@@ -11,7 +11,7 @@ import { DbtLoginComponent } from './components/dbt-login/dbt-login.component';
 import { DbtUserProfileComponent } from './components/dbt-user-profile/dbt-user-profile.component';
 import { DbtAboutComponent } from './components/dbt-about/dbt-about.component';
 import { DbtFooterComponent } from './components/dbt-footer/dbt-footer.component';
-
+import { DbtForgotPasswordComponent } from './components/dbt-forgot-password/dbt-forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { DbtFooterComponent } from './components/dbt-footer/dbt-footer.component
     DbtListComponent,
     DbtUserProfileComponent,
     DbtAboutComponent,
-    DbtFooterComponent
+    DbtFooterComponent,
+    DbtForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

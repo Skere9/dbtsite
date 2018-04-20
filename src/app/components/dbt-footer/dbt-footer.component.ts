@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DbtFooterComponent implements OnInit {
 
+
+  currentYear: number;
+  siteURL: string;
+  siteName: string;
+
   constructor() {
-    let currentYear;
-    currentYear = new Date().getFullYear();
+    this.currentYear = new Date().getFullYear();
+    this.siteURL = 'http://www.databasetraining.com';
+    this.siteName = 'DATABASETRAINING.COM';
    }
 
   ngOnInit() {
