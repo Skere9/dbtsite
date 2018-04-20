@@ -3,20 +3,25 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { DbtHomeComponent } from './components/dbt-home/dbt-home.component';
 import { AppRoutingModule } from './/app-routing.module';
+
+import { DbtHomeComponent } from './components/dbt-home/dbt-home.component';
 import { DbtListComponent } from './components/dbt-list/dbt-list.component';
-import { DbtUserProfileComponent } from './dbt-user-profile/dbt-user-profile.component';
-import { DbtLoginComponent } from './dbt-login/dbt-login.component';
+import { DbtLoginComponent } from './components/dbt-login/dbt-login.component';
+import { DbtUserProfileComponent } from './components/dbt-user-profile/dbt-user-profile.component';
+import { DbtAboutComponent } from './components/dbt-about/dbt-about.component';
+import { DbtFooterComponent } from './components/dbt-footer/dbt-footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DbtHomeComponent,
+    DbtLoginComponent,
     DbtListComponent,
     DbtUserProfileComponent,
-    DbtLoginComponent
+    DbtAboutComponent,
+    DbtFooterComponent
   ],
   imports: [
     BrowserModule,
