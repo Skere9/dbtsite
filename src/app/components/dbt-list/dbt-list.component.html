@@ -1,3 +1,15 @@
-<p>
-  dbt-list works!
+<h4>List of available exams</h4>
+
+<p *ngIf="!exams_loaded" style="color:brown">
+  Loading Exams .... please wait a moment ...
 </p>
+
+<ul>
+  <div *ngFor="let exam of exams">
+    <li>ID: {{ exam.id }}. {{exam.title}}</li>
+    <ul>
+      <li>{{ exam.description }}</li>
+    </ul>
+    <!-- <app-recipe-summary [recipe]="recipe" (zoomIn)="zoomInOnRecipe(recipe)" (userClickEmitter)="userClickedOnRecipe($event)"></app-recipe-summary> -->
+  </div>
+</ul>

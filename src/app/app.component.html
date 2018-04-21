@@ -2,18 +2,27 @@
     <a [routerLink]="['/']">
         <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
     </a>
-    <a style="float: right" [routerLink]="['editnewrecipe']">New Recipe</a>
-    <p>
-        <a href="/home">Home</a> |
-        <a href="/login">Login</a> |
-        <a href="/list">List</a> |
-        <a href="/about">About</a> |
-        <a href="/user-profile">User Profile</a>
+    <a href="/home">Home</a>
+    <a href="/list">List</a>
+    <a href="/edit">Edit</a>
+    <a href="/about">About</a>
+
+    <p *ngIf="stateLoggedIn">
+        <a style="float: right" href="/user-profile">User Profile</a>
     </p>
+
+    <p *ngIf="!stateLoggedIn" style="color:brown">
+        <a style="float: right" [routerLink]="['login']">Login</a>
+    </p>
+
     <hr>
 </div>
 <div style="margin: 10px">
     <router-outlet></router-outlet>
     <hr>
     <app-dbt-footer></app-dbt-footer>
+</div>
+<div style="margin: 10px;">
+    Copyright &copy; {{ currentYear }}
+    <a href="{{siteURL}}">{{ siteName }}</a>
 </div>

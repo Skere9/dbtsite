@@ -1,0 +1,19 @@
+<div style="margin: 50 px 50 px 50 px">
+  <div class="panel-heading">
+    <h4>Edit Exam</h4>
+  </div>
+
+  <div class="panel-body">
+    <div class="input-group" style="width: 400px">
+      <input class="form-control" type="text"  [(ngModel)]="exam.title" placeholder="Title" name="title" />
+    </div>
+    <div class="input-group" style="width: 450px">
+      <textarea class="form-control" [(ngModel)]="exam.description" placeholder="Description" name="description"></textarea>
+    </div>
+    <div class="input-group">
+      <input type="button" value="Reset" (click)="Reset()" />
+      <input type="button" value="Save Exam" (click)="SaveExam()" />
+    </div>
+  </div>
+
+</div>
