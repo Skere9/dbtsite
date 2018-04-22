@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AppWideService } from './services/appwide.service';
 
 @Component({
@@ -14,12 +14,17 @@ export class AppComponent {
   siteURL: string;
   siteName: string;
 
-  constructor() {
-    this.stateLoggedIn = AppWideService.stateLoggedIn;
+  constructor(private appWideService: AppWideService) {
+    // this.stateLoggedIn = this.appWideService.getLoggedInStatus();
+    this.stateLoggedIn = true;
     this.currentYear = new Date().getFullYear();
     this.siteURL = 'http://www.databasetraining.com';
     this.siteName = 'DATABASETRAINING.COM';
   }
+
+  userSignedIn(number): void {
+    console.log('Emit captured!');
+  } 
 }
 
 

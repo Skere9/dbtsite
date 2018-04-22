@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DbtLoginComponent } from './dbt-login.component';
+import { DbtLogOffComponent } from './dbt-log-off.component';
 
-describe('DbtLoginComponent', () => {
-  let component: DbtLoginComponent;
-  let fixture: ComponentFixture<DbtLoginComponent>;
+describe('DbtLogOffComponent', () => {
+  let component: DbtLogOffComponent;
+  let fixture: ComponentFixture<DbtLogOffComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DbtLoginComponent ]
+      declarations: [ DbtLogOffComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DbtLoginComponent);
+    fixture = TestBed.createComponent(DbtLogOffComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

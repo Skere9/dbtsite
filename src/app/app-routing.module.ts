@@ -5,12 +5,14 @@ import { DbtHomeComponent } from './components/dbt-home/dbt-home.component';
 import { DbtListComponent } from './components/dbt-list/dbt-list.component';
 import { DbtEditExamComponent } from './components/dbt-edit-exam/dbt-edit-exam.component';
 import { DbtAboutComponent } from './components/dbt-about/dbt-about.component';
-import { DbtLoginComponent } from './components/dbt-login/dbt-login.component';
+import { DbtSignInComponent } from './components/dbt-sign-in/dbt-sign-in.component';
+import { DbtSignUpComponent } from './components/dbt-sign-up/dbt-sign-up.component';
 import { DbtUserProfileComponent } from './components/dbt-user-profile/dbt-user-profile.component';
 import { DbtForgotPasswordComponent } from './components/dbt-forgot-password/dbt-forgot-password.component';
 import { DbtContactComponent } from './components/dbt-contact/dbt-contact.component';
 import { DbtSitemapComponent } from './components/dbt-sitemap/dbt-sitemap.component';
 import { DbtTermsComponent } from './components/dbt-terms/dbt-terms.component';
+import { DbtLogOffComponent } from './components/dbt-log-off/dbt-log-off.component';
 
 const routes: Routes = [
   {
@@ -30,8 +32,12 @@ const routes: Routes = [
     component: DbtEditExamComponent
   },
   {
-    path: 'login',
-    component: DbtLoginComponent
+    path: 'signUp',
+    component: DbtSignUpComponent
+  },
+  {
+    path: 'signIn',
+    component: DbtSignInComponent
   },
   {
     path: 'contact',
@@ -42,16 +48,20 @@ const routes: Routes = [
     component: DbtTermsComponent
   },
   {
-    path: 'sitemap',
+    path: 'siteMap',
     component: DbtSitemapComponent
   },
   {
-    path: 'forgot-password',
+    path: 'forgotPassword',
     component: DbtForgotPasswordComponent
   },
   {
-    path: 'user-profile',
+    path: 'userProfile',
     component: DbtUserProfileComponent
+  },
+  {
+    path: 'logOff',
+    component: DbtLogOffComponent
   },
   {
     path: '',

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Exam } from '../../models/exam';
 import { ExamService } from '../../services/exam.service';
@@ -12,6 +12,9 @@ export class DbtListComponent implements OnInit {
 
   exams: Exam[];
   exams_loaded: Boolean;
+
+  @Output()
+  examSelected: EventEmitter<number> = new EventEmitter();
 
   constructor(private examService: ExamService) {
 
@@ -33,7 +36,13 @@ export class DbtListComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
 
+  public examClicked(examId: number): void {
+    console.log('Hi from ExamClicked! Number selected: ');
+    console.log(examId);
+    // this.examSelected.emit(examId);
+    this.examSelected.emit(77);
   }
 
 }

@@ -5,7 +5,7 @@
 </p>
 
 <ul>
-  <div *ngFor="let exam of exams">
+  <div *ngFor="let exam of exams" (click)="examClicked(exam.id)" style="cursor: pointer" >
     <li>ID: {{ exam.id }}. {{exam.title}}</li>
     <ul>
       <li>{{ exam.description }}</li>
