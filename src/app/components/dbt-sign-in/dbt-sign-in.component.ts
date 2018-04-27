@@ -1,6 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AppWideService } from '../../services/appwide.service';
 
+// SKERE
+// import { Observable } from 'rxjs/Observable'; // For use in method SignIn()
+//
+
 @Component({
   selector: 'app-dbt-sign-in',
   templateUrl: './dbt-sign-in.component.html',
@@ -34,6 +38,12 @@ export class DbtSignInComponent implements OnInit {
     console.log('About to set logged in status via service.');
     this.appWideService.setLoggedInStatus(true);
     console.log('Back from service.  Did the service say anything?');
+
+    // SKERE 
+    // let x = new Observable<Boolean>();
+    // x.
+    // 
+
   }
 
   public Reset() {

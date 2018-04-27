@@ -50,4 +50,10 @@ export class ExamService {
     });
   }
 
+  getExam(pExamId: number): Exam {
+    let selectedExam = this.exams.find(exam => exam.id === pExamId);
+    console.log(selectedExam);
+    return selectedExam;
+  }
+
 }

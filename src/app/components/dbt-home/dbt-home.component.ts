@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DbtHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+
+    // SKERE
+    // let vX: string = 'hi';
+    // const { a, b } = vX;
+
+  }
 
   ngOnInit() {
   }
