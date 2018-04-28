@@ -3,16 +3,16 @@
     <h4>Edit Exam</h4>
   </div>
 
-  <div class="panel-body">
+  <div class="panel-body" style="margin:10px">
     <div class="input-group" style="width: 400px">
-      <input class="form-control" type="text"  [(ngModel)]="exam.title" placeholder="Title" name="title" />
+      <input class="form-control" type="text" [(ngModel)]="exam.title" placeholder="Title" name="title" />
     </div>
     <div class="input-group" style="width: 450px">
-      <textarea class="form-control" [(ngModel)]="exam.description" placeholder="Description" name="description"></textarea>
+      <textarea class="form-control" rows="4" cols="10" [(ngModel)]="exam.description" placeholder="Description" name="description"></textarea>
     </div>
-    <div class="input-group">
+    <div class="input-group" style="margin:10px">
       <input type="button" value="Reset" (click)="Reset()" />
-      <input type="button" value="Save Exam" (click)="SaveExam()" />
+      <input type="button" value="Save and Continue" (click)="SaveExam()" />
     </div>
   </div>
 

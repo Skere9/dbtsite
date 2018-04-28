@@ -27,6 +27,7 @@ import { DbtExamInfoComponent } from './components/dbt-exam-info/dbt-exam-info.c
 import { DbtLogOffComponent } from './components/dbt-log-off/dbt-log-off.component';
 
 import { TooltipOverviewExampleComponent } from './components/tooltip-overview-example/tooltip-overview-example.component';
+import { DbtEditExamQsComponent } from './components/dbt-edit-exam-qs/dbt-edit-exam-qs.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { TooltipOverviewExampleComponent } from './components/tooltip-overview-e
     DbtExamInfoComponent,
     DbtLogOffComponent,
     TooltipOverviewExampleComponent,
+    DbtEditExamQsComponent
   ],
   imports: [
     BrowserModule,

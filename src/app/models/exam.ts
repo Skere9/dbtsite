@@ -1,7 +1,10 @@
+import { Question } from '../models/question';
+
 export class Exam {
     public id: number;
     public title: string;
     public description: string;
+    public questions: Question[];
     public keywords: string[];
 
     constructor(
