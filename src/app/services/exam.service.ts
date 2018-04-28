@@ -51,6 +51,7 @@ export class ExamService {
   }
 
   getExam(pExamId: number): Exam {
+    console.log("Running service getExam() ...");
     let selectedExam = this.exams.find(exam => exam.id === pExamId);
     console.log(selectedExam);
     return selectedExam;

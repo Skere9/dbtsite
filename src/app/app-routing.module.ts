@@ -28,7 +28,7 @@ const routes: Routes = [
     component: DbtListComponent
   },
   {
-    path: 'edit',
+    path: 'exam/:exam_id',
     component: DbtEditExamComponent
   },
   {

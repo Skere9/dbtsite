@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { Exam } from '../../models/exam';
 import { ExamService } from '../../services/exam.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dbt-list',
@@ -13,10 +14,9 @@ export class DbtListComponent implements OnInit {
   exams: Exam[];
   exams_loaded: Boolean;
 
-  @Output()
-  examSelected: EventEmitter<number> = new EventEmitter();
+  @Output() examSelected: EventEmitter<number> = new EventEmitter();
 
-  constructor(private examService: ExamService) {
+  constructor(private examService: ExamService, private router: Router) {
 
     console.log('In the constructor.');
     console.log('Before call to service:');
@@ -42,7 +42,18 @@ export class DbtListComponent implements OnInit {
     console.log('Hi from ExamClicked! Number selected: ');
     console.log(examId);
     // this.examSelected.emit(examId);
-    this.examSelected.emit(77);
+    // this.examSelected.emit(examId);
+
+    this.router.navigate(['/', 'exam', examId]);
+
+  }
+
+  public showEditExam(): Boolean {
+    return true;
+  }
+
+  public gotIt(id: number): void{
+    console.log('Got it');
   }
 
 }

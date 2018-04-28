@@ -4,8 +4,9 @@
   Loading Exams .... please wait a moment ...
 </p>
 
+<div (examSelected)="gotIt($event)" >
 <ul>
-  <div *ngFor="let exam of exams" (click)="examClicked(exam.id)" style="cursor: pointer" >
+  <div *ngFor="let exam of exams" (click)="examClicked(exam.id)" style="cursor: pointer">
     <li>ID: {{ exam.id }}. {{exam.title}}</li>
     <ul>
       <li>{{ exam.description }}</li>
@@ -13,3 +14,4 @@
     <!-- <app-recipe-summary [recipe]="recipe" (zoomIn)="zoomInOnRecipe(recipe)" (userClickEmitter)="userClickedOnRecipe($event)"></app-recipe-summary> -->
   </div>
 </ul>
+</div>
