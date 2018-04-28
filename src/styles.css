@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* The following is required 
+   to ensure the Angular Material features 
+   work - for example, tooltip 
+*/
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';

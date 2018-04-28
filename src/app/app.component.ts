@@ -24,7 +24,7 @@ export class AppComponent {
 
   userSignedIn(number): void {
     console.log('Emit captured!');
-  } 
+  }
 }
 
 

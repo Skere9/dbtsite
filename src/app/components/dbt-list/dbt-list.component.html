@@ -5,13 +5,12 @@
 </p>
 
 <div (examSelected)="gotIt($event)" >
-<ul>
-  <div *ngFor="let exam of exams" (click)="examClicked(exam.id)" style="cursor: pointer">
-    <li>ID: {{ exam.id }}. {{exam.title}}</li>
-    <ul>
-      <li>{{ exam.description }}</li>
-    </ul>
-    <!-- <app-recipe-summary [recipe]="recipe" (zoomIn)="zoomInOnRecipe(recipe)" (userClickEmitter)="userClickedOnRecipe($event)"></app-recipe-summary> -->
-  </div>
-</ul>
+  <ul>
+    <div *ngFor="let exam of exams" (click)="examClicked(exam.id)" style="cursor: pointer" >
+      <div matTooltip="Click to see detail." matTooltipShowDelay="1000">
+      <li>ID: {{ exam.id }}. {{exam.title}} | {{ exam.description }} </li>
+      </div>
+      <!-- <app-recipe-summary [recipe]="recipe" (zoomIn)="zoomInOnRecipe(recipe)" (userClickEmitter)="userClickedOnRecipe($event)"></app-recipe-summary> -->
+    </div>
+  </ul>
 </div>

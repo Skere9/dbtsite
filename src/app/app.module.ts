@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { DbtHomeComponent } from './components/dbt-home/dbt-home.component';
 import { DbtListComponent } from './components/dbt-list/dbt-list.component';
@@ -24,6 +26,8 @@ import { DbtSignUpComponent } from './components/dbt-sign-up/dbt-sign-up.compone
 import { DbtExamInfoComponent } from './components/dbt-exam-info/dbt-exam-info.component';
 import { DbtLogOffComponent } from './components/dbt-log-off/dbt-log-off.component';
 
+import { TooltipOverviewExampleComponent } from './components/tooltip-overview-example/tooltip-overview-example.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,13 +44,16 @@ import { DbtLogOffComponent } from './components/dbt-log-off/dbt-log-off.compone
     DbtEditExamComponent,
     DbtSignUpComponent,
     DbtExamInfoComponent,
-    DbtLogOffComponent
+    DbtLogOffComponent,
+    TooltipOverviewExampleComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatTooltipModule
   ],
   providers: [
     AppWideService,

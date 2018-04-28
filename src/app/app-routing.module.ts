@@ -13,6 +13,7 @@ import { DbtContactComponent } from './components/dbt-contact/dbt-contact.compon
 import { DbtSitemapComponent } from './components/dbt-sitemap/dbt-sitemap.component';
 import { DbtTermsComponent } from './components/dbt-terms/dbt-terms.component';
 import { DbtLogOffComponent } from './components/dbt-log-off/dbt-log-off.component';
+import { TooltipOverviewExampleComponent } from './components/tooltip-overview-example/tooltip-overview-example.component';
 
 const routes: Routes = [
   {
@@ -62,6 +63,10 @@ const routes: Routes = [
   {
     path: 'logOff',
     component: DbtLogOffComponent
+  },
+  {
+    path: 'tooltip',
+    component: TooltipOverviewExampleComponent
   },
   {
     path: '',
