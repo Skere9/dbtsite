@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { NgModule } from '@angular/core';
+
 import { Exam } from '../../models/exam';
 import { ExamService } from '../../services/exam.service';
 import { Question } from '../../models/question';
@@ -20,11 +22,14 @@ export class DbtEditExamQsComponent implements OnInit {
   public vQuestionId: number;
   public exam: Exam;
   public theQuestion: Question;
+  public theExamAnswers: Answer[];
+  public pointToExamService;
 
   constructor(private examService: ExamService,
     private route: ActivatedRoute) {
     this.vExamId = 0;
-    this.theQuestion = Question.createBlankQuestion();
+    this.theQuestion = examService.createBlankQuestion();
+    this.pointToExamService = examService.createBlankQuestion;
   }
 
   ngOnInit() {
@@ -42,10 +47,16 @@ export class DbtEditExamQsComponent implements OnInit {
       this.exam = this.findExamById(this.vExamId);
       if (this.vQuestionId === 0) {
         console.log('vQuestionId is zero');
-        this.theQuestion = Question.createBlankQuestion();
+        this.theQuestion = this.pointToExamService();
+        this.theExamAnswers = this.theQuestion.answers;
+        console.log('theExamAnswers:');
+        console.log(this.theExamAnswers);
       } else {
         console.log('vQuestionId is not zero');
         this.theQuestion = this.findQuestionById(this.vExamId, this.vQuestionId);
+        this.theExamAnswers = this.theQuestion.answers;
+        console.log("theExamAnswers:");
+        console.log(this.theExamAnswers);
       }
     }
 

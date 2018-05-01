@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Exam } from '../models/exam';
 import { Question } from '../models/question';
+import { Answer } from '../models/answer';}
 
 @Injectable()
 export class ExamService {
@@ -19,13 +20,15 @@ export class ExamService {
         'description': 'Mock exam for 1Z0-071.',
         'questions': [{
           'questionId': 1,
-          'questionText' : 'How much wood'
+          'questionText': 'How much wood',
+          'answers': this.getAnswerBlanks()
         },
         {
           'questionId': 2,
-          'questionText' : 'The other thing is ...'
+          'questionText': 'The other thing is ...',
+          'answers': this.getAnswerBlanks()
         }
-      ],
+        ],
         'keywords': ['oracle', 'certification', 'sql']
       }, {
         'id': 2,
@@ -33,7 +36,8 @@ export class ExamService {
         'description': 'Mock exam for 1Z0-088.',
         'questions': [{
           'questionId': 1,
-          'questionText' : 'Who is Duke?'
+          'questionText': 'Who is Duke?',
+          'answers': this.getAnswerBlanks()
         }],
         'keywords': ['oracle', 'certification', 'java']
       }, {
@@ -42,7 +46,8 @@ export class ExamService {
         'description': 'Mock exam for 1Z0-047.',
         'questions': [{
           'questionId': 1,
-          'questionText' : 'Let us discuss analytics'
+          'questionText': 'Let us discuss analytics',
+          'answers': this.getAnswerBlanks()
         }],
         'keywords': ['oracle', 'certification', 'sql', 'expert', 'deprecated']
       }, {
@@ -51,9 +56,32 @@ export class ExamService {
         'description': 'Mock exam for 1Z0-147.',
         'questions': [{
           'questionId': 1,
-          'questionText' : 'If you were to create a program unit, ... '
+          'questionText': 'If you were to create a program unit, ... ',
+          'answers': this.getAnswerBlanks()
         }],
         'keywords': ['oracle', 'certification', 'plsql', 'PL/SQL', 'Program Units']
+      }
+    ];
+  }
+
+  getAnswerBlanks(): Answer[] {
+
+    return [
+      {
+        'answerId': 1,
+        'answerText': ''
+      },
+      {
+        'answerId': 2,
+        'answerText': ''
+      },
+      {
+        'answerId': 3,
+        'answerText': ''
+      },
+      {
+        'answerId': 4,
+        'answerText': ''
       }
     ];
   }
@@ -90,6 +118,31 @@ export class ExamService {
     const selectedExam = this.getExam(pExamId);
     const selectedQuestion = selectedExam.questions.find(question => question.questionId === pQuestionId);
     return selectedQuestion;
+  }
+
+  createBlankQuestion() {
+    return new Question(
+      -1,
+      '',
+      [
+        {
+          'answerId': 1,
+          'answerText': ''
+        },
+        {
+          'answerId': 2,
+          'answerText': ''
+        },
+        {
+          'answerId': 3,
+          'answerText': ''
+        },
+        {
+          'answerId': 4,
+          'answerText': ''
+        }
+      ]
+    );
   }
 
 }
