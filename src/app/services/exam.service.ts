@@ -7,6 +7,7 @@ export class ExamService {
 
   public exam: Exam;
   public exams: Exam[];
+  // public question: Question;
 
   constructor() {
 
@@ -68,15 +69,27 @@ export class ExamService {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(this.exams);
-      }, 2000);
+      }, 2); // TODO: Remove this setTimeOut function entirely, or set to 2000 for testing of promises
     });
   }
 
   getExam(pExamId: number): Exam {
-    console.log("Running service getExam() ...");
-    let selectedExam = this.exams.find(exam => exam.id === pExamId);
+    console.log('Running service getExam() ...');
+    const selectedExam = this.exams.find(exam => exam.id === pExamId);
     console.log(selectedExam);
     return selectedExam;
+  }
+
+  getQuestion(pExamId: number, pQuestionId): Question {
+    console.log('Running service getQuestion() ...');
+    console.log('pExamId:');
+    console.log(pExamId)
+    console.log('pQuestionId:');
+    console.log(pQuestionId);
+    // Get the question from the exam
+    const selectedExam = this.getExam(pExamId);
+    const selectedQuestion = selectedExam.questions.find(question => question.questionId === pQuestionId);
+    return selectedQuestion;
   }
 
 }

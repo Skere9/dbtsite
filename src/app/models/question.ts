@@ -3,13 +3,14 @@ import { Answer } from '../models/answer';
 export class Question {
     public questionId: number;
     public questionText: string;
-    public possibleAnswer: Answer[];
+    // public answers: Answer[];
 
     constructor(
         pQuestionId: number,
         pQuestionText: string) {
         this.questionId = pQuestionId;
         this.questionText = pQuestionText;
+        // this.answers = [];
     }
 
     public static createBlankQuestion() {

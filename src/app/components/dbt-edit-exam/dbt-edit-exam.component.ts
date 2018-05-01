@@ -57,6 +57,8 @@ export class DbtEditExamComponent implements OnInit {
         this.exam = this.findExamById(parseInt(params.get('exam_id'), 10));
       };
     })
+    console.log('From within dbt-edit-exam');
+    console.log(this.exam);
   }
 
   public findExamById(pExamId: number): Exam {
@@ -74,6 +76,8 @@ export class DbtEditExamComponent implements OnInit {
 
   public SaveExam() {
     // Save the exam
+    console.log('Entering save exam:');
+    console.log(this.exam);
     this.examService.addExam(this.exam);
     this.router.navigate(['/', 'exam-qs', this.exam.id, 0]);
 

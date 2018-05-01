@@ -6,35 +6,12 @@
 </div>
 
 <div class="input-group" style="margin:10px">
-  <div *ngIf="!showQuestionFields">
-    <input type="button" value="Add Question" (click)="AddQuestionFields()" />
+  <div class="input-group" >
+    {{ theQuestion.questionId }}
+    <input class="form-control" type="text" [(ngModel)]="theQuestion.questionText" placeHolder="Question" />
   </div>
-  <div class="input-group" *ngIf="showQuestionFields">
-    <input class="form-control" type="text" placeHolder="Question" />
-  </div>
-
-  <div class="input-group" *ngIf="showQuestionFields">
-    <table>
-      <div *ngFor="let answerRow of answerRows">
-        <tr>
-          <td>
-            <input type="text" style="width:75px" placeHolder="Answer ID" [(ngModel)]="answerRow.answerId" />
-            <input type="text" placeholder="Answer Text" [(ngModel)]="answerRow.answerText" />
-            <a href="#" class="btn btn-danger">
-                <span class="glyphicon glyphicon-remove"></span> Delete
-              </a>
-          </td>
-        </tr>
-      </div>
-      <tr>
-        <td>
-          <!-- <input type="button" value="Add Answer" (click)="AddAnswerField()" /> -->
-          <a href="#" class="btn btn-success" (click)="AddAnswerField()"  >
-              <span class="glyphicon glyphicon-add"></span> Add Answer
-            </a>
-        </td>
-      </tr>
-    </table>
-
-  </div>
+  <div class="input-group" style="margin:10px">
+      <input type="button" value="Reset" (click)="Reset()" />
+      <input type="button" value="Save and Continue" (click)="saveQuestion()" />
+    </div>
 </div>
