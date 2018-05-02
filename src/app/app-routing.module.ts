@@ -15,6 +15,7 @@ import { DbtTermsComponent } from './components/dbt-terms/dbt-terms.component';
 import { DbtLogOffComponent } from './components/dbt-log-off/dbt-log-off.component';
 import { TooltipOverviewExampleComponent } from './components/tooltip-overview-example/tooltip-overview-example.component';
 import { DbtEditExamQsComponent } from './components/dbt-edit-exam-qs/dbt-edit-exam-qs.component';
+import { DbtEditExamQlistComponent } from './components/dbt-edit-exam-qlist/dbt-edit-exam-qlist.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'exam/:exam_id',
     component: DbtEditExamComponent
+  },
+  {
+    path: 'exam-qlist/:exam_id',
+    component: DbtEditExamQlistComponent
   },
   {
     path: 'exam-qs/:exam_id/:question_id',

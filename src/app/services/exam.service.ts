@@ -9,6 +9,7 @@ export class ExamService {
   public exam: Exam;
   public exams: Exam[];
   // public question: Question;
+  public theSelectedExam: Exam;
 
   constructor() {
 
@@ -103,9 +104,33 @@ export class ExamService {
 
   getExam(pExamId: number): Exam {
     console.log('Running service getExam() ...');
-    const selectedExam = this.exams.find(exam => exam.id === pExamId);
-    console.log(selectedExam);
-    return selectedExam;
+    this.theSelectedExam = this.exams.find(exam => exam.id === pExamId);
+    console.log(this.theSelectedExam);
+    return this.theSelectedExam;
+  }
+
+  getExamQuestionCount(pExamId: number): number {
+    let vCounter = 0;
+    // console.log('Within the getExamQuestionCount() function');
+    // console.log(pExamId);
+    for (let exam of this.exams) {
+      // console.log(exam.id);
+      if (exam.id === pExamId) {
+        // console.log('Found it:');
+        // console.log(exam.description);
+        // let vCounter = 0;
+        for (let question of exam.questions) {
+          vCounter = vCounter + 1;
+        }
+        // console.log('Total questions:');
+        // console.log(vCounter);
+        break; // Found the exam, break out of the loop
+      } else {
+        // console.log('Never found the exam.');
+      }
+      // console.log(exam);
+    }
+    return vCounter;
   }
 
   getQuestion(pExamId: number, pQuestionId): Question {
@@ -120,11 +145,22 @@ export class ExamService {
     return selectedQuestion;
   }
 
+  getExamQuestions(pExamId: number): Question[] {
+    // Get all the questions for a given exam
+    const selectedExam = this.getExam(pExamId);
+    const selectedExamQuestions = selectedExam.questions;
+    return selectedExamQuestions;
+  }
+
   setExamQuestion(pExamId: number, pQuestion: Question): void {
 
     console.log('In the exam service: saving the question.');
-    console.log(pExamId);
-    console.log(pQuestion);
+    if (this.theSelectedExam.id === pExamId) {
+      this.theSelectedExam.questions.push(pQuestion);
+    } else {
+      console.log('Something went wrong');
+    }
+    console.log(this.theSelectedExam);
   }
 
   createBlankQuestion() {

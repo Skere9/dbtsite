@@ -44,7 +44,7 @@ export class DbtEditExamQsComponent implements OnInit {
 
     if (this.vExamId !== 0) {
       console.log('vExamId is not zero');
-      this.exam = this.findExamById(this.vExamId);
+      this.exam = this.examService.getExam(this.vExamId);
       if (this.vQuestionId === 0) {
         console.log('vQuestionId is zero');
         this.theQuestion = this.pointToExamService();
@@ -60,16 +60,6 @@ export class DbtEditExamQsComponent implements OnInit {
       }
     }
 
-  }
-
-
-  public findExamById(pExamId: number): Exam {
-    // When an initial call to this component
-    // passes in an exam id, use this function
-    // to query that exam and populate the form 
-    // for editing that exam
-    const returnExam = this.examService.getExam(pExamId);
-    return returnExam;
   }
 
   public findQuestionById(pExamId: number, pQuestionId: number): Question {

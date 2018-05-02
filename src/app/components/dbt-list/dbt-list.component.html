@@ -6,9 +6,9 @@
 
 <div (examSelected)="gotIt($event)" >
   <ul>
-    <div *ngFor="let exam of exams" (click)="examClicked(exam.id)" style="cursor: pointer" >
+    <div *ngFor="let exam of exams" (click)="examClicked(exam.id)" style="cursor: pointer" ng-mouseover="rowStyle={'background-color': 'red'}; grid.appScope.onRowHover(this);"  >
       <div matTooltip="Click to see detail." matTooltipShowDelay="1000">
-      <li>ID: {{ exam.id }}. {{exam.title}} | {{ exam.description }} </li>
+      <li  >ID: {{ exam.id }}. {{exam.title}} | {{ exam.description }} </li>
       </div>
       <!-- <app-recipe-summary [recipe]="recipe" (zoomIn)="zoomInOnRecipe(recipe)" (userClickEmitter)="userClickedOnRecipe($event)"></app-recipe-summary> -->
     </div>

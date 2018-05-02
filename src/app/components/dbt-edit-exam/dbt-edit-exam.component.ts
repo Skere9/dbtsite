@@ -35,10 +35,14 @@ export class DbtEditExamComponent implements OnInit {
   public answerRows: Answer[] = new Array();
   public answerBlank: Answer;
 
+  public theExamService;
+  public examQuestionCount: number;
+
   constructor(private examService: ExamService,
     private router: Router,
     private route: ActivatedRoute) {
     this.showQuestionFields = false; // to start, do not show question fields.
+    this.theExamService = examService;
   }
 
   ngOnInit(): void {
@@ -57,8 +61,11 @@ export class DbtEditExamComponent implements OnInit {
         this.exam = this.findExamById(parseInt(params.get('exam_id'), 10));
       };
     })
-    console.log('From within dbt-edit-exam');
-    console.log(this.exam);
+    // console.log('From within dbt-edit-exam');
+    // console.log(this.exam);
+
+    // Get the number of questions in this exam so far.
+    this.examQuestionCount = this.theExamService.getExamQuestionCount(this.exam.id);
   }
 
   public findExamById(pExamId: number): Exam {
@@ -71,23 +78,23 @@ export class DbtEditExamComponent implements OnInit {
   }
 
   public Reset() {
-    console.log('Reset');
+    // console.log('Reset');
   }
 
   public SaveExam() {
     // Save the exam
-    console.log('Entering save exam:');
-    console.log(this.exam);
+    // console.log('Entering save exam:');
+    // console.log(this.exam);
     this.examService.addExam(this.exam);
-    this.router.navigate(['/', 'exam-qs', this.exam.id, 0]);
+    this.router.navigate(['/', 'exam-qlist', this.exam.id]);
 
     // TEMP - SKERE - REMOVE THIS UPON TESTING
     // Confirm the exam was saved
     this.examService.getAllExams()
       .then(
         (examsReturned) => {
-          console.log('Data returned');
-          console.log(examsReturned);
+          // console.log('Data returned');
+          // console.log(examsReturned);
         }
       );
   }
@@ -96,8 +103,6 @@ export class DbtEditExamComponent implements OnInit {
     // Set up the set of new exam objects
     // Set up a blank exam
     this.exam = Exam.createBlankExam();
-
-
   }
 
   public AddQuestionFields(): void {

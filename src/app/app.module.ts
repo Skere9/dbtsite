@@ -28,6 +28,7 @@ import { DbtLogOffComponent } from './components/dbt-log-off/dbt-log-off.compone
 
 import { TooltipOverviewExampleComponent } from './components/tooltip-overview-example/tooltip-overview-example.component';
 import { DbtEditExamQsComponent } from './components/dbt-edit-exam-qs/dbt-edit-exam-qs.component';
+import { DbtEditExamQlistComponent } from './components/dbt-edit-exam-qlist/dbt-edit-exam-qlist.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { DbtEditExamQsComponent } from './components/dbt-edit-exam-qs/dbt-edit-e
     DbtExamInfoComponent,
     DbtLogOffComponent,
     TooltipOverviewExampleComponent,
-    DbtEditExamQsComponent
+    DbtEditExamQsComponent,
+    DbtEditExamQlistComponent
   ],
   imports: [
     BrowserModule,
