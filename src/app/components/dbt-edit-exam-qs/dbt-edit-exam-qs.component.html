@@ -1,9 +1,11 @@
 <div>
   <table>
     <tr>
+      <td>Title:</td>
       <td>{{ exam.title }}</td>
     </tr>
     <tr>
+      <td>Description:</td>
       <td>{{ exam.description }}</td>
     </tr>
   </table>
@@ -31,7 +33,7 @@
 
   <div class="input-group" style="margin:10px">
     <input type="button" value="Reset" (click)="Reset()" />
-    <input type="button" value="Save and Continue" (click)="saveQuestion()" />
+    <input type="button" value="Save Question and Continue" (click)="saveQuestion()" />
   </div>
 </div>
 </table>

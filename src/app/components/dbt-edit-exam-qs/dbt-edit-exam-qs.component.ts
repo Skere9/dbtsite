@@ -55,7 +55,7 @@ export class DbtEditExamQsComponent implements OnInit {
         console.log('vQuestionId is not zero');
         this.theQuestion = this.findQuestionById(this.vExamId, this.vQuestionId);
         this.theExamAnswers = this.theQuestion.answers;
-        console.log("theExamAnswers:");
+        console.log('theExamAnswers:');
         console.log(this.theExamAnswers);
       }
     }
@@ -83,6 +83,7 @@ export class DbtEditExamQsComponent implements OnInit {
 
   public saveQuestion() {
     console.log('Saving the question');
+    this.examService.setExamQuestion(this.vExamId, this.theQuestion);
   }
 
 }

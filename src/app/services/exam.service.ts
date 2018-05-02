@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Exam } from '../models/exam';
 import { Question } from '../models/question';
-import { Answer } from '../models/answer';}
+import { Answer } from '../models/answer';
 
 @Injectable()
 export class ExamService {
@@ -118,6 +118,13 @@ export class ExamService {
     const selectedExam = this.getExam(pExamId);
     const selectedQuestion = selectedExam.questions.find(question => question.questionId === pQuestionId);
     return selectedQuestion;
+  }
+
+  setExamQuestion(pExamId: number, pQuestion: Question): void {
+
+    console.log('In the exam service: saving the question.');
+    console.log(pExamId);
+    console.log(pQuestion);
   }
 
   createBlankQuestion() {
