@@ -13,6 +13,7 @@ export class DbtListComponent implements OnInit {
 
   exams: Exam[];
   exams_loaded: Boolean;
+  // public examQuestionCount: number;
 
   @Output() examSelected: EventEmitter<number> = new EventEmitter();
 
@@ -23,16 +24,19 @@ export class DbtListComponent implements OnInit {
     console.log(this.exams);
 
     this.exams_loaded = false;
+    // this.examQuestionCount = 0;
 
     this.examService.getAllExams()
       .then((exams) => {
         this.exams = exams;
         this.exams_loaded = true;
+        // Get the number of questions in this exam so far.
+        // this.examQuestionCount = this.theExamService.getExamQuestionCount(this.exam.id);
+
         console.log('After call to service:');
         console.log(this.exams);
       }
       );
-
   }
 
   ngOnInit() {
@@ -52,8 +56,12 @@ export class DbtListComponent implements OnInit {
     return true;
   }
 
-  public gotIt(id: number): void{
+  public gotIt(id: number): void {
     console.log('Got it');
+  }
+
+  public addNewExam() {
+    this.router.navigate(['/', 'exam', -1]);
   }
 
 }

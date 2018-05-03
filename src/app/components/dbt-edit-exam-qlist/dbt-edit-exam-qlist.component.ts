@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { Router } from '@angular/router';
+
+import 'rxjs/add/operator/switchMap';
 
 import { Exam } from '../../models/exam';
 import { ExamService } from '../../services/exam.service';
@@ -24,9 +27,11 @@ export class DbtEditExamQlistComponent implements OnInit {
   public pointToExamService;
 
   constructor(private examService: ExamService,
+    private router: Router,
     private route: ActivatedRoute) {
     this.vExamId = 0;
     this.pointToExamService = examService.createBlankQuestion;
+
   }
 
   ngOnInit() {
@@ -38,7 +43,32 @@ export class DbtEditExamQlistComponent implements OnInit {
       console.log('vExamId is not zero');
       this.exam = this.examService.getExam(this.vExamId);
       this.theExamQuestions = this.examService.getExamQuestions(this.exam.id);
-    }
+    };
+
+    // Test this
+    // let x = this.examService.getAnswerCountForGivenQuestion(this.vExamId, 1);
+    // console.log(x);
+
+  }
+
+  editExamInfo() {
+    this.router.navigate(['/', 'exam', this.exam.id]);
+  }
+
+  editQuestion(pQuestionId) {
+    console.log('Edit question');
+    this.router.navigate(['/', 'exam-qs', this.exam.id, pQuestionId]);
+  }
+
+  deleteQuestion(pQuestionId) {
+    console.log('Delete Question');
+    console.log(pQuestionId);
+    this.examService.deleteQuestion(this.exam.id, pQuestionId);
+  }
+
+  addQuestion() {
+    // Navigate to the page for addding a new question
+    this.router.navigate(['/', 'exam-qs', this.exam.id, 0]);
   }
 
 }

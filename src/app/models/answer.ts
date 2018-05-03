@@ -1,16 +1,19 @@
 export class Answer {
     public answerId: number;
     public answerText: string;
+    public correctOrNot: Boolean;
 
     constructor(
         pAnswerId: number,
-        pAnswerText: string) {
+        pAnswerText: string,
+        pCorrectOrNot: Boolean) {
         this.answerId = pAnswerId;
         this.answerText = pAnswerText;
+        this.correctOrNot = pCorrectOrNot;
     }
 
     public static createBlankAnswer() {
-        return new Answer(-1, '');
+        return new Answer(-1, '', false);
     }
 
     public static createFourBlankAnswers(): Answer[] {
@@ -18,26 +21,30 @@ export class Answer {
         fourAnswers = [
             {
                 'answerId': 1,
-                'answerText': ''
+                'answerText': '',
+                'correctOrNot': false
             },
             {
                 'answerId': 2,
-                'answerText': ''
+                'answerText': '',
+                'correctOrNot': false
             },
             {
                 'answerId': 3,
-                'answerText': ''
+                'answerText': '',
+                'correctOrNot': false
             },
             {
                 'answerId': 4,
-                'answerText': ''
+                'answerText': '',
+                'correctOrNot': false
             }
         ];
         return fourAnswers;
     }
 
     public static answerFromJSON(obj: any): Answer {
-        return new Answer(obj.pAnswerId, obj.pAnswerText);
+        return new Answer(obj.pAnswerId, obj.pAnswerText, obj.pCorrectOrNot);
     }
 }
 

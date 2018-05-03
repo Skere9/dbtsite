@@ -38,11 +38,16 @@ export class DbtEditExamComponent implements OnInit {
   public theExamService;
   public examQuestionCount: number;
 
+  public updatingExam: Boolean;
+  public textForQuestionOrQuestions: string;
+
   constructor(private examService: ExamService,
     private router: Router,
     private route: ActivatedRoute) {
     this.showQuestionFields = false; // to start, do not show question fields.
     this.theExamService = examService;
+    this.updatingExam = false;
+    this.textForQuestionOrQuestions = 'questions';
   }
 
   ngOnInit(): void {
@@ -59,13 +64,25 @@ export class DbtEditExamComponent implements OnInit {
         // Presumably this is an exam ID.
         // Query for the exam ID.
         this.exam = this.findExamById(parseInt(params.get('exam_id'), 10));
-      };
+        // Set the flag to show that we are updating an
+        // existing exam, so show associated queried
+        // data - such as a count of existing questions.
+        this.updatingExam = true;
+       };
     })
     // console.log('From within dbt-edit-exam');
     // console.log(this.exam);
 
     // Get the number of questions in this exam so far.
     this.examQuestionCount = this.theExamService.getExamQuestionCount(this.exam.id);
+    // Next, this is simple - determine if the right text
+    // for the display is singular or plural.  This is
+    // used on this particualr web page at this time.
+    if (this.examQuestionCount == 1) {
+      this.textForQuestionOrQuestions = 'question';
+    } else {
+      this.textForQuestionOrQuestions = 'questions';
+    }
   }
 
   public findExamById(pExamId: number): Exam {
@@ -79,6 +96,10 @@ export class DbtEditExamComponent implements OnInit {
 
   public Reset() {
     // console.log('Reset');
+  }
+
+  public CancelEditExam() {
+    this.router.navigate(['/', 'list']);
   }
 
   public SaveExam() {

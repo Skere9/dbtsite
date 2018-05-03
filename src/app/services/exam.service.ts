@@ -10,6 +10,7 @@ export class ExamService {
   public exams: Exam[];
   // public question: Question;
   public theSelectedExam: Exam;
+  public nextQuestionId: number;
 
   constructor() {
 
@@ -27,7 +28,26 @@ export class ExamService {
         {
           'questionId': 2,
           'questionText': 'The other thing is ...',
-          'answers': this.getAnswerBlanks()
+          'answers': [
+            {
+              'answerId': 1,
+              'answerText': 'Do',
+              'correctOrNot': false
+            },
+            {
+              'answerId': 2,
+              'answerText': 'Re',
+              'correctOrNot': false
+            }, {
+              'answerId': 3,
+              'answerText': 'Mi',
+              'correctOrNot': true
+            }, {
+              'answerId': 4,
+              'answerText': 'Fa',
+              'correctOrNot': false
+            }
+          ]
         }
         ],
         'keywords': ['oracle', 'certification', 'sql']
@@ -70,19 +90,23 @@ export class ExamService {
     return [
       {
         'answerId': 1,
-        'answerText': ''
+        'answerText': '',
+        'correctOrNot': false
       },
       {
         'answerId': 2,
-        'answerText': ''
+        'answerText': '',
+        'correctOrNot': false
       },
       {
         'answerId': 3,
-        'answerText': ''
+        'answerText': '',
+        'correctOrNot': false
       },
       {
         'answerId': 4,
-        'answerText': ''
+        'answerText': '',
+        'correctOrNot': false
       }
     ];
   }
@@ -154,13 +178,56 @@ export class ExamService {
 
   setExamQuestion(pExamId: number, pQuestion: Question): void {
 
+    // Get today's date and time
+    // let d = new Date();
+
     console.log('In the exam service: saving the question.');
     if (this.theSelectedExam.id === pExamId) {
-      this.theSelectedExam.questions.push(pQuestion);
+      // Determine if we are updating an existing question,
+      // or adding a new question.
+      if (this.isThisAnExistingQuestion(pExamId, pQuestion.questionId)) {
+        console.log('This ia an update to an existing question.');
+        // This is an update to an existing question
+        // Update the existing element in the array
+        var questionIndex = this.theSelectedExam.questions.indexOf(pQuestion);
+        if (questionIndex !== -1) {
+          this.theSelectedExam.questions[questionIndex] = pQuestion;
+        } else {
+          // This is a new question.  Add it to the end of the array
+          // But first, get the next available questionId number
+          this.nextQuestionId = this.nextAvailableQuestionId();
+          pQuestion.questionId = this.nextQuestionId;
+          this.theSelectedExam.questions.push(pQuestion);
+        }
+      }
     } else {
       console.log('Something went wrong');
     }
     console.log(this.theSelectedExam);
+  }
+
+  nextAvailableQuestionId(): number {
+    return -7;
+  }
+
+  isThisAnExistingQuestion(pExamId: number, pQuestionId: number): Boolean {
+    // This function  determines if an incoming pQuestionId already
+    // exists, or represents a new question.
+    // First, get the exam
+    if (pQuestionId === -1) {
+      return false;
+    }
+    for (let exam of this.exams) {
+      if (exam.id === pExamId) {
+        // OK, found the exam, now let's look for the question
+        for (let question of exam.questions) {
+          if (question.questionId === pQuestionId) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
   }
 
   createBlankQuestion() {
@@ -170,22 +237,54 @@ export class ExamService {
       [
         {
           'answerId': 1,
-          'answerText': ''
+          'answerText': '',
+          'correctOrNot': false
         },
         {
           'answerId': 2,
-          'answerText': ''
+          'answerText': '',
+          'correctOrNot': false
         },
         {
           'answerId': 3,
-          'answerText': ''
+          'answerText': '',
+          'correctOrNot': false
         },
         {
           'answerId': 4,
-          'answerText': ''
+          'answerText': '',
+          'correctOrNot': false
         }
       ]
     );
+  }
+
+  deleteQuestion(pExamId: number, pQuestionId: number): void {
+    console.log('In deleteQuestion()');
+    console.log(pExamId);
+    console.log(pQuestionId);
+
+  }
+
+  getAnswerCountForGivenQuestion(pExamId: number, pQuestionId: number): number {
+    for (let examFor of this.exams) {
+      if (examFor.id === pExamId) {
+        for (let questionFor of examFor.questions) {
+          if (questionFor.questionId === pQuestionId) {
+            // console.log(exam.description);
+            let vCount: number = 0;
+            for (let questionFor of examFor.questions) {
+              vCount = vCount + 1;
+            }
+            // Found the question, return the count
+            return vCount;
+          }
+        }
+      }
+    };
+    // Never found the question, return a -1 flag to
+    // convey that no question was identified
+    return -1;
   }
 
 }

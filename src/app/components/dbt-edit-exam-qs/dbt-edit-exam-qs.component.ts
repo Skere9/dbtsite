@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -26,6 +27,7 @@ export class DbtEditExamQsComponent implements OnInit {
   public pointToExamService;
 
   constructor(private examService: ExamService,
+    private router: Router,
     private route: ActivatedRoute) {
     this.vExamId = 0;
     this.theQuestion = examService.createBlankQuestion();
@@ -71,9 +73,15 @@ export class DbtEditExamQsComponent implements OnInit {
     return returnQuestion;
   }
 
+  public cancelEditQuestion() {
+    console.log('In cancelEditQuestion');
+    this.router.navigate(['/', 'exam-qlist', this.exam.id]);
+  }
+
   public saveQuestion() {
     console.log('Saving the question');
     this.examService.setExamQuestion(this.vExamId, this.theQuestion);
+    this.router.navigate(['/', 'exam-qlist', this.exam.id]);
   }
 
 }

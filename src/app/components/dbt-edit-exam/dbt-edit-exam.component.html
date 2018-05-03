@@ -10,11 +10,11 @@
     <div class="input-group" style="width: 450px">
       <textarea class="form-control" rows="4" cols="10" [(ngModel)]="exam.description" placeholder="Description" name="description"></textarea>
     </div>
-    <div>
-      <p>This exam has {{ examQuestionCount }} questions.</p>
+    <div *ngIf="updatingExam">
+      <p>This exam has {{ examQuestionCount }} {{textForQuestionOrQuestions}}.</p>
     </div>
     <div class="input-group" style="margin:10px">
-      <input type="button" value="Reset" (click)="Reset()" />
+      <input type="button" value="Cancel" (click)="CancelEditExam()" />
       <input type="button" value="Save Exam Info and Continue" (click)="SaveExam()" />
     </div>
   </div>
