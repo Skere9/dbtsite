@@ -1,22 +1,51 @@
-<div style="margin: 50 px 50 px 50 px">
-  <div class="panel-heading">
-    <h4>Edit Exam</h4>
-  </div>
+<h4>Edit Exam</h4>
 
-  <div class="panel-body" style="margin:10px">
-    <div class="input-group" style="width: 400px">
-      <input class="form-control" type="text" [(ngModel)]="exam.title" placeholder="Title" name="title" />
-    </div>
-    <div class="input-group" style="width: 450px">
-      <textarea class="form-control" rows="4" cols="10" [(ngModel)]="exam.description" placeholder="Description" name="description"></textarea>
-    </div>
-    <div *ngIf="updatingExam">
-      <p>This exam has {{ examQuestionCount }} {{textForQuestionOrQuestions}}.</p>
-    </div>
-    <div class="input-group" style="margin:10px">
-      <input type="button" value="Cancel" (click)="CancelEditExam()" />
-      <input type="button" value="Save Exam Info and Continue" (click)="SaveExam()" />
-    </div>
-  </div>
-
-</div>
+<table class="table">
+  <tbody>
+    <tr>
+      <td width=10px><label for="id">ID</label></td>
+      <td>{{ exam.id }}</td>
+    </tr>
+    <tr>
+      <td width=35px><label for="title">Title</label></td>
+      <td>
+        <input class="form-control" type="text" [(ngModel)]="exam.title" placeholder="Title" name="title" id="title" required #title="ngModel"
+        />
+      </td>
+      <td>
+        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+          Title is required.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="description">Description</label></td>
+      <td>
+        <textarea class="form-control" rows="4" cols="10" [(ngModel)]="exam.description" placeholder="Description" name="description"
+          id="description" required #description="ngModel"></textarea>
+      </td>
+      <td>
+        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+          Description is required
+        </div>
+      </td>
+    </tr>
+      <tr *ngIf="!updatingExam">
+        <td></td>
+        <td colspan=2>You are creating a new exam.</td>
+      </tr>
+      <tr *ngIf="updatingExam">
+        <td></td>
+        <td colspan=2>This exam contains {{ examQuestionCount }} {{textForQuestionOrQuestions}}.</td>
+      </tr>
+    <tr>
+      <td></td>
+      <td colspan=2>
+        <div class="button-group" style="margin:10px">
+          <button type="submit" class="btn btn-success" (click)="CancelEditExam()">Cancel</button>
+          <button type="submit" class="btn btn-success" (click)="SaveExam()">Save Exam Info and Continue</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

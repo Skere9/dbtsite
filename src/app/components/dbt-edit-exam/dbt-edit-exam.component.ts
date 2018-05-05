@@ -38,22 +38,26 @@ export class DbtEditExamComponent implements OnInit {
   public theExamService;
   public examQuestionCount: number;
 
-  public updatingExam: Boolean;
-  public textForQuestionOrQuestions: string;
+  // Assume a new exam, but change based on incoming parameter
+  public updatingExam: Boolean = false;
+
+  // If updating an existing exam, display the number of questions
+  // If the number is 1, show "question".  Otherwise show
+  // "questions".  Believe it or not, that's all this
+  // string variable is used for.
+  public textForQuestionOrQuestions = 'questions';
 
   constructor(private examService: ExamService,
     private router: Router,
     private route: ActivatedRoute) {
-    this.showQuestionFields = false; // to start, do not show question fields.
     this.theExamService = examService;
-    this.updatingExam = false;
-    this.textForQuestionOrQuestions = 'questions';
   }
 
   ngOnInit(): void {
+    this.updatingExam = false;
     // this.exam = this.examSelected;
     this.route.paramMap.subscribe((params: ParamMap) => {
-      if (parseInt(params.get('exam_id'), 10) === 0) {
+      if (parseInt(params.get('exam_id'), 10) === -1) {
         // The exam id value of zero (0) indicates the user is
         // creating a new exam, not querying an existing exam.
         // Set up the memory structures required to create a new exam:
@@ -68,13 +72,15 @@ export class DbtEditExamComponent implements OnInit {
         // existing exam, so show associated queried
         // data - such as a count of existing questions.
         this.updatingExam = true;
-       };
+      };
     })
     // console.log('From within dbt-edit-exam');
     // console.log(this.exam);
 
     // Get the number of questions in this exam so far.
-    this.examQuestionCount = this.theExamService.getExamQuestionCount(this.exam.id);
+    if (this.exam != undefined) {
+      this.examQuestionCount = this.theExamService.getExamQuestionCount(this.exam.id);
+    }
     // Next, this is simple - determine if the right text
     // for the display is singular or plural.  This is
     // used on this particualr web page at this time.

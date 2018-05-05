@@ -1,38 +1,40 @@
-<div>
-  <table>
-    <tr>
-      <td>Title:</td>
-      <td>{{ exam.title }}</td>
-    </tr>
-    <tr>
-      <td>Description:</td>
-      <td>{{ exam.description }}</td>
-    </tr>
-    <tr>
-      <td>
-        <input type="button" value="Edit Exam Info" (click)="editExamInfo()" />
-      </td>
-    </tr>
-  </table>
-</div>
-
-<table>
-  <tr *ngFor="let question of theExamQuestions" style="cursor: pointer" class="input-group">
-    <td>
-      {{ question.questionId }}
-    </td>
-    <td>
-      {{ question.questionText }}
-    </td>
-    <td>
-      <input type="button" value="EDIT" (click)="editQuestion(question.questionId)" />
-    </td>
-    <td>
-      <input type="button" value="DELETE" (click)="deleteQuestion(question.questionId)" />
+<table class="table">
+  <tr>
+    <td>Title:</td>
+    <td>{{ exam.title }}</td>
+  </tr>
+  <tr>
+    <td>Description:</td>
+    <td>{{ exam.description }}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="button-group" style="margin:10px">
+            <button type="button" class="btn btn-success" (click)="editExamInfo()">Edit Exam Info</button>
     </td>
   </tr>
 </table>
 
-<div>
-  <input type="button" value="Add Question" (click)="addQuestion()" />
-</div>
+<table class="table">
+<thead>
+  <th colspan=3 align=center>Questions</th>
+</thead>
+  <tbody>
+    <tr *ngFor="let question of theExamQuestions" style="cursor: pointer" (click)="editQuestion(question.questionId)">
+      <td> {{ question.questionId }}</td>
+      <td> {{ question.questionText }}</td>
+      <td>
+        <button type="submit" class="btn btn-success" (click)="editQuestion(question.questionId)">Edit</button>
+      </td>
+      <td>
+        <button type="submit" class="btn btn-success" (click)="deleteQuestion(question.questionId)">Delete</button>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td colspan=3>
+        <button type="submit" class="btn btn-success" (click)="addQuestion()">Add Question</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

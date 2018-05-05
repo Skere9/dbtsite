@@ -45,10 +45,6 @@ export class DbtEditExamQlistComponent implements OnInit {
       this.theExamQuestions = this.examService.getExamQuestions(this.exam.id);
     };
 
-    // Test this
-    // let x = this.examService.getAnswerCountForGivenQuestion(this.vExamId, 1);
-    // console.log(x);
-
   }
 
   editExamInfo() {

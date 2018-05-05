@@ -34,11 +34,17 @@
       <tbody>
           <tr *ngFor="let answer of theExamAnswers">
             <td>
-              <input class="form-control" type="text" [(ngModel)]="answer.answerId" style="width:50px" placeholder="Enter Answer Number Here"
+              <input class="form-control" type="text" [(ngModel)]="answer.answerId" style="width:50px" placeholder="Enter Answer Number Here" required #answerId="ngModel"
               />
+              <div *ngIf="answerId.invalid && (answerId.dirty || answerId.touched)" class="alert alert-danger">
+                  AnswerID is required
+                </div>
             </td>
             <td>
-              <input class="form-control" type="text" [(ngModel)]="answer.answerText" placeholder="Enter Answer Here" />
+              <input class="form-control" type="text" [(ngModel)]="answer.answerText" placeholder="Enter Answer Here" required #answerText="ngModel" />
+              <div *ngIf="answerText.invalid && (answerText.dirty || answerText.touched)" class="alert alert-danger">
+                  Answer is required
+                </div>
             </td>
             <td>
               <div class="checkbox">
@@ -50,8 +56,8 @@
       </tbody>
     </table>
 
-    <div class="input-group" style="margin:10px">
-      <input type="button" value="Cancel" (click)="cancelEditQuestion()" />
-      <input type="button" value="Save Question and Continue" (click)="saveQuestion()" />
+    <div class="button-group" style="margin:10px">
+      <input type="submit" class="btn btn-success" value="Cancel" (click)="cancelEditQuestion()" />
+      <input type="submit" class="btn btn-success" value="Save Question and Continue" (click)="saveQuestion()" />
     </div>
   </div>

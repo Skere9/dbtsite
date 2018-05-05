@@ -5,16 +5,24 @@
 </p>
 
 <div (examSelected)="gotIt($event)">
-  <ul>
-    <div *ngFor="let exam of exams" (click)="examClicked(exam.id)" style="cursor: pointer" ng-mouseover="rowStyle={'background-color': 'red'}; grid.appScope.onRowHover(this);">
-      <div matTooltip="Click to see detail." matTooltipShowDelay="1000">
-        <li>ID: {{ exam.id }}. {{exam.title}} | {{ exam.description }} </li>
-      </div>
-      <!-- <app-recipe-summary [recipe]="recipe" (zoomIn)="zoomInOnRecipe(recipe)" (userClickEmitter)="userClickedOnRecipe($event)"></app-recipe-summary> -->
-    </div>
-  </ul>
+  <table class="table">
+    <thead>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let exam of exams" (click)="examClicked(exam.id)" style="cursor: pointer" ng-mouseover="rowStyle={'background-color': 'red'}; grid.appScope.onRowHover(this);"
+        matTooltip="Click to see detail." matTooltipShowDelay="1000">
+        <td>{{ exam.id }}.</td>
+        <td>{{ exam.title }} </td>
+        <td>{{ exam.description }}</td>
+        <!-- <app-recipe-summary [recipe]="recipe" (zoomIn)="zoomInOnRecipe(recipe)" (userClickEmitter)="userClickedOnRecipe($event)"></app-recipe-summary> -->
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-<div>
-  <input class="button" type="button" value="Add New Exam" (click)="addNewExam()" />
+<div class="button-group">
+  <button type="submit" class="btn btn-success" (click)="addNewExam()">Add New Exam</button>
 </div>
