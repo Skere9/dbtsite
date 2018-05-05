@@ -1,63 +1,81 @@
-<div>
-  <table>
-    <tr>
-      <td>Title:</td>
-      <td>{{ exam.title }}</td>
-    </tr>
-    <tr>
-      <td>Description:</td>
-      <td>{{ exam.description }}</td>
-    </tr>
-  </table>
-</div>
+<h4>Edit Question and Answers</h4>
 
-<table>
+
+<table class="table">
+  <tr>
+    <td width=35px>Id:</td>
+    <td>{{ exam.id }}</td>
+  </tr>
+  <tr>
+    <td>Title:</td>
+    <td>{{ exam.title }}</td>
+  </tr>
+  <tr>
+    <td>Description:</td>
+    <td>{{ exam.description }}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td class="button-group" style="margin:10px">
+      <button type="button" class="btn btn-success" (click)="editExamInfo()">Edit Exam Info</button>
+    </td>
+  </tr>
+</table>
+
+<table class="table">
   <div class="input-group" style="margin:10px">
     <tr>
-      <div class="input-group" style="width:250px">
-        <td>
-          <input class="form-control" type="text" [(ngModel)]="theQuestion.questionId" style="width:50px" placeHolder="Question" />
-        </td>
-        <td>
-          <input class="form-control" type="text" [(ngModel)]="theQuestion.questionText" style="width:175px" placeHolder="Question"
-          />
-        </td>
-      </div>
+      <td>
+        Id:
+      </td>
+      <td>
+        <div *ngIf="theQuestion.questionId==-1">
+          <i>New Question</i>
+        </div>
+        <input *ngIf="theQuestion.questionId!=-1" class="form-control" type="text" [(ngModel)]="theQuestion.questionId" style="width:50px"
+          placeHolder="Question" />
+      </td>
     </tr>
-
-    <table>
-      <thead>
-        <th>#</th>
-        <th>Answer Text</th>
-        <th>Correct answer?</th>
-      </thead>
-      <tbody>
-          <tr *ngFor="let answer of theExamAnswers">
-            <td>
-              <input class="form-control" type="text" [(ngModel)]="answer.answerId" style="width:50px" placeholder="Enter Answer Number Here" required #answerId="ngModel"
-              />
-              <div *ngIf="answerId.invalid && (answerId.dirty || answerId.touched)" class="alert alert-danger">
-                  AnswerID is required
-                </div>
-            </td>
-            <td>
-              <input class="form-control" type="text" [(ngModel)]="answer.answerText" placeholder="Enter Answer Here" required #answerText="ngModel" />
-              <div *ngIf="answerText.invalid && (answerText.dirty || answerText.touched)" class="alert alert-danger">
-                  Answer is required
-                </div>
-            </td>
-            <td>
-              <div class="checkbox">
-                <label>
-                  <input class="form-control" type="checkbox" [(ngModel)]="answer.correctOrNot" value="True" />Correct</label>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-    <div class="button-group" style="margin:10px">
-      <input type="submit" class="btn btn-success" value="Cancel" (click)="cancelEditQuestion()" />
-      <input type="submit" class="btn btn-success" value="Save Question and Continue" (click)="saveQuestion()" />
-    </div>
+    <tr>
+      <td>Question:</td>
+      <td>
+        <input class="form-control" type="text" [(ngModel)]="theQuestion.questionText" style="width:175px" placeHolder="Question"
+        />
+      </td>
+    </tr>
   </div>
+</table>
+
+<table class="table">
+  <thead>
+    <th width="35px">#</th>
+    <th width="250px">Answer Text</th>
+    <th width="35px">Correct answer?</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let answer of theExamAnswers">
+      <td>
+        <input class="form-control" type="text" [(ngModel)]="answer.answerId" style="width:50px" placeholder="Enter Answer Number Here"
+          required #answerId="ngModel" />
+        <div *ngIf="answerId.invalid && (answerId.dirty || answerId.touched)" class="alert alert-danger">
+          AnswerID is required
+        </div>
+      </td>
+      <td>
+        <input class="form-control" type="text" [(ngModel)]="answer.answerText" placeholder="Enter Answer Here" required #answerText="ngModel"
+        />
+        <div *ngIf="answerText.invalid && (answerText.dirty || answerText.touched)" class="alert alert-danger">
+          Answer is required
+        </div>
+      </td>
+      <td>
+        <input class="form-control" type="checkbox" [(ngModel)]="answer.correctOrNot" value="True" />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="button-group" style="margin:10px">
+  <input type="submit" class="btn btn-success" value="Cancel" (click)="cancelEditQuestion()" />
+  <input type="submit" class="btn btn-success" value="Save Question and Answers and Continue" (click)="saveQuestion()" />
+</div>

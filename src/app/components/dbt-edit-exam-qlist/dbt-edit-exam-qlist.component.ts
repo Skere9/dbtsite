@@ -29,7 +29,7 @@ export class DbtEditExamQlistComponent implements OnInit {
   constructor(private examService: ExamService,
     private router: Router,
     private route: ActivatedRoute) {
-    this.vExamId = 0;
+    this.vExamId = -1;
     this.pointToExamService = examService.createBlankQuestion;
 
   }
@@ -39,8 +39,8 @@ export class DbtEditExamQlistComponent implements OnInit {
       this.vExamId = parseInt(params.get('exam_id'), 10);
     });
 
-    if (this.vExamId !== 0) {
-      console.log('vExamId is not zero');
+    if (this.vExamId !== -1) {
+      // console.log('vExamId is not -1');
       this.exam = this.examService.getExam(this.vExamId);
       this.theExamQuestions = this.examService.getExamQuestions(this.exam.id);
     };
@@ -52,19 +52,19 @@ export class DbtEditExamQlistComponent implements OnInit {
   }
 
   editQuestion(pQuestionId) {
-    console.log('Edit question');
+    // console.log('Edit question');
     this.router.navigate(['/', 'exam-qs', this.exam.id, pQuestionId]);
   }
 
   deleteQuestion(pQuestionId) {
-    console.log('Delete Question');
-    console.log(pQuestionId);
+    // console.log('Delete Question');
+    // console.log(pQuestionId);
     this.examService.deleteQuestion(this.exam.id, pQuestionId);
   }
 
   addQuestion() {
     // Navigate to the page for addding a new question
-    this.router.navigate(['/', 'exam-qs', this.exam.id, 0]);
+    this.router.navigate(['/', 'exam-qs', this.exam.id, -1]);
   }
 
 }

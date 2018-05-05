@@ -12,7 +12,6 @@ export class Question {
         this.questionId = pQuestionId;
         this.questionText = pQuestionText;
         this.answers = pAnswers;
-        // this.answers = [];
     }
 
     public static questionFromJSON(obj: any): Question {

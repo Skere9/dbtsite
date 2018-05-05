@@ -1,16 +1,18 @@
-<div class="topnav" id="myTopnav" (userSignedIn)="userSignInClickEmitter($event)" >
+<div class="topnav" id="myTopnav" (userSignedIn)="userSignInClickEmitter($event)">
     <a [routerLink]="['/']">
         <span class="glyphicon glyphicon-home" aria-hidden="false"></span>
     </a>
-    <a href="/home" matTooltip="Return to home page." matTooltipShowDelay="1000" >Home</a>
-    <div *ngIf="!stateLoggedIn" style="color:brown">
+    <a href="/home" matTooltip="Return to home page." matTooltipShowDelay="1000">Home</a>
+    <a href="/about" matTooltip="Learn a little about us." matTooltipShowDelay="1000">About</a>
+   <div *ngIf="!stateLoggedIn" style="color:brown">
         <a [routerLink]="['signUp']">Sign Up</a>
-    </div>    <a href="/list" matTooltip="List available exams." matTooltipShowDelay="1000">List</a>
+    </div>
+    <a href="/list" matTooltip="List available exams." matTooltipShowDelay="1000">List</a>
+    <a href="/pricing" matTooltip="Get pricing information" matTooltipShowDelay="1000">Pricing</a>
     <span *ngIf="stateLoggedIn">
         <a href="/exam/-1" matTooltip="Create a new exam." matTooltipShowDelay="1000">Create</a>
     </span>
-    <a href="/about" matTooltip="Learn a little about us." matTooltipShowDelay="1000">About</a>
-
+ 
     <span *ngIf="stateLoggedIn">
         <a href="/userProfile">User Profile</a>
     </span>

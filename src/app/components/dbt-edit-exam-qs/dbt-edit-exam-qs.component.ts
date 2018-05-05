@@ -29,7 +29,7 @@ export class DbtEditExamQsComponent implements OnInit {
   constructor(private examService: ExamService,
     private router: Router,
     private route: ActivatedRoute) {
-    this.vExamId = 0;
+    this.vExamId = -1;
     this.theQuestion = examService.createBlankQuestion();
     this.pointToExamService = examService.createBlankQuestion;
   }
@@ -40,25 +40,26 @@ export class DbtEditExamQsComponent implements OnInit {
       this.vQuestionId = parseInt(params.get('question_id'), 10);
     });
 
-    console.log('Results of the call:')
-    console.log(this.vExamId);
-    console.log(this.vQuestionId);
+    // console.log('Results of the call:')
+    // console.log(this.vExamId);
+    // console.log(this.vQuestionId);
 
-    if (this.vExamId !== 0) {
-      console.log('vExamId is not zero');
+    if (this.vExamId !== -1) {
+      // console.log('vExamId is not -1');
       this.exam = this.examService.getExam(this.vExamId);
-      if (this.vQuestionId === 0) {
-        console.log('vQuestionId is zero');
+      if (this.vQuestionId === -1) {
+        // This is a new question
+        // console.log('vQuestionId is -1');
         this.theQuestion = this.pointToExamService();
         this.theExamAnswers = this.theQuestion.answers;
-        console.log('theExamAnswers:');
-        console.log(this.theExamAnswers);
+        // console.log('theExamAnswers:');
+        // console.log(this.theExamAnswers);
       } else {
-        console.log('vQuestionId is not zero');
+        // console.log('vQuestionId is not -1');
         this.theQuestion = this.findQuestionById(this.vExamId, this.vQuestionId);
         this.theExamAnswers = this.theQuestion.answers;
-        console.log('theExamAnswers:');
-        console.log(this.theExamAnswers);
+        // console.log('theExamAnswers:');
+        // console.log(this.theExamAnswers);
       }
     }
 
@@ -74,14 +75,18 @@ export class DbtEditExamQsComponent implements OnInit {
   }
 
   public cancelEditQuestion() {
-    console.log('In cancelEditQuestion');
+    // console.log('In cancelEditQuestion');
     this.router.navigate(['/', 'exam-qlist', this.exam.id]);
   }
 
   public saveQuestion() {
-    console.log('Saving the question');
+    // console.log('Saving the question');
     this.examService.setExamQuestion(this.vExamId, this.theQuestion);
     this.router.navigate(['/', 'exam-qlist', this.exam.id]);
   }
 
+  editExamInfo() {
+    this.router.navigate(['/', 'exam', this.exam.id]);
+  }
+  
 }

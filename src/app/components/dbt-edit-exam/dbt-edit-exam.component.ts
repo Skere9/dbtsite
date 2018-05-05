@@ -18,8 +18,8 @@ export class DbtEditExamComponent implements OnInit {
   // Form for editing an exam
   // One parameter
   //    0 = create a new exam
-  //    non-zero: query the exam whose id matches
-  //              the non-zero identifier and
+  //    non-negative-one: query the exam whose id matches
+  //              the non-negative-one identifier and
   //              present the form to edit the exam
   //
 
@@ -58,13 +58,13 @@ export class DbtEditExamComponent implements OnInit {
     // this.exam = this.examSelected;
     this.route.paramMap.subscribe((params: ParamMap) => {
       if (parseInt(params.get('exam_id'), 10) === -1) {
-        // The exam id value of zero (0) indicates the user is
+        // The exam id value of negative one (-1) indicates the user is
         // creating a new exam, not querying an existing exam.
         // Set up the memory structures required to create a new exam:
         // One blank question with one set of four blank answers
         this.initializeNewBlankExam();
       } else {
-        // The first paramater is a non-zero.
+        // The first paramater is not negative one.
         // Presumably this is an exam ID.
         // Query for the exam ID.
         this.exam = this.findExamById(parseInt(params.get('exam_id'), 10));
@@ -139,10 +139,10 @@ export class DbtEditExamComponent implements OnInit {
   }
 
   public initializeBlankAnswersArray(): void {
-    console.log('Intializing blank answers');
+    // console.log('Intializing blank answers');
     let i: number;
     for (i = 0; i <= 4; i++) {
-      console.log(i);
+      // console.log(i);
       this.answerRows.push(this.answerBlank);
     };
   }
