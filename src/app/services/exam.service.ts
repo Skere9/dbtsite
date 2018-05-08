@@ -47,6 +47,7 @@ export class ExamService {
           ]
         }
         ],
+        'randomizeQuestions': true,
         'keywords': ['oracle', 'certification', 'sql']
       }, {
         'id': 2,
@@ -57,6 +58,7 @@ export class ExamService {
           'questionText': 'Who is Duke?',
           'answers': this.getAnswerBlanks()
         }],
+        'randomizeQuestions': true,
         'keywords': ['oracle', 'certification', 'java']
       }, {
         'id': 3,
@@ -67,6 +69,7 @@ export class ExamService {
           'questionText': 'Let us discuss analytics',
           'answers': this.getAnswerBlanks()
         }],
+        'randomizeQuestions': true,
         'keywords': ['oracle', 'certification', 'sql', 'expert', 'deprecated']
       }, {
         'id': 4,
@@ -77,6 +80,7 @@ export class ExamService {
           'questionText': 'If you were to create a program unit, ... ',
           'answers': this.getAnswerBlanks()
         }],
+        'randomizeQuestions': true,
         'keywords': ['oracle', 'certification', 'plsql', 'PL/SQL', 'Program Units']
       }
     ];
@@ -169,7 +173,7 @@ export class ExamService {
       if (questionIndex !== -1) {
         this.theSelectedExam.questions[questionIndex] = pQuestion;
       } else {
-        // This is an attempt to save a new question.  
+        // This is an attempt to save a new question.
         // Add it to the end of the array
         // But first, get the next available questionId number
         // so we can assign it to this new question
@@ -184,12 +188,12 @@ export class ExamService {
   }
 
   nextAvailableQuestionId(pExam:Exam): number {
-    // temporary variable to track the highest number 
+    // temporary variable to track the highest number
     // assigned to a question so far in the array.
-    let highestNumber:number = 0; 
+    let highestNumber:number = 0;
     for (let question of pExam.questions) {
       if (question.questionId > highestNumber) {
-        highestNumber =  parseInt(question.questionId);
+        highestNumber = +question.questionId;
       }
     }
     // The value of highestNumber is now equal to
@@ -197,7 +201,11 @@ export class ExamService {
     // exam.  Increase it by one and use the new
     // value to assing to the next incoming question.
     // tslint:disable-next-line:radix
-    highestNumber = highestNumber + 1;
+    // Note:  the plus sign + is an Angular
+    // / Typescript approach to numeric
+    // conversion.  Number{} doesn't work, nor
+    // does parseInt.  The "plus" sign is the key.
+    highestNumber = +highestNumber + 1;
     return highestNumber;
   }
 

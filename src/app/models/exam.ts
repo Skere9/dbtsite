@@ -5,6 +5,9 @@ export class Exam {
     public title: string;
     public description: string;
     public questions: Question[];
+    // Should the questions assigned to this exam be delivered in 
+    // random order?  Generally - yes.
+    public randomizeQuestions: Boolean = true;
     public keywords: string[];
 
     constructor(
@@ -25,5 +28,6 @@ export class Exam {
     public static examFromJSON(obj: any): Exam {
         return new Exam(obj.id, obj.title, obj.description, obj.keywords);
     }
+
 }
 

@@ -17,13 +17,15 @@ export class DbtSignInComponent implements OnInit {
   userName: string;
   userPassword: string;
 
-  constructor( private appWideService: AppWideService) { 
+  constructor(private appWideService: AppWideService) {
     this.userName = '';
     this.userPassword = '';
   }
 
   ngOnInit() {
   }
+
+
 
   public SignIn() {
     console.log('Clicked Sign In');
@@ -48,6 +50,15 @@ export class DbtSignInComponent implements OnInit {
 
   public Reset() {
     console.log('Clicked reset');
+  }
+
+  public testThenDelete() {
+    if (this.myform.valid) {
+      console.log('Valid');
+    } else {
+      console.log('Invalid');
+    }
+    console.log('It worked!');
   }
 
 }

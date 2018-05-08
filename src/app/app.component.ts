@@ -16,7 +16,7 @@ export class AppComponent {
 
   constructor(private appWideService: AppWideService) {
     // this.stateLoggedIn = this.appWideService.getLoggedInStatus();
-    this.stateLoggedIn = true;
+    this.stateLoggedIn = false;
     this.currentYear = new Date().getFullYear();
     this.siteURL = 'http://www.databasetraining.com';
     this.siteName = 'DATABASETRAINING.COM';

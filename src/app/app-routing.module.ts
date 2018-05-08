@@ -16,7 +16,8 @@ import { DbtLogOffComponent } from './components/dbt-log-off/dbt-log-off.compone
 import { TooltipOverviewExampleComponent } from './components/tooltip-overview-example/tooltip-overview-example.component';
 import { DbtEditExamQsComponent } from './components/dbt-edit-exam-qs/dbt-edit-exam-qs.component';
 import { DbtEditExamQlistComponent } from './components/dbt-edit-exam-qlist/dbt-edit-exam-qlist.component';
-import { DbtPricingComponent } from './dbt-pricing/dbt-pricing.component';
+import { DbtPricingComponent } from './components/dbt-pricing/dbt-pricing.component';
+import { DbtBuyComponent } from './components/dbt-buy/dbt-buy.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,10 @@ const routes: Routes = [
   {
     path: 'pricing',
     component: DbtPricingComponent
+  },
+  {
+    path: 'buy/:plan_id',
+    component: DbtBuyComponent
   },
   {
     path: 'userProfile',

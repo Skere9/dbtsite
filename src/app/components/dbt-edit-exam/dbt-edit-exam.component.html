@@ -3,11 +3,15 @@
 <table class="table">
   <tbody>
     <tr>
-      <td width=10px><label for="id">ID</label></td>
+      <td width=10px>
+        <label for="id">ID</label>
+      </td>
       <td>{{ exam.id }}</td>
     </tr>
     <tr>
-      <td width=35px><label for="title">Title</label></td>
+      <td width=35px>
+        <label for="title">Title</label>
+      </td>
       <td>
         <input class="form-control" type="text" [(ngModel)]="exam.title" placeholder="Title" name="title" id="title" required #title="ngModel"
         />
@@ -19,7 +23,9 @@
       </td>
     </tr>
     <tr>
-      <td><label for="description">Description</label></td>
+      <td>
+        <label for="description">Description</label>
+      </td>
       <td>
         <textarea class="form-control" rows="4" cols="10" [(ngModel)]="exam.description" placeholder="Description" name="description"
           id="description" required #description="ngModel"></textarea>
@@ -30,14 +36,24 @@
         </div>
       </td>
     </tr>
-      <tr *ngIf="!updatingExam">
-        <td></td>
-        <td colspan=2>You are creating a new exam.</td>
-      </tr>
-      <tr *ngIf="updatingExam">
-        <td></td>
-        <td colspan=2>This exam contains {{ examQuestionCount }} {{textForQuestionOrQuestions}}.</td>
-      </tr>
+    <tr>
+      <td>
+        <label for="randomizeQuestions">Should the questions be delivered in random order?</label>
+      </td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="checkbox"  class="form-check-input" [(ngModel)]="exam.randomizeQuestions" name="randomizeQuestions"
+          id="randomizeQuestions">
+          <label class="form-check-label" for="randomizeQuestions">Randomize?</label>
+      </td>
+    </tr>
+    <tr *ngIf="!updatingExam">
+      <td></td>
+      <td colspan=2>You are creating a new exam.</td>
+    </tr>
+    <tr *ngIf="updatingExam">
+      <td></td>
+      <td colspan=2>This exam contains {{ examQuestionCount }} {{textForQuestionOrQuestions}}.</td>
+    </tr>
     <tr>
       <td></td>
       <td colspan=2>
