@@ -67,4 +67,9 @@ export class DbtEditExamQlistComponent implements OnInit {
     this.router.navigate(['/', 'exam-qs', this.exam.id, -1]);
   }
 
+  printExamInfo() {
+    // TODO: Print Exam Info
+    console.log('Print exam info');
+  }
+
 }

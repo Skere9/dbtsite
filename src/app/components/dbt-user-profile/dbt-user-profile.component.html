@@ -1,19 +1,15 @@
 User Profile
-<div class="container">
-
 
   <div class="form-group">
-    ID: {{ userAccount.id}}
-    <input class="form-control" type="text" [(ngModel)]="userAccount.firstName" placeholder="First Name" name="firstName" id="firstName"
+    ID: {{ user.id}}
+    <input class="form-control" type="text" [(ngModel)]="user.firstName" placeholder="First Name" name="firstName" id="firstName"
       required #firstName="ngModel" />
-    <input class="form-control" type="text" [(ngModel)]="userAccount.lastName" placeholder="Last Name" name="lastName" id="lastName"
+    <input class="form-control" type="text" [(ngModel)]="user.lastName" placeholder="Last Name" name="lastName" id="lastName"
       required #lastName="ngModel" />
-    <input class="form-control" type="text" [(ngModel)]="userAccount.email" placeholder="Email" name="email" id="email" required
+    <input class="form-control" type="text" [(ngModel)]="user.email" placeholder="Email" name="email" id="email" required
       #email="ngModel" />
   </div>
 
   <div class="button-group">
     <button type="button" class="btn btn-success" (click)="registerUser()">Register</button>
   </div>
-
-</div>

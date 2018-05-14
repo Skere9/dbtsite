@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppWideService } from '../../services/appwide.service';
+import { GlobalService } from '../../services/global.service';
 
 @Component({
   selector: 'app-dbt-sign-up',
@@ -15,9 +15,9 @@ export class DbtSignUpComponent implements OnInit {
 
   public SignUp() {
     console.log('Clicked Sign Up');
-    console.log(AppWideService.stateLoggedIn);
-    AppWideService.stateLoggedIn = true;
-    console.log(AppWideService.stateLoggedIn);
+    console.log(GlobalService.stateLoggedIn);
+    GlobalService.stateLoggedIn = true;
+    console.log(GlobalService.stateLoggedIn);
   }
 
   public Reset() {

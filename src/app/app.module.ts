@@ -19,7 +19,7 @@ import { DbtContactComponent } from './components/dbt-contact/dbt-contact.compon
 import { DbtTermsComponent } from './components/dbt-terms/dbt-terms.component';
 import { DbtSitemapComponent } from './components/dbt-sitemap/dbt-sitemap.component';
 
-import { AppWideService } from './services/appwide.service';
+import { GlobalService } from './services/global.service';
 import { ExamService } from './services/exam.service';
 import { DbtEditExamComponent } from './components/dbt-edit-exam/dbt-edit-exam.component';
 import { DbtSignUpComponent } from './components/dbt-sign-up/dbt-sign-up.component';
@@ -31,6 +31,7 @@ import { DbtEditExamQsComponent } from './components/dbt-edit-exam-qs/dbt-edit-e
 import { DbtEditExamQlistComponent } from './components/dbt-edit-exam-qlist/dbt-edit-exam-qlist.component';
 import { DbtPricingComponent } from './components/dbt-pricing/dbt-pricing.component';
 import { DbtBuyComponent } from './components/dbt-buy/dbt-buy.component';
+import { DbtMenu01Component } from './components/dbt-menu-01/dbt-menu-01.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { DbtBuyComponent } from './components/dbt-buy/dbt-buy.component';
     DbtEditExamQsComponent,
     DbtEditExamQlistComponent,
     DbtPricingComponent,
-    DbtBuyComponent
+    DbtBuyComponent,
+    DbtMenu01Component
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,7 @@ import { DbtBuyComponent } from './components/dbt-buy/dbt-buy.component';
     MatTooltipModule
   ],
   providers: [
-    AppWideService,
+    GlobalService,
     ExamService
   ],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { AppWideService } from './services/appwide.service';
+import { GlobalService } from './services/global.service';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,8 @@ export class AppComponent {
   siteURL: string;
   siteName: string;
 
-  constructor(private appWideService: AppWideService) {
-    // this.stateLoggedIn = this.appWideService.getLoggedInStatus();
+  constructor(private globalService: GlobalService) {
+    // this.stateLoggedIn = this.globalService.getLoggedInStatus();
     this.stateLoggedIn = false;
     this.currentYear = new Date().getFullYear();
     this.siteURL = 'http://www.databasetraining.com';

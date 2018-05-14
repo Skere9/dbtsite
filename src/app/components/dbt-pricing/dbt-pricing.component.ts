@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Plan } from '../../models/plan';
 import { AppRoutingModule } from '../../app-routing.module';
-import { AppWideService } from '../../services/appwide.service';
+import { GlobalService } from '../../services/global.service';
 
 @Component({
   selector: 'app-dbt-pricing',
@@ -14,11 +14,11 @@ export class DbtPricingComponent implements OnInit {
   
   public plans: Plan[];
 
-  constructor(private router: Router, private appWideService: AppWideService) {
-        // this.plans = appWideService.getAllPlans();
+  constructor(private router: Router, private globalService: GlobalService) {
+        // this.plans = globalService.getAllPlans();
 
             // Confirm the exam was saved
-    this.appWideService.getAllPlans()
+    this.globalService.getAllPlans()
     .then(
       (plans) => {
         this.plans = plans;

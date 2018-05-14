@@ -1,67 +1,93 @@
-<h4>Edit Exam</h4>
+<!-- Row 0 -->
+<div class="row">
+  <header>
+    <h4 class="h4">Edit Exam</h4>
+  </header>
+</div>
 
-<table class="table">
-  <tbody>
-    <tr>
-      <td width=10px>
-        <label for="id">ID</label>
-      </td>
-      <td>{{ exam.id }}</td>
-    </tr>
-    <tr>
-      <td width=35px>
-        <label for="title">Title</label>
-      </td>
-      <td>
-        <input class="form-control" type="text" [(ngModel)]="exam.title" placeholder="Title" name="title" id="title" required #title="ngModel"
-        />
-      </td>
-      <td>
-        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
-          Title is required.
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="description">Description</label>
-      </td>
-      <td>
-        <textarea class="form-control" rows="4" cols="10" [(ngModel)]="exam.description" placeholder="Description" name="description"
-          id="description" required #description="ngModel"></textarea>
-      </td>
-      <td>
-        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
-          Description is required
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <label for="randomizeQuestions">Should the questions be delivered in random order?</label>
-      </td>
-      <td>&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="checkbox"  class="form-check-input" [(ngModel)]="exam.randomizeQuestions" name="randomizeQuestions"
-          id="randomizeQuestions">
-          <label class="form-check-label" for="randomizeQuestions">Randomize?</label>
-      </td>
-    </tr>
-    <tr *ngIf="!updatingExam">
-      <td></td>
-      <td colspan=2>You are creating a new exam.</td>
-    </tr>
-    <tr *ngIf="updatingExam">
-      <td></td>
-      <td colspan=2>This exam contains {{ examQuestionCount }} {{textForQuestionOrQuestions}}.</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td colspan=2>
-        <div class="button-group" style="margin:10px">
-          <button type="submit" class="btn btn-success" (click)="CancelEditExam()">Cancel</button>
-          <button type="submit" class="btn btn-success" (click)="SaveExam()">Save Exam Info and Continue</button>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<!-- Row 1 -->
+<div class="row">
+  <div class="col-md-2">
+    <label for="id">ID</label>
+  </div>
+  <div class="col-md-10">
+    {{ exam.id }}
+  </div>
+</div>
+
+<!-- Row 2 -->
+<div class="row">
+  <div class="col-md-2">
+    <label for="title">Title</label>
+  </div>
+  <div class="col-md-8">
+    <input class="form-control" type="text" [(ngModel)]="exam.title" placeholder="Title" name="title" id="title" required #title="ngModel"
+    />
+  </div>
+  <div class="col-md-2">
+    <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+      Title is required.
+    </div>
+  </div>
+</div>
+
+<!-- Row 3 -->
+<div class="row">
+  <div class="col-md-2">
+    <label for="description">Description</label>
+  </div>
+  <div class="col-md-8">
+    <textarea class="form-control" rows="4" cols="10" [(ngModel)]="exam.description" placeholder="Description" name="description"
+      id="description" required #description="ngModel"></textarea>
+  </div>
+  <div class="col-md-2">
+    <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+      Description is required
+    </div>
+  </div>
+</div>
+
+<!-- Row 4 -->
+<div class="row">
+  <div class="col-md-2">
+    <label class="form-check-label" for="randomizeQuestions">Randomize?</label>
+  </div>
+  <div class="col-md-10">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" class="form-check-input" [(ngModel)]="exam.randomizeQuestions" name="randomizeQuestions" id="randomizeQuestions">
+    <label for="randomizeQuestions">Should the questions be delivered in random order?</label>
+  </div>
+
+</div>
+
+<!-- Row 5 -->
+<div class="row" *ngIf="updatingExam">
+  <div class="col-md-2">
+    # of questions:
+  </div>
+  <div class="col-md-10">
+    {{ examQuestionCount }}
+  </div>
+</div>
+
+<!-- Row 6 -->
+<div class="row" *ngIf="!updatingExam">
+  <div class="col-md-2">
+    Note:
+  </div>
+  <div class="col-md-10">
+    You are creating a new exam.
+  </div>
+</div>
+
+<!-- Row 7 -->
+<div class="row">
+  <div class="col-md-2">
+
+  </div>
+  <div class="col-md-10">
+    <button type="submit" class="btn btn-success p-2 m-2" (click)="CancelEditExam()">Cancel</button>
+    <button type="submit" class="btn btn-success p-2 m-2" (click)="SaveExam()">Save Exam Info and Continue</button>
+  </div>
+
+</div>

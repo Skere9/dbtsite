@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AppWideService } from '../../services/appwide.service';
+import { GlobalService } from '../../services/global.service';
 
 // SKERE
 // import { Observable } from 'rxjs/Observable'; // For use in method SignIn()
@@ -17,7 +17,7 @@ export class DbtSignInComponent implements OnInit {
   userName: string;
   userPassword: string;
 
-  constructor(private appWideService: AppWideService) {
+  constructor(private globalService: GlobalService) {
     this.userName = '';
     this.userPassword = '';
   }
@@ -25,21 +25,32 @@ export class DbtSignInComponent implements OnInit {
   ngOnInit() {
   }
 
-
-
   public SignIn() {
-    console.log('Clicked Sign In');
-    console.log(AppWideService.stateLoggedIn);
-    console.log(this.userName);
-    console.log(this.userPassword);
+    // console.log('Clicked Sign In');
+    // console.log(GlobalService.stateLoggedIn);
+    // console.log(this.userName);
+    // console.log(this.userPassword);
 
-    AppWideService.stateLoggedIn = true;
-    console.log(AppWideService.stateLoggedIn);
+    // Check if the username already exists
+    const result = this.globalService.getUserByUserName(this.userName);
+    // console.log(result);
+    if (result !== null) {
+      // console.log('Got it!');
+      GlobalService.stateLoggedIn = true;
+      console.log('Logged in');
+    } else {
+      // console.log('Nothing returned');
+      console.log('Login failed');
+      GlobalService.stateLoggedIn = false;
+    }
+
+
+    // console.log(GlobalService.stateLoggedIn);
     // Send event to ...?
     this.userSignInClickEmitter.emit(17);
-    console.log('About to set logged in status via service.');
-    this.appWideService.setLoggedInStatus(true);
-    console.log('Back from service.  Did the service say anything?');
+    // console.log('About to set logged in status via service.');
+    this.globalService.setLoggedInStatus(true);
+    // console.log('Back from service.  Did the service say anything?');
 
     // SKERE 
     // let x = new Observable<Boolean>();
@@ -52,13 +63,16 @@ export class DbtSignInComponent implements OnInit {
     console.log('Clicked reset');
   }
 
-  public testThenDelete() {
-    if (this.myform.valid) {
-      console.log('Valid');
-    } else {
-      console.log('Invalid');
+  /*
+    public testThenDelete() {
+      if (this.myform.valid) {
+        console.log('Valid');
+      } else {
+        console.log('Invalid');
+      }
+      console.log('It worked!');
     }
-    console.log('It worked!');
-  }
+  */
+
 
 }

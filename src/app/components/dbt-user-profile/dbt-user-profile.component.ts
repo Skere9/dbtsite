@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserAccount } from '../../models/userAccount';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-dbt-user-profile',
@@ -9,10 +9,10 @@ import { UserAccount } from '../../models/userAccount';
 })
 export class DbtUserProfileComponent implements OnInit {
 
-  userAccount: UserAccount;
+  user: User;
 
   constructor() {
-    this.userAccount = UserAccount.createBlankUserAccount();
+    this.user = User.createBlankUser();
   }
 
   ngOnInit() {

@@ -11,13 +11,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let plan of plans" (click)="buyPlan(plan.id)" >
+    <tr *ngFor="let plan of plans" (click)="buyPlan(plan.id)">
       <td>{{ plan.id }}</td>
       <td>{{ plan.title }}</td>
       <td>{{ plan.exams }}</td>
       <td>{{ plan.duration}}</td>
       <td>{{ plan.price }}</td>
-      <td><button class="btn btn-success" type="submit" (click)="buyPlan(plan.id)">Buy Now!</button></td>
+      <td>
+        <button class="btn btn-success" type="submit" (click)="buyPlan(plan.id)">Buy Now!</button>
+      </td>
     </tr>
   </tbody>
 
