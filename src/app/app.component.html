@@ -1,33 +1,36 @@
-<div class="topnav" id="myTopnav" (userSignedIn)="userSignInClickEmitter($event)">
+<div class="topnav" id="myTopnav">
     <a [routerLink]="['/']">
         <span class="glyphicon glyphicon-home" aria-hidden="false"></span>
     </a>
 
-    <a href="/home" matTooltip="Return to home page." matTooltipShowDelay="1000">Home</a>
-    <a href="/about" matTooltip="Learn a little about us." matTooltipShowDelay="1000">About</a>
-    <div *ngIf="!stateLoggedIn" style="color:brown">
+    <a routerLink="/home" matTooltip="Return to home page." matTooltipShowDelay="1000">Home</a>
+    <a routerLink="/about" matTooltip="Learn a little about us." matTooltipShowDelay="1000">About</a>
+    <div *ngIf="!getLoggedInStatus()" style="color:brown">
         <a [routerLink]="['signUp']">Sign Up</a>
     </div>
-    <a href="/list" matTooltip="List available exams." matTooltipShowDelay="1000">List</a>
-    <a href="/pricing" matTooltip="Get pricing information" matTooltipShowDelay="1000">Pricing</a>
-    <span *ngIf="stateLoggedIn">
-        <a href="/exam/-1" matTooltip="Create a new exam." matTooltipShowDelay="1000">Create</a>
+    <a routerLink="/list" matTooltip="List available exams." matTooltipShowDelay="1000">List</a>
+    <a routerLink="/pricing" matTooltip="Get pricing information" matTooltipShowDelay="1000">Pricing</a>
+    <span *ngIf="getLoggedInStatus()">
+        <a routerLink="/exam/-1" matTooltip="Create a new exam." matTooltipShowDelay="1000">Create</a>
     </span>
   
-    <span *ngIf="stateLoggedIn">
-        <a href="/userProfile">User Profile</a>
+    <span *ngIf="getLoggedInStatus()">
+        <a routerLink="/userProfile">User Profile</a>
     </span>
 
-    <span *ngIf="!stateLoggedIn" style="color:brown">
+    <span *ngIf="!getLoggedInStatus()" style="color:brown">
         <a style="float: right" [routerLink]="['signIn']">Sign In</a>
     </span>
-    <span *ngIf="stateLoggedIn" style="color:brown">
-        <a style="float: right" [routerLink]="['logOff']">Log Off</a>
+    <span *ngIf="getLoggedInStatus()" style="color:brown">
+        <a style="float: right" (click)="logOff()">Log Off</a>
     </span>
 
     <hr>
 </div>
 
+<div *ngIf="getLoggedInStatus()">
+    You are logged in.
+</div>
 
 <div style="margin: 10px">
     <router-outlet></router-outlet>

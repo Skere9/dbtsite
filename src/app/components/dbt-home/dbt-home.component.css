@@ -1,0 +1,6 @@
+@media(min-width:48em){
+    adjust-video-for-mobile {
+      width: 560;
+      height: 315; 
+    }
+  }

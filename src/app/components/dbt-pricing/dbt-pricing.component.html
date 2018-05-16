@@ -16,7 +16,7 @@
       <td>{{ plan.title }}</td>
       <td>{{ plan.exams }}</td>
       <td>{{ plan.duration}}</td>
-      <td>{{ plan.price }}</td>
+      <td>{{ plan.price | currency }}</td>
       <td>
         <button class="btn btn-success" type="submit" (click)="buyPlan(plan.id)">Buy Now!</button>
       </td>

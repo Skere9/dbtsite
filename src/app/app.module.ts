@@ -66,9 +66,11 @@ import { DbtMenu01Component } from './components/dbt-menu-01/dbt-menu-01.compone
     MatTooltipModule
   ],
   providers: [
-    GlobalService,
-    ExamService
+    ExamService,
+    GlobalService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

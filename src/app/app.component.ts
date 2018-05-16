@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { GlobalService } from './services/global.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +9,13 @@ import { GlobalService } from './services/global.service';
 })
 export class AppComponent {
 
-  stateLoggedIn: Boolean;
   title = 'app';
   currentYear: number;
   siteURL: string;
   siteName: string;
 
-  constructor(private globalService: GlobalService) {
-    // this.stateLoggedIn = this.globalService.getLoggedInStatus();
-    this.stateLoggedIn = false;
+  constructor(private globalService: GlobalService,
+    private router: Router) {
     this.currentYear = new Date().getFullYear();
     this.siteURL = 'http://www.databasetraining.com';
     this.siteName = 'DATABASETRAINING.COM';
@@ -24,6 +23,15 @@ export class AppComponent {
 
   userSignedIn(number): void {
     console.log('Emit captured!');
+  }
+
+  getLoggedInStatus(): Boolean {
+    return this.globalService.getLoggedInStatus();
+  }
+
+  logOff(): void {
+    this.globalService.setLoggedInStatus(false);
+    this.router.navigate(['/', 'home');
   }
 }
 
