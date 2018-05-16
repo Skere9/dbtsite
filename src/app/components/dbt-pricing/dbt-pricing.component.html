@@ -1,26 +1,14 @@
-<h4>Pricing</h4>
+<div class="jumbotron text-center">
+  <h1>Pricing</h1>
+</div>
 
-<table class="table" style="width=350px">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Title</th>
-      <th>Exams</th>
-      <th>Duration</th>
-      <th>Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let plan of plans" (click)="buyPlan(plan.id)">
-      <td>{{ plan.id }}</td>
-      <td>{{ plan.title }}</td>
-      <td>{{ plan.exams }}</td>
-      <td>{{ plan.duration}}</td>
-      <td>{{ plan.price | currency }}</td>
-      <td>
-        <button class="btn btn-success" type="submit" (click)="buyPlan(plan.id)">Buy Now!</button>
-      </td>
-    </tr>
-  </tbody>
-
-</table>
+<div class="row">
+  <div class="col-md-4 text-center p-3 highlightit" *ngFor="let plan of plans" (click)="buyPlan(plan.id)">
+      <h2>{{ plan.title }}</h2>
+      <h4>Exams: {{ plan.exams }}</h4>
+      <h4>Duration: {{ plan.duration}}</h4>
+      <h4>{{ plan.price | currency }}</h4>
+      <button class="btn btn-info m-1 btn-sm" type="submit" (click)="learnMore(plan.id)">Learn More</button>
+      <button class="btn btn-success m-1" type="submit" (click)="buyPlan(plan.id)">Buy Now!</button>
+  </div>
+</div>

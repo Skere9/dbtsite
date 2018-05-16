@@ -29,6 +29,10 @@ export class DbtPricingComponent implements OnInit {
   ngOnInit() {
   }
 
+  public learnMore(pPlanNumber: number): void {
+    console.log('Learn more!');
+  }
+
   public buyPlan(pPlanNumber: number): void {
     console.log('The plan purchase selection is:');
     console.log(pPlanNumber);

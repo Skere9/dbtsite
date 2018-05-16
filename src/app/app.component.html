@@ -5,22 +5,21 @@
 
     <a routerLink="/home" matTooltip="Return to home page." matTooltipShowDelay="1000">Home</a>
     <a routerLink="/about" matTooltip="Learn a little about us." matTooltipShowDelay="1000">About</a>
-    <div *ngIf="!getLoggedInStatus()" style="color:brown">
-        <a [routerLink]="['signUp']">Sign Up</a>
-    </div>
     <a routerLink="/list" matTooltip="List available exams." matTooltipShowDelay="1000">List</a>
     <a routerLink="/pricing" matTooltip="Get pricing information" matTooltipShowDelay="1000">Pricing</a>
     <span *ngIf="getLoggedInStatus()">
         <a routerLink="/exam/-1" matTooltip="Create a new exam." matTooltipShowDelay="1000">Create</a>
     </span>
-  
+
     <span *ngIf="getLoggedInStatus()">
         <a routerLink="/userProfile">User Profile</a>
     </span>
 
     <span *ngIf="!getLoggedInStatus()" style="color:brown">
-        <a style="float: right" [routerLink]="['signIn']">Sign In</a>
+        <a style="float: right;" [routerLink]="['signIn']">Sign In</a>
+        <a style="float: right;" [routerLink]="['signUp']">Sign Up</a>
     </span>
+
     <span *ngIf="getLoggedInStatus()" style="color:brown">
         <a style="float: right" (click)="logOff()">Log Off</a>
     </span>

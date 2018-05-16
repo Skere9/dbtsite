@@ -31,7 +31,7 @@ export class AppComponent {
 
   logOff(): void {
     this.globalService.setLoggedInStatus(false);
-    this.router.navigate(['/', 'home');
+    this.router.navigate(['/', 'home']);
   }
 }
 

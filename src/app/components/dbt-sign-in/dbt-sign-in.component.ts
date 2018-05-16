@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GlobalService } from '../../services/global.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dbt-sign-in',
@@ -11,7 +12,8 @@ export class DbtSignInComponent implements OnInit {
   userName: string;
   userPassword: string;
 
-  constructor(private globalService: GlobalService) {
+  constructor(private globalService: GlobalService,
+  private router: Router) {
     this.userName = '';
     this.userPassword = '';
   }
@@ -29,7 +31,7 @@ export class DbtSignInComponent implements OnInit {
     }
     // Send event to ...?
     this.globalService.setLoggedInStatus(true);
-
+    this.router.navigate(['/', 'userProfile']);
   }
 
   public Reset() {

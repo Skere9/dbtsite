@@ -9,7 +9,7 @@ export class GlobalService {
   public static stateLoggedIn: Boolean = false;
   public static loggedInStatus: Boolean;
 
-  public users: User[];
+  public static users: User[];
   public theSelectedUser: User;
   public plans: Plan[];
   public theSelectedPlan: Plan;
@@ -17,7 +17,7 @@ export class GlobalService {
   constructor() {
     GlobalService.loggedInStatus = false;
 
-    this.users = [
+    GlobalService.users = [
       {
         'id': 1,
         'firstName': 'Fred',
@@ -63,25 +63,50 @@ export class GlobalService {
 
   }
 
+  static checkForUniqueEmail(pEmailAddress: string): Boolean {
+    // Check to see if the incoming email is unique
+    // with regard to existing email addresses in the
+    // user database.  If it is unique - which is to say
+    // that it is not already used by a user -
+    // then return true.
+    // If the email address is already used,
+    // return false
+    const theSelectedUser = GlobalService.users.find(user => user.email === pEmailAddress);
+    console.log('From within checkForUniqueEmail');
+    console.log(theSelectedUser);
+    if (!theSelectedUser) {
+      // there is no existing user with this email
+      // address, therefore, the new email address
+      // is unique
+      return true;
+    } else {
+      // The new user has provided an email address
+      // associated with an existing user in the
+      // user database.  This isn't a unique
+      // email address.
+      return false;
+    };
+  }
+
   setLoggedInStatus(status: Boolean) {
     console.log('Setting logged in status');
     GlobalService.loggedInStatus = status;
   }
-  
+
   getLoggedInStatus(): Boolean {
     console.log('Getting logged in status');
     return GlobalService.loggedInStatus;
   }
 
   getUser(pUserId: number): Promise<User> {
-    this.theSelectedUser = this.users.find(user => user.id === pUserId);
+    this.theSelectedUser = GlobalService.users.find(user => user.id === pUserId);
     return new Promise((resolve, reject) => {
       resolve(this.theSelectedUser);
     });
   }
 
   getUserByUserName(pUserName: string): Promise<User> {
-    this.theSelectedUser = this.users.find(user => user.userName === pUserName);
+    this.theSelectedUser = GlobalService.users.find(user => user.userName === pUserName);
     if (this.theSelectedUser !== undefined) {
       return new Promise((resolve, reject) => {
         resolve(this.theSelectedUser);
@@ -94,7 +119,7 @@ export class GlobalService {
   getAllUsers(): Promise<User[]> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(this.users);
+        resolve(GlobalService.users);
       }, 2); // TODO: Remove this setTimeOut function entirely, or set to 2000 for testing of promises
     });
   }
@@ -103,7 +128,7 @@ export class GlobalService {
     this.theSelectedPlan = this.plans.find(plan => plan.id === pPlanId);
     return new Promise((resolve, reject) => {
       resolve(this.theSelectedPlan);
-    };
+    });
   }
 
   getAllPlans(): Promise<Plan[]> {

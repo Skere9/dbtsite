@@ -1,6 +1,15 @@
 @media(min-width:48em){
-    adjust-video-for-mobile {
+
+    .adjustformobile {
       width: 560;
       height: 315; 
     }
-  }
+
+    p {
+        background-color:red;
+    }
+    
+}
+
+
+  

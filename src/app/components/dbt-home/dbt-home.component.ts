@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dbt-home',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DbtHomeComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router) {
 
     // SKERE
     // let vX: string = 'hi';
@@ -17,5 +18,18 @@ export class DbtHomeComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  comparePlans() {
+    this.router.navigateByUrl('/pricing');
+  }
+
+  watchOurVide() {
+    this.router.navigateByUrl('/videoPresentation');
+  }
+
+  registerNow() {
+    this.router.navigateByUrl('/signUp');
+  }
+
 
 }
