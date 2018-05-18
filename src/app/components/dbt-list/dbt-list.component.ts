@@ -3,6 +3,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Exam } from '../../models/exam';
 import { ExamService } from '../../services/exam.service';
 import { Router } from '@angular/router';
+import { GlobalService } from '../../services/global.service';
 
 @Component({
   selector: 'app-dbt-list',
@@ -17,7 +18,9 @@ export class DbtListComponent implements OnInit {
 
   @Output() examSelected: EventEmitter<number> = new EventEmitter();
 
-  constructor(private examService: ExamService, private router: Router) {
+  constructor(private examService: ExamService,
+    private globalService: GlobalService,
+    private router: Router) {
 
     console.log('In the constructor.');
     console.log('Before call to service:');
@@ -62,6 +65,10 @@ export class DbtListComponent implements OnInit {
 
   public addNewExam() {
     this.router.navigate(['/', 'exam', -1]);
+  }
+
+  getLoggedInStatus(): Boolean {
+    return GlobalService.getLoggedInStatus();
   }
 
 }

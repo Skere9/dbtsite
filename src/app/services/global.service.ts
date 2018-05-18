@@ -88,14 +88,15 @@ export class GlobalService {
     };
   }
 
+  static getLoggedInStatus(): Boolean {
+    // TODO: SKERE - CHECK THIS - IT IS GETTING INVOKED WAYYYYY TOO MANY TIMES
+    // console.log('Getting logged in status');
+    return GlobalService.loggedInStatus;
+  }
+
   setLoggedInStatus(status: Boolean) {
     console.log('Setting logged in status');
     GlobalService.loggedInStatus = status;
-  }
-
-  getLoggedInStatus(): Boolean {
-    console.log('Getting logged in status');
-    return GlobalService.loggedInStatus;
   }
 
   getUser(pUserId: number): Promise<User> {

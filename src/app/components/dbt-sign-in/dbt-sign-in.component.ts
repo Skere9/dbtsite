@@ -11,9 +11,10 @@ export class DbtSignInComponent implements OnInit {
 
   userName: string;
   userPassword: string;
+  public signInAttemptFailed: Boolean = false;
 
   constructor(private globalService: GlobalService,
-  private router: Router) {
+    private router: Router) {
     this.userName = '';
     this.userPassword = '';
   }
@@ -24,14 +25,21 @@ export class DbtSignInComponent implements OnInit {
   public SignIn() {
     // Check if the username already exists
     const result = this.globalService.getUserByUserName(this.userName);
-    if (result !== null) {
-      GlobalService.stateLoggedIn = true;
+    console.log('Log in result:');
+    console.log(result);
+    if (result) {
+      console.log('result is true');
+      // GlobalService.stateLoggedIn = true;
+      // Send event to ...?
+      this.globalService.setLoggedInStatus(true);
+      this.router.navigate(['/', 'userProfile']);
+      this.signInAttemptFailed = false;
     } else {
-      GlobalService.stateLoggedIn = false;
+      console.log('result is false');
+      this.globalService.setLoggedInStatus(false);
+      // GlobalService.stateLoggedIn = false;
+      this.signInAttemptFailed = true;
     }
-    // Send event to ...?
-    this.globalService.setLoggedInStatus(true);
-    this.router.navigate(['/', 'userProfile']);
   }
 
   public Reset() {

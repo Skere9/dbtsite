@@ -1,3 +1,59 @@
 <h4>Buy - Step 1</h4>
 
-Excellent choice!  You have selected plan {{ vPlanId }}!
+Excellent choice! You have selected plan {{ vPlanId }}!
+
+<div class="row">
+    <div class="col-md-3">
+        Credit Card #:
+    </div>
+    <div class="col-md-9">
+        <input type="text" name="cc_number">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        Expiration Date:
+    </div>
+    <div class="col-md-9">
+        <input type="text" name="cc_exp">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        Code:
+    </div>
+    <div class="col-md-9">
+        <input type="text" name="cc_code">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        Billing Zip Code:
+    </div>
+    <div class="col-md-9">
+        <input type="text" name="cc_zip">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        Plan:
+    </div>
+    <div class="col-md-9">
+        <input type="radio" value="plan_1"> Plan 1<br />
+        <input type="radio" value="plan_2"> Plan 2<br />
+        <input type="radio" value="plan_3"> Plan 3<br />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-9">
+            <button class="btn btn-success m-1" type="submit" (click)="keepShopping()">Continue</button>
+    </div>
+</div>

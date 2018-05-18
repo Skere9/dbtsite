@@ -26,7 +26,7 @@ export class AppComponent {
   }
 
   getLoggedInStatus(): Boolean {
-    return this.globalService.getLoggedInStatus();
+    return GlobalService.getLoggedInStatus();
   }
 
   logOff(): void {

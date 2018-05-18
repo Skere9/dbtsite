@@ -32,6 +32,9 @@ import { DbtEditExamQlistComponent } from './components/dbt-edit-exam-qlist/dbt-
 import { DbtPricingComponent } from './components/dbt-pricing/dbt-pricing.component';
 import { DbtBuyComponent } from './components/dbt-buy/dbt-buy.component';
 import { DbtMenu01Component } from './components/dbt-menu-01/dbt-menu-01.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { ThankYouCheckEmailComponent } from './components/thank-you-check-email/thank-you-check-email.component';
+import { VideosComponent } from './components/videos/videos.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,10 @@ import { DbtMenu01Component } from './components/dbt-menu-01/dbt-menu-01.compone
     DbtEditExamQlistComponent,
     DbtPricingComponent,
     DbtBuyComponent,
-    DbtMenu01Component
+    DbtMenu01Component,
+    PrivacyPolicyComponent,
+    ThankYouCheckEmailComponent,
+    VideosComponent
   ],
   imports: [
     BrowserModule,

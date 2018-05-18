@@ -23,8 +23,8 @@ export class DbtHomeComponent implements OnInit {
     this.router.navigateByUrl('/pricing');
   }
 
-  watchOurVide() {
-    this.router.navigateByUrl('/videoPresentation');
+  watchOurVideos() {
+    this.router.navigateByUrl('/videos');
   }
 
   registerNow() {

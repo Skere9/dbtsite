@@ -18,6 +18,9 @@ import { DbtEditExamQsComponent } from './components/dbt-edit-exam-qs/dbt-edit-e
 import { DbtEditExamQlistComponent } from './components/dbt-edit-exam-qlist/dbt-edit-exam-qlist.component';
 import { DbtPricingComponent } from './components/dbt-pricing/dbt-pricing.component';
 import { DbtBuyComponent } from './components/dbt-buy/dbt-buy.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { ThankYouCheckEmailComponent } from './components/thank-you-check-email/thank-you-check-email.component';
+import { VideosComponent } from './components/videos/videos.component';
 
 const routes: Routes = [
   {
@@ -27,6 +30,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: DbtHomeComponent
+  },
+  {
+    path: 'videos',
+    component: VideosComponent
   },
   {
     path: 'list',
@@ -79,6 +86,14 @@ const routes: Routes = [
   {
     path: 'userProfile',
     component: DbtUserProfileComponent
+  },
+  {
+    path: 'thank-you-check-email',
+    component: ThankYouCheckEmailComponent
+  },
+  {
+    path: 'privacy',
+    component: PrivacyPolicyComponent
   },
   {
     path: 'logOff',

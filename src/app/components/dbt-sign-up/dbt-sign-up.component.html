@@ -1,20 +1,32 @@
 <div class="row">
 
   <div class="col-md-2">
-
   </div>
 
   <div class="col-md-8">
 
     <div class="row">
-      <div class="col-md-2">
 
+      <div class="col-md-3">
       </div>
-      <div class="col-md-10">
-        <h4>Sign Up</h4>
-        <p>To register, enter the following information.</p>
+      
+      <div class="col-md-9">
+          <h1>Sign Up</h1>
+          <h3>Please enter the following information to register a new account.</h3>
+          <hr />
+        <p>
+          <i>If you already have an account,
+            <a routerLink="/signIn">please sign in.</a>
+          </i>
+        </p>
+        <p>
+          <i>If you think you already have an account but don't remember the password,
+            <a routerLink="/forgot-password">please click here</a>.</i>
+        </p>
       </div>
     </div>
+
+    <form>
 
     <div class="row">
       <div class="col-md-3">
@@ -32,7 +44,7 @@
       <div class="col-md-3" *ngIf="!emailAddressNotUnique">
         <label>Email:</label>
       </div>
-      <div class="col-md-3 btn-warning" *ngIf="emailAddressNotUnique">
+      <div class="col-md-3 alert alert-danger" *ngIf="emailAddressNotUnique">
         <label>Email:</label>
       </div>
       <div class="col-md-9">
@@ -41,7 +53,7 @@
     </div>
 
     <div class="row">
-       <div class="col-md-12 btn-warning" *ngIf="emailAddressNotUnique">
+      <div class="col-md-12 alert alert-danger" *ngIf="emailAddressNotUnique">
         STOP! Please enter another email address. This is already in the database.
       </div>
 
@@ -67,7 +79,7 @@
 
     <div class="row">
       <div class="col-md-10 text-center">
-        <button class="btn btn-info m-2" type="button" (click)="Reset()">Reset</button>
+        <button class="btn btn-info m-2" type="reset" (click)="Reset()">Reset</button>
         <button class="btn btn-success m-2" type="submit" (click)="SignUp()">Sign Up</button>
       </div>
     </div>
@@ -76,4 +88,6 @@
 
     </div>
 
+    </form>
+    
   </div>
