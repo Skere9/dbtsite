@@ -26,13 +26,13 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## Options
+## Additional Information
 <details>
-  <summary>app</summary>
+  <summary>options</summary>
   <p>
-    <code>--app</code> (aliases: <code>-a</code>) <em>default value: 1st app</em>
+    <code>--option 1</code> (aliases: <code>-o1</code>) <em>default value: 1st option</em>
   </p>
   <p>
-    Specifies app name to use.
+    Details about the option here.  This section of "additional information" is only really here because I wanted to capture the sample code for documenting expandable / collapsable sections within an MD file. I found an example of this elsewhere and wanted to grab it for future use.
   </p>
 </details>
