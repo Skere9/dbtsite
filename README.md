@@ -25,3 +25,14 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Additional Information
+<details>
+  <summary>options</summary>
+  <p>
+    <code>--option 1</code> (aliases: <code>-o1</code>) <em>default value: 1st option</em>
+  </p>
+  <p>
+    Details about the option here.  This section of "additional information" is only really here because I wanted to capture the sample code for documenting expandable / collapsable sections within an MD file. I found an example of this elsewhere and wanted to grab it for future use.
+  </p>
+</details>
