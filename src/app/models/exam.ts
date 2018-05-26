@@ -22,11 +22,21 @@ export class Exam {
     }
 
     public static createBlankExam() {
-        return new Exam(-1, '', '', []);
+        return new Exam(
+            -1 // id
+            , '' // t
+            , '' // d
+            , [] // keywords
+        );
     }
 
     public static examFromJSON(obj: any): Exam {
-        return new Exam(obj.id, obj.title, obj.description, obj.keywords);
+        return new Exam(
+            obj.id // id
+            , obj.title // t
+            , obj.description // d
+            , obj.keywords // keywords
+        );
     }
 
 }

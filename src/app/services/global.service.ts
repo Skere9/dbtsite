@@ -6,6 +6,7 @@ import { User } from '../models/user';
 export class GlobalService {
 
   // Global variables
+  public static DBT_SERVER = 'http://localhost:3001';
   public static stateLoggedIn: Boolean = false;
   public static loggedInStatus: Boolean;
 
@@ -19,6 +20,7 @@ export class GlobalService {
 
     GlobalService.users = [
       {
+        '_id': null,
         'id': 1,
         'firstName': 'Fred',
         'lastName': 'Smith',
@@ -28,6 +30,7 @@ export class GlobalService {
         'bio': 'A Java developer',
         'keywords': []
       }, {
+        '_id': null,
         'id': 2,
         'firstName': 'Alice',
         'lastName': 'Jones',
@@ -41,18 +44,21 @@ export class GlobalService {
 
     this.plans = [
       {
+        '_id' : '',
         'id': 1,
         'title': 'Plan 1',
         'exams': 'one',
         'duration': 'month',
         'price': 0.00
       }, {
+        '_id': '',
         'id': 2,
         'title': 'Plan 2',
         'exams': 'all',
         'duration': 'month',
         'price': 0.00
       }, {
+        '_id': '',
         'id': 3,
         'title': 'Plan 3',
         'exams': 'all',

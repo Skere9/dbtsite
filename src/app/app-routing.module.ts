@@ -13,11 +13,15 @@ import { DbtContactComponent } from './components/dbt-contact/dbt-contact.compon
 import { DbtSitemapComponent } from './components/dbt-sitemap/dbt-sitemap.component';
 import { DbtTermsComponent } from './components/dbt-terms/dbt-terms.component';
 import { DbtLogOffComponent } from './components/dbt-log-off/dbt-log-off.component';
-import { TooltipOverviewExampleComponent } from './components/tooltip-overview-example/tooltip-overview-example.component';
 import { DbtEditExamQsComponent } from './components/dbt-edit-exam-qs/dbt-edit-exam-qs.component';
 import { DbtEditExamQlistComponent } from './components/dbt-edit-exam-qlist/dbt-edit-exam-qlist.component';
 import { DbtPricingComponent } from './components/dbt-pricing/dbt-pricing.component';
 import { DbtBuyComponent } from './components/dbt-buy/dbt-buy.component';
+import { DbtPostListComponent } from './components/dbt-post-list/dbt-post-list.component';
+import { DbtPostNewComponent } from './components/dbt-post-new/dbt-post-new.component';
+import { DbtUserListComponent } from './components/dbt-user-list/dbt-user-list.component';
+
+import { TooltipOverviewExampleComponent } from './components/tooltip-overview-example/tooltip-overview-example.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { ThankYouCheckEmailComponent } from './components/thank-you-check-email/thank-you-check-email.component';
 import { VideosComponent } from './components/videos/videos.component';
@@ -30,6 +34,14 @@ const routes: Routes = [
   {
     path: 'home',
     component: DbtHomeComponent
+  },
+  {
+    path: 'post-list',
+    component: DbtPostListComponent
+  },
+  {
+    path: 'post-new',
+    component: DbtPostNewComponent
   },
   {
     path: 'videos',
@@ -50,6 +62,10 @@ const routes: Routes = [
   {
     path: 'exam-qs/:exam_id/:question_id',
     component: DbtEditExamQsComponent
+  },
+  {
+    path: 'user-list',
+    component: DbtUserListComponent
   },
   {
     path: 'signUp',

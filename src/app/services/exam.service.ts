@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
+
+import { GlobalService } from './global.service';
+
 import { Exam } from '../models/exam';
 import { Question } from '../models/question';
 import { Answer } from '../models/answer';
+// import { HttpClientModule } from '@angular/common/http';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ExamService {
@@ -11,7 +17,9 @@ export class ExamService {
   public theSelectedExam: Exam;
   public nextQuestionId: number;
 
-  constructor() {
+  constructor(
+    private http: Http
+  ) {
     this.exams = [
       {
         'id': 1,
@@ -285,6 +293,16 @@ export class ExamService {
     // Never found the question, return a -1 flag to
     // convey that no question was identified
     return -1;
+  }
+
+  getPlanCount(): Promise<number> {
+    // Return the total number of subscription plans
+    return this.http
+      .get(GlobalService.DBT_SERVER + '/plans/count')
+      .toPromise()
+      .then(
+        response => response.json()
+      );
   }
 
 }

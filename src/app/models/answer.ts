@@ -44,7 +44,11 @@ export class Answer {
     }
 
     public static answerFromJSON(obj: any): Answer {
-        return new Answer(obj.pAnswerId, obj.pAnswerText, obj.pCorrectOrNot);
+        return new Answer(
+            obj.pAnswerId // 
+            , obj.pAnswerText // 
+            , obj.pCorrectOrNot // 
+        );
     }
 }
 

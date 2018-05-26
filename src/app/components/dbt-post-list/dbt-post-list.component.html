@@ -1,0 +1,25 @@
+<div *ngFor="let post of posts">
+
+    <div class="row">
+        <div class="col-md-2">
+            {{ post.userId }}
+        </div>
+        <div class="col-md-6">
+            {{ post.postContent }}
+            <p></p>
+            <p>Comments</p>
+        </div>
+        <div class="col-md-4">
+            {{ post.postDate}}
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr/>
+        </div>
+    </div>
+
+
+</div>

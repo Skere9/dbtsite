@@ -1,0 +1,54 @@
+<h4>Blog</h4>
+ 
+  <input class="form-control" type="hidden" [(ngModel)]="post._id" name="_id" id="_id" />   
+  <input class="form-control" type="hidden" [(ngModel)]="post.id" name="id" id="id" />   
+  <input class="form-control" type="hidden" [(ngModel)]="post.userId" name="id" id="id" />  
+
+  <div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-10">
+        <input type="text" [(ngModel)]="post.title" placeholder="Enter your post title" />
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+      <textarea rows="10" cols="60" [(ngModel)]="post.postContent" placeholder="Enter your post">
+        
+      </textarea>
+    </div>
+    <div class="col-md-2">
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+      <input type="text" width="60" placeholder="Enter keywords" />
+    </div>
+    <div class="col-md-2">
+
+    </div>
+  </div>
+
+  <div class="row p-1">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+      <input type="button" class="btn btn-info" value="Reset">
+      <input type="button" class="btn btn-success" value="Save" (click)="savePost()">
+    </div>
+    <div class="col-md-2">
+
+    </div>
+  </div>

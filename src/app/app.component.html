@@ -5,6 +5,8 @@
 
     <a routerLink="/home" matTooltip="Return to home page." matTooltipShowDelay="1000">Home</a>
     <a routerLink="/about" matTooltip="Learn a little about us." matTooltipShowDelay="1000">About</a>
+    <a routerLink="/post-list" matTooltip="Visit blog posts" matTooltipShowDelay="1000">Blog</a>
+    <a routerLink="/post-new" matTooltip="Enter new blog post" matTooltipShowDelay="1000">Post</a>
     <a routerLink="/list" matTooltip="List available exams." matTooltipShowDelay="1000">List</a>
     <a routerLink="/pricing" matTooltip="Get pricing information" matTooltipShowDelay="1000">Pricing</a>
     <span *ngIf="getLoggedInStatus()">
@@ -14,6 +16,8 @@
     <span *ngIf="getLoggedInStatus()">
         <a routerLink="/userProfile">User Profile</a>
     </span>
+
+    <a routerLink="/user-list">User List</a>
 
     <span *ngIf="!getLoggedInStatus()" style="color:brown">
         <a style="float: right;" [routerLink]="['signIn']">Sign In</a>

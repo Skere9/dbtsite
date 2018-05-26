@@ -15,7 +15,11 @@ export class Question {
     }
 
     public static questionFromJSON(obj: any): Question {
-        return new Question(obj.pQuestionId, obj.pQuestionText, []);
+        return new Question(
+            obj.pQuestionId // questionId
+            , obj.pQuestionText // questionText
+            , [] // answers
+        );
     }
 }
 
