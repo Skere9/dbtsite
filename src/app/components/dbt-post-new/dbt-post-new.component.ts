@@ -19,7 +19,7 @@ export class DbtPostNewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private postService: PostService
-  ) { 
+  ) {
   }
 
   ngOnInit() {
@@ -28,15 +28,16 @@ export class DbtPostNewComponent implements OnInit {
 
   savePost() {
     console.log('Saving post');
-    this.post.id = 1;
-    this.post.userId = 10;
 
     if (!this.post._id) {
       // There is no GUID.
       // Therefore this is
       // a database INSERT.
       console.log('Adding new post');
+      console.log(this.post);
       this.postService.addPost(this.post);
+
+
     } else {
       // There is a GUID
       // Therefore this is
@@ -45,4 +46,5 @@ export class DbtPostNewComponent implements OnInit {
       this.postService.updatePost(this.post);
     }
   }
+
 }

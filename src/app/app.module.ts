@@ -44,6 +44,9 @@ import { ExamService } from './services/exam.service';
 import { PostService } from './services/post.service';
 import { UserService } from './services/user.service';
 
+// Application Pipes
+import { DateTimePostsPipe } from './pipes/date-time-posts.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +75,8 @@ import { UserService } from './services/user.service';
     VideosComponent,
     DbtPostListComponent,
     DbtPostNewComponent,
-    DbtUserListComponent
+    DbtUserListComponent,
+    DateTimePostsPipe
   ],
   imports: [
     BrowserModule,
@@ -88,7 +92,8 @@ import { UserService } from './services/user.service';
     ExamService,
     PostService,
     GlobalService,
-    UserService
+    UserService,
+    DateTimePostsPipe
   ],
   bootstrap: [
     AppComponent

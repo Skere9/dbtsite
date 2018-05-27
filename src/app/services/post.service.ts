@@ -22,16 +22,18 @@ export class PostService {
 
   }
 
-  addPost(post: Post): void {
+  addPost(post: Post): Promise<string> {
     console.log('Inside PostService.addPost');
     console.log(post);
     console.log('That was the post to be added.');
-    this.http
-    .post(GlobalService.DBT_SERVER + '/posts', post)
-    .toPromise()
-    .then(
-      response => response.json()
-    );
+    return this.http
+      .post(GlobalService.DBT_SERVER + '/posts', post)
+      .toPromise()
+      .then(
+        response => {
+          return (response.json());
+        }
+      );
   }
 
   getAllPosts(): Promise<Post[]> {
@@ -46,11 +48,11 @@ export class PostService {
   getPost(p_Id: number): Promise<Post> {
     console.log('Get post from server');
     return this.http
-    .get(GlobalService.DBT_SERVER + '/post/' + p_Id)
-    .toPromise()
-    .then(
-      response => response.json()
-    );
+      .get(GlobalService.DBT_SERVER + '/post/' + p_Id)
+      .toPromise()
+      .then(
+        response => response.json()
+      );
   }
 
   getPostCount(): Promise<number> {

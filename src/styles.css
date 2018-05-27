@@ -5,3 +5,23 @@
    work - for example, tooltip 
 */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.h-divider{
+    margin-top:5px;
+    margin-bottom:5px;
+    height:1px;
+    width:100%;
+    border-top:1px solid gray;
+   }
+/*
+  .ng-valid: for fields within forms 
+             where the form is specified by the <form> tag
+             and the form tag includes the #[something]="ngForm"
+             and the field(s) has the "required"
+*/
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+}
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+}

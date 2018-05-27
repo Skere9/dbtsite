@@ -123,6 +123,10 @@ export class GlobalService {
     }
   }
 
+  signIn(pUserName): Boolean {
+    return false;
+  }
+
   getAllUsers(): Promise<User[]> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {

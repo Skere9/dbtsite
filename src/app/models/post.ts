@@ -1,6 +1,5 @@
 export class Post {
     public _id: string; // Auto generarted by MongoDB
-    public id: number;
     public userId: number;
     public postDate: Date;
     public title: string;
@@ -8,14 +7,12 @@ export class Post {
     public keywords: string[];
     constructor(
         p_Id: string,
-        pId: number,
         pUserId: number,
         pPostDate: Date,
         pTitle: string,
         pPostContent: string,
         pKeywords: string[],
         ) {
-        this.id = pId;
         this.userId = pUserId;
         this.postDate = pPostDate;
         this.title = pTitle;
@@ -26,9 +23,8 @@ export class Post {
     public static createBlankPost() {
         return new Post(
             null // _id
-            , null // id
-            , null // userId
-            , null // postDate
+            , 0 // userId
+            , undefined // postDate
             , '' // title
             , '' // postContent
             , [] // keywords
@@ -38,7 +34,6 @@ export class Post {
     public static postFromJSON(obj: any): Post {
         return new Post(
             obj._id // _id
-            , obj.id // id
             , obj.userId // userId
             , obj.postDate // postDate
             , obj.title // title
