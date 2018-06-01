@@ -38,6 +38,9 @@ export class DbtPostListComponent implements OnInit {
   public flagEnableComments = false;
   public flagDisplayEditForComment: Boolean;
 
+  public flagAreYouSure: Boolean;
+  public flagAreYouSure_UserId: string;
+
   // IDs for Flags
   public flagDisplayUpdatePost_Id: string;
   public flagDisplayEditForComment_Id: string;
@@ -60,6 +63,8 @@ export class DbtPostListComponent implements OnInit {
     // flag so it at least has some value
     this.flagDisplayEditForComment_Id = '-1';
     this.post = Post.createBlankPost();
+
+    this.flagAreYouSure = false;
   }
 
   ngOnInit() {
@@ -97,7 +102,18 @@ export class DbtPostListComponent implements OnInit {
 
   }
 
+  areYouSure(pId: string): void {
+    this.flagAreYouSure = true;
+    this.flagAreYouSure_UserId = pId;
+  }
+
+  resetDelete(): void {
+    this.flagAreYouSure = false;
+  }
+
   deletePost(p_Id: number): void {
+    // Reset "are you sure" which had to precede this
+    this.flagAreYouSure = false;
     // Delete the post
     console.log('Delete the post');
     console.log(p_Id);
@@ -186,5 +202,6 @@ export class DbtPostListComponent implements OnInit {
     return GlobalService.getLoggedInStatus();
   }
 
+  
 
 }

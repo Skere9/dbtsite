@@ -4,21 +4,27 @@
 
 <div class="row" *ngFor="let user of users">
   <div class="col-md-1">
-    <button type="button" class="btn btn-success btn-sm"><span class="far fa-edit"></span> Edit</button>
+    <button type="button" class="btn btn-success btn-sm p-1 m-1"><span class="far fa-edit"></span> Edit</button>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-2">
     {{ user.firstName }} &nbsp; {{ user.lastName }}
   </div>
-  <div class="col-md-2">
+  <div class="col-md-1">
     {{ user.userName }}
   </div>
-  <div class="col-md-2">
+  <div class="col-md-1">
     {{ user.passWord }}
   </div>
   <div class="col-md-2">
     {{ user.email }}
   </div>
-  <div class="col-md-2">
-    <button type="button" class="btn btn-danger btn-sm" (click)="deleteUser(user._id)"><span class="far fa-file-excel"></span> Delete</button>
+  <div class="col-md-3">
+    <div *ngIf="!flagAreYouSure">
+    <button type="button" class="btn btn-danger btn-sm p-1 m-1" (click)="areYouSure(user._id)"><span class="far fa-times-circle"></span> Delete</button>
+    </div>
+    <div *ngIf="flagAreYouSure && (flagAreYouSure_UserId == user._id)">
+      Are you sure?<button type="button" class="btn btn-warning btn-sm display-inline m-1" (click)="resetDelete()"><span class="fas fa-undo-alt"></span> NO</button>
+      <button type="button" class="btn btn-danger btn-sm display-inline p-1 m-1" (click)="deleteUser(user._id)"><span class="far fa-times-circle"></span> YES</button>
+    </div>
   </div>
 </div>

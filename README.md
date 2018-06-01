@@ -46,7 +46,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 <li>Cancel: fas fa-undo-alt</li>
 <li>Compare: fas fa-compress</li>
 <li>Continue: fas fa-long-arrow-alt-right</li>
-<li>Delete: far fa-file-excel </li>
+<li>Delete 1: far fa-file-excel</li>
+<li>Delete 2: far fa-times-circle</li>
 <li>Edit: far fa-edit</li>
 <li>Learn: fas fa-chalkboard</li>
 <li>Print: fas fa-print</li>

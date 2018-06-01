@@ -4,10 +4,11 @@
     </div>
 
     <!-- For logged in users only -->
-    <div *ngIf="getLoggedInStatus()">
+    <div *ngIf="getLoggedInStatus() && !flagUpdatingPost">
         <!-- For logged in users, show this initially -->
         <div class="col-md-8" *ngIf="flagEnableAdminFeature && !flagInsertingPost">
-            <button type="button" class="btn btn-success btn-sm" (click)="displayInsertPostForm()"><span class="fas fa-plus"></span> Add New Post</button>
+            <button type="button" class="btn btn-success btn-sm" (click)="displayInsertPostForm()">
+                <span class="fas fa-plus"></span> Add New Post</button>
         </div>
 
         <!-- For logged in users, if user chooses to add a new post,  show this -->
@@ -28,8 +29,10 @@
                 </textarea>
                 </div>
                 <div class="display-block">
-                    <button type="button" class="btn btn-warning btn-sm" (click)="postEntryForm.reset(); cancelNewPost(postEntryForm)"><span class="fas fa-undo-alt"></span> Cancel</button>
-                    <button type="submit" class="btn btn-success btn-sm" [disabled]="!postEntryForm.valid"><span class="far fa-save"></span> Save</button>
+                    <button type="button" class="btn btn-warning btn-sm" (click)="postEntryForm.reset(); cancelNewPost(postEntryForm)">
+                        <span class="fas fa-undo-alt"></span> Cancel</button>
+                    <button type="submit" class="btn btn-success btn-sm" [disabled]="!postEntryForm.valid">
+                        <span class="far fa-save"></span> Save</button>
                 </div>
             </form>
         </div>
@@ -81,10 +84,23 @@
                 <!-- For logged in users only -->
                 <div class="display-block p-1">
                 </div>
-                <div *ngIf="getLoggedInStatus()">
+                <div *ngIf="getLoggedInStatus() && !flagUpdatingPost && !flagInsertingPost">
                     <div class="display-block" *ngIf="flagEnableAdminFeature">
-                        <button type="button" class="btn btn-danger btn-sm" (click)="deletePost(post._id)"><span class="far fa-file-excel" ></span> Delete</button>
-                        <button type="button" class="btn btn-success btn-sm" (click)="displayUpdatePostForm(post._id)"><span class="far fa-edit" ></span> Edit</button>
+
+                        <span *ngIf="!flagAreYouSure">
+                            <button type="button" class="btn btn-danger btn-sm p-1 m-1" (click)="areYouSure(post._id)">
+                                <span class="far fa-times-circle"></span> Delete</button>
+                            <button type="button" class="btn btn-success btn-sm" (click)="displayUpdatePostForm(post._id)">
+                                <span class="far fa-edit"></span> Edit</button>
+                        </span>
+                        <span *ngIf="flagAreYouSure && (flagAreYouSure_UserId == post._id)">
+                            Are you sure you want to DELETE this?
+                            <button type="button" class="btn btn-warning btn-sm display-inline m-1" (click)="resetDelete()">
+                                <span class="fas fa-undo-alt"></span> NO</button>
+                            <button type="button" class="btn btn-danger btn-sm display-inline p-1 m-1" (click)="deletePost(post._id)">
+                                <span class="far fa-times-circle"></span> YES</button>
+                        </span>
+
                     </div>
                 </div>
 
@@ -111,9 +127,25 @@
                                     </textarea>
                     </div>
                     <div class="display-block">
-                        <button type="button" class="btn btn-danger btn-sm" (click)="deletePost(post._id)"><span class="far fa-file-excel"></span> Delete</button>
-                        <button type="button" class="btn btn-warning btn-sm" (click)="postUpdateForm.reset(); cancelUpdatePost(postUpdateForm)"><span class="fas fa-undo-alt"></span> Cancel</button>
-                        <button type="submit" class="btn btn-success btn-sm" [disabled]="!postUpdateForm.valid"><span class="fas fa-sync"></span> Update</button>
+
+
+                        <span *ngIf="!flagAreYouSure">
+                            <button type="button" class="btn btn-danger btn-sm" (click)="areYouSure(post._id)">
+                                <span class="far fa-times-circle"></span> Delete</button>
+                            <button type="button" class="btn btn-warning btn-sm" (click)="postUpdateForm.reset(); cancelUpdatePost(postUpdateForm)">
+                                <span class="fas fa-undo-alt"></span> Cancel</button>
+                            <button type="submit" class="btn btn-success btn-sm" [disabled]="!postUpdateForm.valid">
+                                <span class="fas fa-sync"></span> Update</button>
+                        </span>
+                        <span *ngIf="flagAreYouSure && (flagAreYouSure_UserId == post._id)">
+                            Are you sure you want to DELETE this?
+                            <button type="button" class="btn btn-warning btn-sm display-inline m-1" (click)="resetDelete()">
+                                <span class="fas fa-undo-alt"></span> NO</button>
+                            <button type="button" class="btn btn-danger btn-sm display-inline p-1 m-1" (click)="deletePost(post._id)">
+                                <span class="far fa-times-circle"></span> YES</button>
+                        </span>
+
+
                     </div>
                 </form>
             </div>

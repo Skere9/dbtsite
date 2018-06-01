@@ -13,9 +13,14 @@ export class DbtUserListComponent implements OnInit {
   public user: User;
   public users: User[];
 
+  public flagAreYouSure: Boolean;
+  public flagAreYouSure_UserId: string;
+
   constructor(
     private userService: UserService
-  ) { }
+  ) {
+    this.flagAreYouSure = false;
+  }
 
   ngOnInit() {
     this.refreshUserList();
@@ -30,8 +35,19 @@ export class DbtUserListComponent implements OnInit {
       );
   }
 
+  areYouSure(pId: string): void {
+    this.flagAreYouSure = true;
+    this.flagAreYouSure_UserId = pId;
+  }
+
+  resetDelete(): void {
+    this.flagAreYouSure = false;
+  }
+
   deleteUser(p_Id: string): void {
 
+    // Reset "are you sure" which had to precede this
+    this.flagAreYouSure = false;
     // Delete the user
     console.log('Delete the user');
     console.log(p_Id);
