@@ -30,7 +30,6 @@ import { DbtPricingComponent } from './components/dbt-pricing/dbt-pricing.compon
 import { DbtBuyComponent } from './components/dbt-buy/dbt-buy.component';
 import { DbtMenu01Component } from './components/dbt-menu-01/dbt-menu-01.component';
 import { DbtPostListComponent } from './components/dbt-post-list/dbt-post-list.component';
-import { DbtPostNewComponent } from './components/dbt-post-new/dbt-post-new.component';
 import { DbtUserListComponent } from './components/dbt-user-list/dbt-user-list.component';
 
 import { TooltipOverviewExampleComponent } from './components/tooltip-overview-example/tooltip-overview-example.component';
@@ -74,7 +73,6 @@ import { DateTimePostsPipe } from './pipes/date-time-posts.pipe';
     ThankYouCheckEmailComponent,
     VideosComponent,
     DbtPostListComponent,
-    DbtPostNewComponent,
     DbtUserListComponent,
     DateTimePostsPipe
   ],

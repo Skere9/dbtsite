@@ -35,8 +35,8 @@
 
     </div>
     <div class="col-md-10">
-      <button type="button" class="btn btn-primary p-2 m-1" (click)="editExamInfo()">Edit Exam Info</button>
-      <button type="button" class="btn btn-primary p-2 m-1" (click)="printExamInfo()">Print Exam</button>
+      <button type="button" class="btn btn-primary p-2 m-1" (click)="editExamInfo()"><span class="far fa-edit"></span> Edit Exam Info</button>
+      <button type="button" class="btn btn-primary p-2 m-1" (click)="printExamInfo()"><span class="fas fa-print"></span> Print Exam</button>
     </div>
   </div>
 </div>
@@ -58,8 +58,9 @@
   </div>
   <div class="col-md-3">
     <button type="submit" class="btn btn-success" (click)="editQuestion(question.questionId)">
-      <span class="glyphicons glyphicons-search"></span>Edit</button>
-    <button type="submit" class="btn btn-success" (click)="deleteQuestion(question.questionId)">Delete</button>
+      <span class="far fa-edit"></span>Edit</button>
+    <button type="submit" class="btn btn-success" (click)="deleteQuestion(question.questionId)">
+      <span class="far fa-file-excel "></span>Delete</button>
   </div>
 </div>
 
@@ -69,6 +70,6 @@
 
   </div>
   <div class="col-md-10">
-    <button type="submit" class="btn btn-success" (click)="addQuestion()">Add Question</button>
+    <button type="submit" class="btn btn-success" (click)="addQuestion()"><span class="fas fa-plus"></span> Add Question</button>
   </div>
 </div>

@@ -9,11 +9,11 @@
 
       <div class="col-md-3">
       </div>
-      
+
       <div class="col-md-9">
-          <h1>Sign Up</h1>
-          <h3>Please enter the following information to register a new account.</h3>
-          <hr />
+        <h1>Sign Up</h1>
+        <h3>Please enter the following information to register a new account.</h3>
+        <hr />
         <p>
           <i>If you already have an account,
             <a routerLink="/signIn">please sign in.</a>
@@ -26,68 +26,88 @@
       </div>
     </div>
 
-    <form>
+    <form #signUpForm="ngForm" (ngSubmit)="SignUp()">
 
-    <div class="row">
-      <div class="col-md-3">
-        <label>Name:</label>
-      </div>
-      <div class="col-md-4">
-        <input class="form-control" type="text" [(ngModel)]="user.firstName" placeholder="First Name" name="firstName" />
-      </div>
-      <div class="col-md-5">
-        <input class="form-control" type="text" [(ngModel)]="user.lastName" placeholder="Last Name" name="lastName" />
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-3" *ngIf="!emailAddressNotUnique">
-        <label>Email:</label>
-      </div>
-      <div class="col-md-3 alert alert-danger" *ngIf="emailAddressNotUnique">
-        <label>Email:</label>
-      </div>
-      <div class="col-md-9">
-        <input class="form-control" type="text" [(ngModel)]="user.email" placeholder="Email Address" name="emailAddress" />
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12 alert alert-danger" *ngIf="emailAddressNotUnique">
-        STOP! Please enter another email address. This is already in the database.
+      <div class="row">
+        <div class="col-md-3">
+          <label>Name:</label>
+        </div>
+        <div class="col-md-4">
+          <input class="form-control" type="text" [(ngModel)]="user.firstName" placeholder="First Name" name="firstName" />
+        </div>
+        <div class="col-md-5">
+          <input class="form-control" type="text" [(ngModel)]="user.lastName" placeholder="Last Name" name="lastName" />
+        </div>
       </div>
 
-    </div>
-
-    <div class="row">
-      <div class="col-md-3">
-        <label>User Name:</label>
+      <div class="row">
+        <div class="col-md-3" *ngIf="!flagEmailAddressNotUnique">
+          <label>Email:</label>
+        </div>
+        <div class="col-md-3 alert alert-danger" *ngIf="flagEmailAddressNotUnique">
+          <label>Email:</label>
+        </div>
+        <div class="col-md-9">
+          <input class="form-control" type="text" [(ngModel)]="user.email" placeholder="Email Address" name="emailAddress" required
+            ngModel/>
+        </div>
       </div>
-      <div class="col-md-8">
-        <input class="form-control" type="text" [(ngModel)]="user.userName" placeholder="Username" name="username" />
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-3">
-        <label>Password:</label>
-      </div>
-      <div class="col-md-8">
-        <input class="form-control" type="password" [(ngModel)]="user.pword" placeholder="Password" name="password" />
-      </div>
-    </div>
+      <div class="row">
+        <div class="col-md-12 alert alert-danger" *ngIf="flagEmailAddressNotUnique">
+          STOP! Please enter a different email address. This is already in registered.
+        </div>
 
-    <div class="row">
-      <div class="col-md-10 text-center">
-        <button class="btn btn-info m-2" type="reset" (click)="Reset()">Reset</button>
-        <button class="btn btn-success m-2" type="submit" (click)="SignUp()">Sign Up</button>
       </div>
-    </div>
 
-    <div class="col-md-2">
+      <div class="row">
+        <div class="col-md-3" *ngIf="!flagUserNameNotUnique">
+          <label>User Name:</label>
+        </div>
+        <div class="col-md-3 alert alert-danger" *ngIf="flagUserNameNotUnique">
+          <label>User Name:</label>
+        </div>
+        <div class="col-md-8">
+          <input class="form-control" type="text" [(ngModel)]="user.userName" placeholder="Username" name="username" required ngModel
+          />
+        </div>
+      </div>
 
-    </div>
+      <div class="row">
+        <div class="col-md-12 alert alert-danger" *ngIf="flagUserNameNotUnique">
+          STOP! Please enter a different user name. This is already registered.
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label>Password:</label>
+        </div>
+        <div class="col-md-8">
+          <div *ngIf="!flagShowPassword">
+            <input class="form-control" type="password" width="50" [(ngModel)]="user.passWord" placeholder="PassWord" name="passWord"
+              id="passWord" required />
+          </div>
+          <div *ngIf="flagShowPassword">
+            <input class="form-control" type="text" width="50" [(ngModel)]="user.passWord" placeholder="PassWord" name="passWord" id="passWord"
+              required />
+          </div>
+          <button type="button" class="btn btn-info btn-sm" (click)="togglePassword()"><span class="fas fa-exchange-alt"></span>  {{ theShowOrHideMessage }}</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-10 text-center">
+          <button type="reset" class="btn btn-info m-2" (click)="Reset()"><span class="fas fa-undo-alt"></span> Reset</button>
+          <button type="submit" class="btn btn-success m-2" [disabled]="!signUpForm.valid"><span class="fas fa-sign-in-alt"></span> Sign Up</button>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+
+      </div>
 
     </form>
-    
+
   </div>

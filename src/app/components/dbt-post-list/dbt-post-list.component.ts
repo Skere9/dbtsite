@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
+import { GlobalService } from '../../services/global.service';
 import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
 
@@ -16,31 +17,48 @@ import { DateTimePostsPipe } from '../../pipes/date-time-posts.pipe';
 })
 export class DbtPostListComponent implements OnInit {
 
+  // Post objects
   public post: Post;
   public posts: Post[];
-
+  public pointerToPostToUpdate: Post;
   public updateThisPost: Post;
 
+  // Comment objects
+  public comment: Comment;
+  public comments: Comment[];
+  public pointerToCommentToUpdate: Comment;
+  public updateThisComment: Comment;
+
+  // Flags
   public flagInsertingPost: Boolean;
-
   public flagUpdatingPost: Boolean;
-  public displayUpdatePostFlag_Id: string;
 
-  public displayEditForCommentFlag: Boolean;
-  public displayEditForCommentFlag_Id: string;
-  public editComment: Boolean;
+  public flagEnableAdminFeature: Boolean;
+
+  public flagEnableComments = false;
+  public flagDisplayEditForComment: Boolean;
+
+  // IDs for Flags
+  public flagDisplayUpdatePost_Id: string;
+  public flagDisplayEditForComment_Id: string;
+
+  // Check for form conditions
+  public hasFormBeenTouched: Boolean;
+
+  // public editComment: Boolean;
 
   constructor(
     private router: Router,
     private postService: PostService,
     private dateTimePostsPipe: DateTimePostsPipe
   ) {
+    this.flagEnableAdminFeature = true;
     this.flagInsertingPost = false;
     this.flagUpdatingPost = false;
-    this.displayEditForCommentFlag = false;
+    this.flagDisplayEditForComment = false;
     // Assign a negative number to the following
     // flag so it at least has some value
-    this.displayEditForCommentFlag_Id = '-1';
+    this.flagDisplayEditForComment_Id = '-1';
     this.post = Post.createBlankPost();
   }
 
@@ -51,19 +69,30 @@ export class DbtPostListComponent implements OnInit {
   displayInsertPostForm(): void {
     console.log('display insert post form');
     this.flagInsertingPost = true;
-    // this.router.navigateByUrl('/post-new');
+
+    // When one display flag is true, set others to false
+    this.flagUpdatingPost = false;
+    this.flagDisplayEditForComment = false;
   }
 
   displayUpdatePostForm(p_Id: string): void {
     console.log('display update post form');
     this.flagUpdatingPost = true;
-    this.displayUpdatePostFlag_Id = p_Id;
+    this.flagDisplayUpdatePost_Id = p_Id;
+
+    // When one flag is true, set others to false
+    this.flagInsertingPost = false;
+    this.flagDisplayEditForComment = false;
+
     // Get the post to edit
     console.log('Posts object: ');
     console.log(this.posts);
-    this.updateThisPost = this.posts.find(o => o._id === p_Id);
+    this.pointerToPostToUpdate = this.posts.find(o => o._id === p_Id);
+    this.updateThisPost = Post.createBlankPost();
+    this.updateThisPost = Object.assign(this.updateThisPost, this.pointerToPostToUpdate);
     console.log('Now posts is: ');
     console.log(this.posts);
+    console.log('New updateThisPost: ');
     console.log(this.updateThisPost);
 
   }
@@ -85,11 +114,16 @@ export class DbtPostListComponent implements OnInit {
     // This is to display the "edit comment"
     // section, but only for the post
     // for which the "edit" was clicked
-    this.displayEditForCommentFlag = true;
-    this.displayEditForCommentFlag_Id = pId;
+    this.flagDisplayEditForComment = true;
+    this.flagDisplayEditForComment_Id = pId;
+
+    // When one flag is true, set others to false
+    this.flagInsertingPost = false;
+    this.flagUpdatingPost = false;
+
     console.log('Inside displayEditComment');
-    console.log(this.displayEditForCommentFlag);
-    console.log(this.displayEditForCommentFlag_Id);
+    console.log(this.flagDisplayEditForComment);
+    console.log(this.flagDisplayEditForComment_Id);
   }
 
   refreshPostList(): void {
@@ -108,7 +142,7 @@ export class DbtPostListComponent implements OnInit {
     // and go back to the display of
     // posts with the edit comment field
     console.log('Cancelling edit comment');
-    this.displayEditForCommentFlag = false;
+    this.flagDisplayEditForComment = false;
   }
 
   saveComment(pId: number): void {
@@ -141,9 +175,16 @@ export class DbtPostListComponent implements OnInit {
   }
 
   updatePost(theForm: NgForm): void {
-    console.log('Update this post');
-    this.postService.updatePost(this.updateThisPost);
+    console.log('Update this post:');
+    console.log(this.updateThisPost);
+    this.pointerToPostToUpdate = Object.assign(this.pointerToPostToUpdate, this.updateThisPost);
+    this.postService.updatePost(this.pointerToPostToUpdate);
     this.flagUpdatingPost = false;
   }
+
+  getLoggedInStatus(): Boolean {
+    return GlobalService.getLoggedInStatus();
+  }
+
 
 }

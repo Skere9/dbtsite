@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { GlobalService } from './services/global.service';
 import { Router } from '@angular/router';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +14,13 @@ export class AppComponent {
   currentYear: number;
   siteURL: string;
   siteName: string;
+  loggedInUser: User;
+  loggedInUserName: string;
 
-  constructor(private globalService: GlobalService,
-    private router: Router) {
+  constructor(
+    private globalService: GlobalService,
+    private router: Router
+  ) {
     this.currentYear = new Date().getFullYear();
     this.siteURL = 'http://www.databasetraining.com';
     this.siteName = 'DATABASETRAINING.COM';
@@ -26,7 +31,12 @@ export class AppComponent {
   }
 
   getLoggedInStatus(): Boolean {
+    this.loggedInUserName = GlobalService.loggedInUserName;
     return GlobalService.getLoggedInStatus();
+  }
+
+  getLoggedInUserName(): User {
+    return GlobalService.getLoggedInUser();
   }
 
   logOff(): void {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from '../../services/global.service';
 
 @Component({
   selector: 'app-dbt-menu-01',
@@ -15,5 +16,8 @@ export class DbtMenu01Component implements OnInit {
   userSignedIn(number): void {
     console.log('Emit captured!');
   }
-  
+
+  getLoggedInStatus(): Boolean {
+    return GlobalService.getLoggedInStatus();
+  }
 }

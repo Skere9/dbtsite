@@ -12,12 +12,12 @@ export class UserService {
     private http: Http
   ) { }
 
-  addUser(user: User): void {
+  addUser(user: User): Promise<string> {
     console.log('Inside UserService.addUser');
     console.log(user);
     console.log('That was the user to be added.');
-    this.http
-    .post(GlobalService.DBT_SERVER + '/posts', user)
+    return this.http
+    .post(GlobalService.DBT_SERVER + '/users', user)
     .toPromise()
     .then(
       response => response.json()
@@ -64,7 +64,7 @@ export class UserService {
       );
   }
 
-  deleteUser(p_Id: number): Promise<string> {
+  deleteUser(p_Id: string): Promise<string> {
     return this.http
       .delete(GlobalService.DBT_SERVER + '/user/' + p_Id)
       .toPromise()

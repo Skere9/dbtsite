@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GlobalService } from '../../services/global.service';
 import { Router } from '@angular/router';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-dbt-sign-in',
@@ -10,13 +11,20 @@ import { Router } from '@angular/router';
 export class DbtSignInComponent implements OnInit {
 
   userName: string;
-  userPassword: string;
+  passWord: string;
   public signInAttemptFailed: Boolean = false;
+
+  public flagShowPassword: Boolean = false;
+  public theShowOrHideMessage: string;
+  public SHOW_PASSWORD_MESSAGE = 'Show Password';
+  public HIDE_PASSWORD_MESSAGE = 'Hide Password';
 
   constructor(private globalService: GlobalService,
     private router: Router) {
     this.userName = '';
-    this.userPassword = '';
+    this.passWord = '';
+    this.flagShowPassword = false;
+    this.theShowOrHideMessage = this.SHOW_PASSWORD_MESSAGE;
   }
 
   ngOnInit() {
@@ -24,38 +32,45 @@ export class DbtSignInComponent implements OnInit {
 
   public SignIn() {
     // Check if the username already exists
-    const result = this.globalService.getUserByUserName(this.userName);
-    console.log('Log in result:');
-    console.log(result);
-    if (result) {
-      console.log('result is true');
-      // GlobalService.stateLoggedIn = true;
-      // Send event to ...?
-      this.globalService.setLoggedInStatus(true);
-      this.router.navigate(['/', 'userProfile']);
-      this.signInAttemptFailed = false;
-    } else {
-      console.log('result is false');
-      this.globalService.setLoggedInStatus(false);
-      // GlobalService.stateLoggedIn = false;
-      this.signInAttemptFailed = true;
-    }
+    // let resultingUser = User.createBlankUser();
+    this.globalService.signIn(this.userName, this.passWord)
+      .then(
+        res => {
+          // If the server finds the
+          // userName and passWord, it will
+          // return the user object, with the
+          // _id value of about 26 characters.
+          // But if no userName / passWord is
+          // found, the server returns a single
+          // digit answer for the _id.
+          if (JSON.stringify(res._id).length !== 1) {
+            // console.log('Found it');
+            // Successful sign in
+            this.signInAttemptFailed = false;
+            this.globalService.setLoggedInStatus(true);
+            this.globalService.setLoggedInUser(res);
+            // console.log(GlobalService.loggedInUser);
+            this.router.navigate(['/', 'userProfile']);
+          } else {
+            // console.log('Not there');
+            this.signInAttemptFailed = true;
+            this.globalService.setLoggedInStatus(false);
+          }
+        }
+      );
   }
 
   public Reset() {
     console.log('Clicked reset');
   }
 
-  /*
-    public testThenDelete() {
-      if (this.myform.valid) {
-        console.log('Valid');
-      } else {
-        console.log('Invalid');
-      }
-      console.log('It worked!');
-    }
-  */
-
+  togglePassword() {
+    this.flagShowPassword = !this.flagShowPassword;
+    if (this.flagShowPassword) {
+      this.theShowOrHideMessage = this.HIDE_PASSWORD_MESSAGE;
+    } else {
+      this.theShowOrHideMessage = this.SHOW_PASSWORD_MESSAGE;
+    };
+  }
 
 }

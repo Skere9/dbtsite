@@ -18,12 +18,29 @@ export class DbtUserListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.refreshUserList();
+  }
+
+  refreshUserList() {
     this.userService.getAllUsers()
-    .then(
-      res => {
-        this.users = res;
-      }
-    );
+      .then(
+        res => {
+          this.users = res;
+        }
+      );
+  }
+
+  deleteUser(p_Id: string): void {
+
+    // Delete the user
+    console.log('Delete the user');
+    console.log(p_Id);
+    this.userService.deleteUser(p_Id)
+      .then(
+        res => {
+          console.log(res);
+          this.refreshUserList();
+        });
   }
 
 }

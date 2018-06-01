@@ -36,3 +36,26 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     Details about the option here.  This section of "additional information" is only really here because I wanted to capture the sample code for documenting expandable / collapsable sections within an MD file. I found an example of this elsewhere and wanted to grab it for future use.
   </p>
 </details>
+
+<p>Font Awesome Usage</p>
+<hr />
+
+<ul>
+<li>Add New Post: fas fa-plus</li>
+<li>Buy Now: fas fa-shopping-cart</li>
+<li>Cancel: fas fa-undo-alt</li>
+<li>Compare: fas fa-compress</li>
+<li>Continue: fas fa-long-arrow-alt-right</li>
+<li>Delete: far fa-file-excel </li>
+<li>Edit: far fa-edit</li>
+<li>Learn: fas fa-chalkboard</li>
+<li>Print: fas fa-print</li>
+<li>Reset: fas fa-undo-alt</li>
+<li>Save: far fa-save</li>
+<li>Show Password: fas fa-exchange-alt</li>
+<li>SignIn: fas fa-sign-in-alt</li>
+<li>Submit:</li>
+<li>Update: fas fa-sync</li>
+<li>Watch Videos: fas fa-tv </li>
+</ul>
+</p>

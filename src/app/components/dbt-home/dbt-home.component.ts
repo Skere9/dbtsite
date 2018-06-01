@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 })
 export class DbtHomeComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router
+  ) {
 
     // SKERE
     // let vX: string = 'hi';

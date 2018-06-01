@@ -18,7 +18,6 @@ import { DbtEditExamQlistComponent } from './components/dbt-edit-exam-qlist/dbt-
 import { DbtPricingComponent } from './components/dbt-pricing/dbt-pricing.component';
 import { DbtBuyComponent } from './components/dbt-buy/dbt-buy.component';
 import { DbtPostListComponent } from './components/dbt-post-list/dbt-post-list.component';
-import { DbtPostNewComponent } from './components/dbt-post-new/dbt-post-new.component';
 import { DbtUserListComponent } from './components/dbt-user-list/dbt-user-list.component';
 
 import { TooltipOverviewExampleComponent } from './components/tooltip-overview-example/tooltip-overview-example.component';
@@ -38,10 +37,6 @@ const routes: Routes = [
   {
     path: 'post-list',
     component: DbtPostListComponent
-  },
-  {
-    path: 'post-new',
-    component: DbtPostNewComponent
   },
   {
     path: 'videos',

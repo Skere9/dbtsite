@@ -10,7 +10,7 @@
       <h4>Exams: {{ plan.exams }}</h4>
       <h4>Duration: {{ plan.duration}}</h4>
       <h4>{{ plan.price | currency }}</h4>
-      <button class="btn btn-info m-1 btn-sm" type="submit" (click)="learnMore(plan.id)">Learn More</button>
-      <button class="btn btn-success m-1" type="submit" (click)="buyPlan(plan.id)">Buy Now!</button>
+      <button type="submit" class="btn btn-info m-1 btn-sm" (click)="learnMore(plan.id)"><span class="fas fa-chalkboard"></span> Learn More</button>
+      <button type="submit" class="btn btn-success m-1"  (click)="buyPlan(plan.id)"><span class="fas fa-shopping-cart"></span> Buy Now!</button>
   </div>
 </div>

@@ -10,21 +10,30 @@
 
     <div class="panel-body">
       <div class="input-group" style="width: 250px">
-        <input class="form-control" type="text" [(ngModel)]="userName" placeholder="Username" name="username" />
+        <input class="form-control" type="text" [(ngModel)]="userName" placeholder="Username" name="userName" required
+        />
       </div>
       <div class="input-group" style="width: 250px">
-        <input class="form-control" style="width: 200px" type="text" [(ngModel)]="userPassword" placeholder="Password" name="password"
-        />
+        <div *ngIf="!flagShowPassword">
+          <input class="form-control" type="password" width="50" [(ngModel)]="passWord" placeholder="PassWord" name="passWord" id="passWord"
+            required />
+        </div>
+        <div *ngIf="flagShowPassword">
+          <input class="form-control" type="text" width="50" [(ngModel)]="passWord" placeholder="PassWord" name="passWord" id="passWord"
+            required />
+        </div>
+        <button type="button" class="btn btn-info btn-sm" (click)="togglePassword()"><span class="fas fa-exchange-alt"></span> {{ theShowOrHideMessage }}</button>
+
       </div>
       <p>
         <a routerLink="forgot-password">Forgot your password?</a>
       </p>
       <p class="alert alert-danger" *ngIf="signInAttemptFailed">
-        Login failed!  Please try again.
+        Login failed! Please try again.
       </p>
       <div class="input-group">
-        <input type="button" value="Reset" (click)="Reset()" />
-        <input type="button" value="Sign In" (click)="SignIn()" />
+        <button type="button" class="btn btn-info btn-md m-2" (click)="Reset()"><span class="fas fa-undo-alt"></span> Reset</button>
+        <button type="button" class="btn btn-success btn-md m-2" (click)="SignIn()"><span class="fas fa-sign-in-alt"></span> Sign In</button>
       </div>
     </div>
   </div>

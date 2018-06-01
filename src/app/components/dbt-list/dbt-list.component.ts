@@ -14,8 +14,6 @@ export class DbtListComponent implements OnInit {
 
   exams: Exam[];
   exams_loaded: Boolean;
-  // public examQuestionCount: number;
-  public planCount: number;
 
   @Output() examSelected: EventEmitter<number> = new EventEmitter();
 
@@ -26,13 +24,6 @@ export class DbtListComponent implements OnInit {
     console.log('In the constructor.');
     console.log('Before call to service:');
     console.log(this.exams);
-
-    this.examService.getPlanCount()
-      .then(
-        res => {
-          this.planCount = res;
-        }
-      );
 
     this.exams_loaded = false;
     // this.examQuestionCount = 0;

@@ -1,50 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Plan } from '../models/plan';
 import { User } from '../models/user';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class GlobalService {
 
   // Global variables
   public static DBT_SERVER = 'http://localhost:3001';
-  public static stateLoggedIn: Boolean = false;
   public static loggedInStatus: Boolean;
+  public static loggedInUser: User;
+  public static loggedInUserName: string;
 
   public static users: User[];
   public theSelectedUser: User;
+
   public plans: Plan[];
   public theSelectedPlan: Plan;
 
-  constructor() {
-    GlobalService.loggedInStatus = false;
+  public appIcons;
 
-    GlobalService.users = [
-      {
-        '_id': null,
-        'id': 1,
-        'firstName': 'Fred',
-        'lastName': 'Smith',
-        'email': 'any@one.com',
-        'userName': 'skere',
-        'pword': '1523',
-        'bio': 'A Java developer',
-        'keywords': []
-      }, {
-        '_id': null,
-        'id': 2,
-        'firstName': 'Alice',
-        'lastName': 'Jones',
-        'email': 'ajones@whatsup.com',
-        'userName': 'wow',
-        'pword': 'fa2352',
-        'bio': 'An Oracle developer',
-        'keywords': []
-      }
-    ];
+  constructor(
+    private http: Http
+  ) {
+    // GlobalService.users = User.createBlankUser();
 
     this.plans = [
       {
-        '_id' : '',
+        '_id': '',
         'id': 1,
         'title': 'Plan 1',
         'exams': 'one',
@@ -66,7 +49,14 @@ export class GlobalService {
         'price': 0.00
       }
     ];
+  }
 
+  static sendValidationEmail(pUser: User): Boolean {
+    // Once a user has registered initially,
+    // send the user an email message.
+    console.log(pUser.email);
+
+    return false;
   }
 
   static checkForUniqueEmail(pEmailAddress: string): Boolean {
@@ -77,6 +67,7 @@ export class GlobalService {
     // then return true.
     // If the email address is already used,
     // return false
+    console.log('About to check for unique email against the database.');
     const theSelectedUser = GlobalService.users.find(user => user.email === pEmailAddress);
     console.log('From within checkForUniqueEmail');
     console.log(theSelectedUser);
@@ -100,32 +91,47 @@ export class GlobalService {
     return GlobalService.loggedInStatus;
   }
 
+  static getLoggedInUser(): User {
+    return GlobalService.loggedInUser;
+  }
+
+  setLoggedInUser(pUser: User): void {
+    GlobalService.loggedInUser = pUser;
+    GlobalService.loggedInUserName = pUser.userName;
+  }
+
   setLoggedInStatus(status: Boolean) {
+    // GlobalService.loggedInUser = pUser;
     console.log('Setting logged in status');
     GlobalService.loggedInStatus = status;
   }
 
-  getUser(pUserId: number): Promise<User> {
-    this.theSelectedUser = GlobalService.users.find(user => user.id === pUserId);
+  getUser(pUser_Id: string): Promise<User> {
+    this.theSelectedUser = GlobalService.users.find(user => user._id === pUser_Id);
     return new Promise((resolve, reject) => {
       resolve(this.theSelectedUser);
     });
   }
 
-  getUserByUserName(pUserName: string): Promise<User> {
-    this.theSelectedUser = GlobalService.users.find(user => user.userName === pUserName);
-    if (this.theSelectedUser !== undefined) {
-      return new Promise((resolve, reject) => {
-        resolve(this.theSelectedUser);
-      });
-    } else {
-      return null;
-    }
+  signIn(pUserName: string, pPassWord: string): Promise<User> {
+
+    return this.http
+      .get(GlobalService.DBT_SERVER + '/signIn/' + pUserName + '/' + pPassWord)
+      .toPromise()
+      .then(
+        response => response.json()
+      );
+
+    // this.theSelectedUser = GlobalService.users.find(user => user.userName === pUserName);
+    // if (this.theSelectedUser !== undefined) {
+    //   return new Promise((resolve, reject) => {
+    //     resolve(this.theSelectedUser);
+    //   });
+    // } else {
+    //   return null;
+    // }
   }
 
-  signIn(pUserName): Boolean {
-    return false;
-  }
 
   getAllUsers(): Promise<User[]> {
     return new Promise((resolve, reject) => {

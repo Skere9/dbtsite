@@ -3,32 +3,36 @@
     <div class="col-md-2">
     </div>
 
-    <!-- Show this initially -->
-    <div class="col-md-8" *ngIf="!flagInsertingPost">
-        <input type="button" class="btn btn-success btn-sm" value="Add New Post" (click)="displayInsertPostForm()" />
-    </div>
+    <!-- For logged in users only -->
+    <div *ngIf="getLoggedInStatus()">
+        <!-- For logged in users, show this initially -->
+        <div class="col-md-8" *ngIf="flagEnableAdminFeature && !flagInsertingPost">
+            <button type="button" class="btn btn-success btn-sm" (click)="displayInsertPostForm()"><span class="fas fa-plus"></span> Add New Post</button>
+        </div>
 
-    <!-- If user chooses to add a new post,  show this -->
-    <div class="col-md-8" *ngIf="flagInsertingPost">
-        <!-- Form for entering a new post -->
-        <form #postEntryForm="ngForm" (ngSubmit)="insertPost(postEntryForm)">
-            <div class="form-group">
-                <h5>Enter new post:</h5>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Enter your post title" [(ngModel)]="post.title" name="theTitle" id="theTitle"
-                    required ngModel />
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" rows="4" cols="60" placeholder="Enter your post" [(ngModel)]="post.postContent" name="thePostContent"
-                    id="thePostContent" required ngModel>
+        <!-- For logged in users, if user chooses to add a new post,  show this -->
+        <div class="col-md-8" *ngIf="flagInsertingPost">
+            <!-- Form for entering a new post -->
+            <form #postEntryForm="ngForm" (ngSubmit)="insertPost(postEntryForm)">
+
+                <div class="form-group">
+                    <h5>Enter new post:</h5>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter your post title" [(ngModel)]="post.title" name="theTitle" id="theTitle"
+                        required ngModel />
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="4" cols="60" placeholder="Enter your post" [(ngModel)]="post.postContent" name="thePostContent"
+                        id="thePostContent" required ngModel>
                 </textarea>
-            </div>
-            <div class="display-block">
-                <input type="button" class="btn btn-warning btn-sm" value="Cancel" (click)="cancelNewPost(postEntryForm)">
-                <button type="submit" class="btn btn-success btn-sm" [disabled]="!postEntryForm.valid">Save</button>
-            </div>
-        </form>
+                </div>
+                <div class="display-block">
+                    <button type="button" class="btn btn-warning btn-sm" (click)="postEntryForm.reset(); cancelNewPost(postEntryForm)"><span class="fas fa-undo-alt"></span> Cancel</button>
+                    <button type="submit" class="btn btn-success btn-sm" [disabled]="!postEntryForm.valid"><span class="far fa-save"></span> Save</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <div class="col-md-2">
@@ -55,30 +59,39 @@
             <div class="h-divider"></div>
 
             <!-- Show this initially -->
-            <div *ngIf="!flagUpdatingPost || displayUpdatePostFlag_Id != post._id">
+            <div *ngIf="!flagUpdatingPost || flagDisplayUpdatePost_Id != post._id">
                 <div class="display-block font-weight-bold">
                     {{ post.title }}
                 </div>
-                <div class="display-block p-1">
 
+                <div class="display-block p-1">
                 </div>
-                <div class="display-block bg-light">
+
+                <div class="display-block bg-light line-breaker">
                     {{ post.postContent }}
                 </div>
+
+                <div class="display-block p-1">
+                </div>
+
                 <div class="font-italic">
                     {{ post.postDate | date: 'MMM d, yyyy hh:mm:ss aaa' }}
                 </div>
-                <div class="display-block p-1">
 
+                <!-- For logged in users only -->
+                <div class="display-block p-1">
                 </div>
-                <div class="display-block">
-                    <input type="button" class="btn btn-success btn-sm" value="Edit" (click)="displayUpdatePostForm(post._id)" />
-                    <input type="button" class="btn btn-danger btn-sm" value="Delete" (click)="deletePost(post._id)" />
+                <div *ngIf="getLoggedInStatus()">
+                    <div class="display-block" *ngIf="flagEnableAdminFeature">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="deletePost(post._id)"><span class="far fa-file-excel" ></span> Delete</button>
+                        <button type="button" class="btn btn-success btn-sm" (click)="displayUpdatePostForm(post._id)"><span class="far fa-edit" ></span> Edit</button>
+                    </div>
                 </div>
+
             </div>
 
             <!-- If user chooses to edit an existing post, show this -->
-            <div class="col-md-8" *ngIf="flagUpdatingPost && displayUpdatePostFlag_Id == post._id">
+            <div class="col-md-8" *ngIf="flagUpdatingPost && flagDisplayUpdatePost_Id == post._id">
                 <!-- Form for updating an existing post -->
                 <form #postUpdateForm="ngForm" (ngSubmit)="updatePost(postUpdateForm)">
                     <div class="form-group">
@@ -86,7 +99,7 @@
                     </div>
                     <input type="hidden" [(ngModel)]="updateThisPost._id" name="_id" id="" />
                     <input type="hidden" [(ngModel)]="updateThisPost.userId" name="userId" id="" />
-                    <input type="hidden" [(ngModel)]="updateThisPost.postDate" name="postDate" id=""  />
+                    <input type="hidden" [(ngModel)]="updateThisPost.postDate" name="postDate" id="" />
                     <input type="hidden" [(ngModel)]="updateThisPost.keywords" name="keywords" id="" />
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Enter your post title" [(ngModel)]="updateThisPost.title" name="title"
@@ -98,32 +111,39 @@
                                     </textarea>
                     </div>
                     <div class="display-block">
-                        <input type="button" class="btn btn-warning btn-sm" value="Cancel" (click)="cancelUpdatePost(postUpdateForm)">
-                        <button type="submit" class="btn btn-success btn-sm" [disabled]="!postUpdateForm.valid">Update</button>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="deletePost(post._id)"><span class="far fa-file-excel"></span> Delete</button>
+                        <button type="button" class="btn btn-warning btn-sm" (click)="postUpdateForm.reset(); cancelUpdatePost(postUpdateForm)"><span class="fas fa-undo-alt"></span> Cancel</button>
+                        <button type="submit" class="btn btn-success btn-sm" [disabled]="!postUpdateForm.valid"><span class="fas fa-sync"></span> Update</button>
                     </div>
                 </form>
             </div>
 
+            <div *ngIf="flagEnableComments">
 
-            <div class="display-block p-1">
-            </div>
-
-            <div *ngIf="!displayEditForCommentFlag || displayEditForCommentFlag_Id != post._id">
-                <p>Comments
-                    <input type="button" class="btn btn-success btn-sm" value="Edit" (click)="displayEditComment(post._id)" />
-                </p>
-            </div>
-            <div *ngIf="displayEditForCommentFlag && displayEditForCommentFlag_Id == post._id">
-                <div class="display-block">
-                    <input type="hidden" name="_id">
-                    <textarea rows="3" cols="40" placeholder="Enter a comment" required></textarea>
+                <div class="display-block p-1">
                 </div>
-                <input type="button" class="btn btn-warning btn-sm" value="Cancel" (click)="cancelEditComment(post._id)" />
-                <input type="button" class="btn btn-success btn-sm" value="Save Comment" (click)="saveComment(post._id)" />
+
+                <!-- Show this initially -->
+                <div *ngIf="!flagDisplayEditForComment || flagDisplayEditForComment_Id != post._id">
+                    <p>Comments
+                        <input type="button" class="btn btn-success btn-sm" value="Edit" (click)="displayEditComment(post._id)" />
+                    </p>
+                </div>
+                <!-- Show this if user chooses to edit a comment -->
+                <form #commentInsertForm="ngForm" (ngSubmit)="updatePost(postUpdateForm)">
+                    <div *ngIf="flagDisplayEditForComment && flagDisplayEditForComment_Id == post._id">
+                        <div class="display-block">
+                            <input type="hidden" name="_id">
+                            <textarea rows="3" cols="40" placeholder="Enter a comment" required></textarea>
+                        </div>
+                        <input type="button" class="btn btn-warning btn-sm" value="Cancel" (click)="commentInsertForm.reset(); cancelEditComment(post._id)"
+                        />
+                        <input type="button" class="btn btn-success btn-sm" value="Save Comment" (click)="saveComment(post._id)" />
+                    </div>
+                </form>
             </div>
         </div>
 
     </div>
 
 </div>
-
