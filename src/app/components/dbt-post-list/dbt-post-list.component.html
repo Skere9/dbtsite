@@ -87,12 +87,14 @@
                 <div *ngIf="getLoggedInStatus() && !flagUpdatingPost && !flagInsertingPost">
                     <div class="display-block" *ngIf="flagEnableAdminFeature">
 
+                        <!-- Show this initially to logged in users only -->
                         <span *ngIf="!flagAreYouSure">
                             <button type="button" class="btn btn-danger btn-sm p-1 m-1" (click)="areYouSure(post._id)">
                                 <span class="far fa-times-circle"></span> Delete</button>
                             <button type="button" class="btn btn-success btn-sm" (click)="displayUpdatePostForm(post._id)">
                                 <span class="far fa-edit"></span> Edit</button>
                         </span>
+                        <!-- If a user has clicked "Delete" then and only then show this "are you sure" sequence -->
                         <span *ngIf="flagAreYouSure && (flagAreYouSure_UserId == post._id)">
                             Are you sure you want to DELETE this?
                             <button type="button" class="btn btn-warning btn-sm display-inline m-1" (click)="resetDelete()">

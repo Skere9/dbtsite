@@ -38,25 +38,26 @@
       {{ user.userName }}
     </div>
   </div>
-  
-  <div class="row">
-      <div class="col-md-2">
-        Password:
-      </div>
-      <div class="col-md-10">
-        <i>Edit to view</i>
-      </div>
-    </div>
-  
 
   <div class="row">
-      <div class="col-md-2">
-        
-      </div>
-      <div class="col-md-10">
-          <button type="button" class="btn btn-success btn-md" (click)="toggleEdit()"><span class="far fa-edit"></span> Edit profile</button>
-      </div>
+    <div class="col-md-2">
+      Password:
     </div>
+    <div class="col-md-10">
+      <i>Edit to view</i>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-10">
+      <button type="button" class="btn btn-success btn-md" (click)="editProfile()">
+        <span class="far fa-edit"></span> Edit profile</button>
+    </div>
+  </div>
 
 </div>
 
@@ -70,8 +71,8 @@
         First Name:
       </div>
       <div class="col-md-10">
-        <input class="form-control" type="text" [(ngModel)]="user.firstName" placeholder="First Name" name="firstName" id="firstName"
-          #firstName="ngModel" />
+        <input class="form-control" type="text" [(ngModel)]="updateThisUser.firstName" placeholder="First Name" name="firstName"
+          id="firstName" #firstName="ngModel" />
       </div>
     </div>
 
@@ -80,7 +81,7 @@
         Last Name:
       </div>
       <div class="col-md-10">
-        <input class="form-control" type="text" [(ngModel)]="user.lastName" placeholder="Last Name" name="lastName" id="lastName"
+        <input class="form-control" type="text" [(ngModel)]="updateThisUser.lastName" placeholder="Last Name" name="lastName" id="lastName"
           #lastName="ngModel" />
       </div>
     </div>
@@ -90,8 +91,8 @@
         Email:
       </div>
       <div class="col-md-10">
-        <input class="form-control" type="text" [(ngModel)]="user.email" placeholder="Email" name="email" id="email" required #email="ngModel"
-        />
+        <input class="form-control" type="text" [(ngModel)]="updateThisUser.email" placeholder="Email" name="email" id="email" required
+          #email="ngModel" />
       </div>
     </div>
 
@@ -100,7 +101,7 @@
         User name:
       </div>
       <div class="col-md-10">
-        <input class="form-control" type="text" [(ngModel)]="user.userName" placeholder="UserName" name="userNmail" id="userNmail"
+        <input class="form-control" type="text" [(ngModel)]="updateThisUser.userName" placeholder="UserName" name="userNmail" id="userNmail"
           required #email="ngModel" />
 
       </div>
@@ -113,16 +114,31 @@
 
       <div class="col-md-10">
         <div *ngIf="!flagShowPassword">
-          <input class="form-control" type="password" width="50" [(ngModel)]="user.passWord" placeholder="PassWord" name="passWord"
+          <input class="form-control" type="password" width="50" [(ngModel)]="updateThisUser.passWord" placeholder="PassWord" name="passWord"
             id="passWord" required #email="ngModel" />
         </div>
         <div *ngIf="flagShowPassword">
-          <input class="form-control" type="text" width="50" [(ngModel)]="user.passWord" placeholder="PassWord" name="passWord" id="passWord"
-            required #email="ngModel" />
+          <input class="form-control" type="text" width="50" [(ngModel)]="updateThisUser.passWord" placeholder="PassWord" name="passWord"
+            id="passWord" required #email="ngModel" />
         </div>
-        <button type="button" class="btn btn-info btn-sm" (click)="togglePassword()"><span class="fas fa-exchange-alt"></span>  {{ theShowOrHideMessage }}</button>
+        <button type="button" class="btn btn-info btn-sm" (click)="togglePassword()">
+          <span class="fas fa-exchange-alt"></span> {{ theShowOrHideMessage }}</button>
       </div>
 
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+
+      </div>
+      <div class="col-md-10">
+        <button type="button" class="btn btn-warning btn-md p-1 m-1" (click)="cancelUpdate()">
+          <span class="fas fa-undo-alt"></span> Cancel</button>
+        <button type="button" class="btn btn-info btn-md p-1 m-1" (click)="resetUpdate()">
+          <span class="fas fa-undo-alt"></span> Reset</button>
+        <button type="button" class="btn btn-success btn-md p-1 m-1" (click)="updateProfile()">
+          <span class="fas fa-sync"></span> Update Profile</button>
+      </div>
     </div>
 
   </div>
