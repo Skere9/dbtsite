@@ -1,0 +1,45 @@
+<div class="topnav " id="myTopnav">
+    <a [routerLink]="['/']">
+        <span class="glyphicon glyphicon-home" aria-hidden="false"></span>
+    </a>
+
+    <!--
+    <span class="topnav responsive">
+        <a class="navbar-brand" href="#">
+            <img src="/assets/favicon.iso" width="30" height="30" alt=""> DB
+        </a>
+    </span>
+    -->
+
+    <a routerLink="/home" matTooltip="Home" matTooltipShowDelay="1000"><i class="fa fa-home"></i></a>
+    <a routerLink="/about" matTooltip="Learn a little about us." matTooltipShowDelay="1000">About</a>
+    <a routerLink="/post-list" matTooltip="Visit news posts" matTooltipShowDelay="1000">News</a>
+    <a routerLink="/list" matTooltip="List available exams." matTooltipShowDelay="1000">List</a>
+    <a routerLink="/pricing" matTooltip="Get pricing information" matTooltipShowDelay="1000">Pricing</a>
+    <a routerLink="/survey" matTooltip="Take our survey" matTooltipShowDelay="1000">Survey</a>
+
+    <span *ngIf="getLoggedInStatus()">
+        <a routerLink="/exam/-1" matTooltip="Create a new exam." matTooltipShowDelay="1000">Create</a>
+    </span>
+
+    <span *ngIf="getLoggedInStatus()">
+        <a routerLink="/userProfile">User Profile</a>
+        <a routerLink="/user-list">User List</a>
+    </span>
+
+    <span *ngIf="!getLoggedInStatus()" style="color:brown">
+        <!-- <a [routerLink]="['signIn']">Sign In</a> -->
+        <a routerLink="/signIn" matTooltip="Log in to your account" matTooltipShowDelay="1000">Sign In</a>
+        <a routerLink="/signUp" matTooltip="Register a new account" matTooltipShowDelay="1000">Sign Up</a>
+    </span>
+
+    <span *ngIf="getLoggedInStatus()" style="color:brown">
+        <a style="float: right" (click)="logOff()">Log Off</a>
+    </span>
+
+    <a href="javascript:void(0);" class="icon" (click)="convertToMobile()">
+        <i class="fa fa-bars"></i>
+    </a>
+
+    <hr>
+</div>

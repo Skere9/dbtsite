@@ -5,8 +5,9 @@ export class User {
     public email: string;
     public userName: string;
     public passWord: string;
-    public bio: string;
-    public emailValidated: Boolean;
+    public bio: string; //
+    public emailValidated: Boolean; // defaults to false;
+    public displayLoggedInMessage: Boolean; // defaults to false;
     constructor(
         pFirstName: string,
         pLastName: string,

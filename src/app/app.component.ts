@@ -17,6 +17,8 @@ export class AppComponent {
   loggedInUser: User;
   loggedInUserName: string;
 
+  isCollapsed = false;
+
   constructor(
     private globalService: GlobalService,
     private router: Router
@@ -24,6 +26,16 @@ export class AppComponent {
     this.currentYear = new Date().getFullYear();
     this.siteURL = 'http://www.databasetraining.com';
     this.siteName = 'DATABASETRAINING.COM';
+    // this.globalService.setLoggedInStatus(true);
+  }
+
+  // For use with the hamburger icon 
+  isIn = false;   // store state
+  toggleNavbarState(): void {
+    console.log('Clicked hamburger.');
+    // toggleState() { // click handler
+      const bool = this.isIn;
+      this.isIn = bool === false ? true : false;
   }
 
   userSignedIn(number): void {
@@ -38,6 +50,8 @@ export class AppComponent {
   getLoggedInUserName(): User {
     return GlobalService.getLoggedInUser();
   }
+
+
 
   logOff(): void {
     this.globalService.setLoggedInStatus(false);

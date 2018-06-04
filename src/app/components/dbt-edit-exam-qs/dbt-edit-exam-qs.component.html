@@ -17,7 +17,7 @@
   <tr>
     <td></td>
     <td class="button-group" style="margin:10px">
-      <button type="button" class="btn btn-success" (click)="editExamInfo()">Edit Exam Info</button>
+      <button type="button" class="btn btn-success" (click)="editExamInfo()"><span class="glyphicon glyphicon-edit"></span> Edit Exam Info</button>
     </td>
   </tr>
 </table>
@@ -76,6 +76,6 @@
 </table>
 
 <div class="button-group" style="margin:10px">
-  <input type="submit" class="btn btn-success" value="Cancel" (click)="cancelEditQuestion()" />
-  <input type="submit" class="btn btn-success" value="Save Question and Answers and Continue" (click)="saveQuestion()" />
+  <button class="btn btn-success" (click)="cancelEditQuestion()"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
+  <button class="btn btn-success" (click)="saveQuestion()"><span class="glyphicon glyphicon-save"></span><span class="glyphicon glyphicon-arrow-right"></span> Save Question and Answers and Continue</button>
 </div>

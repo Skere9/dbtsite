@@ -8,7 +8,7 @@
         <!-- For logged in users, show this initially -->
         <div class="col-md-8" *ngIf="flagEnableAdminFeature && !flagInsertingPost">
             <button type="button" class="btn btn-success btn-sm" (click)="displayInsertPostForm()">
-                <span class="fas fa-plus"></span> Add New Post</button>
+                <span class="glyphicon glyphicon-plus"></span> Add New Post</button>
         </div>
 
         <!-- For logged in users, if user chooses to add a new post,  show this -->
@@ -30,9 +30,9 @@
                 </div>
                 <div class="display-block">
                     <button type="button" class="btn btn-warning btn-sm" (click)="postEntryForm.reset(); cancelNewPost(postEntryForm)">
-                        <span class="fas fa-undo-alt"></span> Cancel</button>
+                        <span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
                     <button type="submit" class="btn btn-success btn-sm" [disabled]="!postEntryForm.valid">
-                        <span class="far fa-save"></span> Save</button>
+                        <span class="glyphicon glyphicon-save"></span> Save</button>
                 </div>
             </form>
         </div>
@@ -90,17 +90,17 @@
                         <!-- Show this initially to logged in users only -->
                         <span *ngIf="!flagAreYouSure">
                             <button type="button" class="btn btn-danger btn-sm p-1 m-1" (click)="areYouSure(post._id)">
-                                <span class="far fa-times-circle"></span> Delete</button>
+                                <span class="glyphicon glyphicon-trash"></span> Delete</button>
                             <button type="button" class="btn btn-success btn-sm" (click)="displayUpdatePostForm(post._id)">
-                                <span class="far fa-edit"></span> Edit</button>
+                                <span class="glyphicon glyphicon-edit"></span> Edit</button>
                         </span>
                         <!-- If a user has clicked "Delete" then and only then show this "are you sure" sequence -->
                         <span *ngIf="flagAreYouSure && (flagAreYouSure_UserId == post._id)">
                             Are you sure you want to DELETE this?
                             <button type="button" class="btn btn-warning btn-sm display-inline m-1" (click)="resetDelete()">
-                                <span class="fas fa-undo-alt"></span> NO</button>
+                                <span class="glyphicon glyphicon-arrow-left"></span> NO</button>
                             <button type="button" class="btn btn-danger btn-sm display-inline p-1 m-1" (click)="deletePost(post._id)">
-                                <span class="far fa-times-circle"></span> YES</button>
+                                <span class="glyphicon glyphicon-trash"></span> YES</button>
                         </span>
 
                     </div>
@@ -133,18 +133,18 @@
 
                         <span *ngIf="!flagAreYouSure">
                             <button type="button" class="btn btn-danger btn-sm" (click)="areYouSure(post._id)">
-                                <span class="far fa-times-circle"></span> Delete</button>
+                                <span class="glyphicon glyphicon-trash"></span> Delete</button>
                             <button type="button" class="btn btn-warning btn-sm" (click)="postUpdateForm.reset(); cancelUpdatePost(postUpdateForm)">
-                                <span class="fas fa-undo-alt"></span> Cancel</button>
+                                <span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
                             <button type="submit" class="btn btn-success btn-sm" [disabled]="!postUpdateForm.valid">
-                                <span class="fas fa-sync"></span> Update</button>
+                                <span class="glyphicon glyphicon-refresh"></span> Update</button>
                         </span>
                         <span *ngIf="flagAreYouSure && (flagAreYouSure_UserId == post._id)">
                             Are you sure you want to DELETE this?
                             <button type="button" class="btn btn-warning btn-sm display-inline m-1" (click)="resetDelete()">
-                                <span class="fas fa-undo-alt"></span> NO</button>
+                                <span class="glyphicon glyphicon-arrow-left"></span> NO</button>
                             <button type="button" class="btn btn-danger btn-sm display-inline p-1 m-1" (click)="deletePost(post._id)">
-                                <span class="far fa-times-circle"></span> YES</button>
+                                <span class="glyphicon glyphicon-trash"></span> YES</button>
                         </span>
 
 

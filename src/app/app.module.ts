@@ -9,6 +9,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 // import { HttpClientModule   } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
+import { MatMenuModule } from '@angular/material/menu';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 // Application Components
 import { DbtHomeComponent } from './components/dbt-home/dbt-home.component';
 import { DbtListComponent } from './components/dbt-list/dbt-list.component';
@@ -45,6 +48,7 @@ import { UserService } from './services/user.service';
 
 // Application Pipes
 import { DateTimePostsPipe } from './pipes/date-time-posts.pipe';
+import { DbtSurveyComponent } from './components/dbt-survey/dbt-survey.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +78,8 @@ import { DateTimePostsPipe } from './pipes/date-time-posts.pipe';
     VideosComponent,
     DbtPostListComponent,
     DbtUserListComponent,
-    DateTimePostsPipe
+    DateTimePostsPipe,
+    DbtSurveyComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +89,8 @@ import { DateTimePostsPipe } from './pipes/date-time-posts.pipe';
     BrowserAnimationsModule,
     MatTooltipModule,
     // HttpClientModule
-    HttpModule
+    HttpModule,
+    NgbModule.forRoot()
   ],
   providers: [
     ExamService,

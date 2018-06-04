@@ -41,22 +41,27 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 <hr />
 
 <ul>
-<li>Add New Post: fas fa-plus</li>
-<li>Buy Now: fas fa-shopping-cart</li>
-<li>Cancel: fas fa-undo-alt</li>
-<li>Compare: fas fa-compress</li>
-<li>Continue: fas fa-long-arrow-alt-right</li>
-<li>Delete 1: far fa-file-excel</li>
-<li>Delete 2: far fa-times-circle</li>
-<li>Edit: far fa-edit</li>
-<li>Learn: fas fa-chalkboard</li>
-<li>Print: fas fa-print</li>
-<li>Reset: fas fa-undo-alt</li>
-<li>Save: far fa-save</li>
-<li>Show Password: fas fa-exchange-alt</li>
-<li>SignIn: fas fa-sign-in-alt</li>
-<li>Submit:</li>
-<li>Update: fas fa-sync</li>
-<li>Watch Videos: fas fa-tv </li>
+<li>Add New Post: fas fa-plus | glyphicon glyphicon-plus</li>
+<li>Buy Now: fas fa-shopping-cart | glyphicon glyphicon-shopping-cart</li>
+<li>Cancel: fas fa-undo-alt | glyphicon glyphicon-remove-circle</li>
+<li>Calendar: | glyphicon glyphicon-calendar</li>
+<li>Compare: fas fa-compress | glyphicon glyphicon-fullscreen</li>
+<li>Continue: fas fa-long-arrow-alt-right | glyphicon glyphicon-arrow-right</li>
+<li>Delete 1: far fa-file-excel | glyphicon glyphicon-trash</li>
+<li>Delete 2: far fa-times-circle </li>
+<li>Edit: far fa-edit | glyphicon glyphicon-edit</li>
+<li>Learn: fas fa-chalkboard | glyphicon glyphicon-blackboard</li>
+<li>Print: fas fa-print | glyphicon glyphicon-print</li>
+<li>Refresh: | glyphicon glyphicon-refresh</li>
+<li>Reset: fas fa-undo-alt | glyphicon glyphicon-arrow-left </li>
+<li>Save: far fa-save | glyphicon glyphicon-floppy-disk or glyphicon glyphicon-save</li>
+<li>Send: | glyphicon glyphicon-envelope</li>
+<li>Show Password: fas fa-exchange-alt | glyphicon glyphicon-retweet</li>
+<li>SignIn: fas fa-sign-in-alt | glyphicon glyphicon-log-in</li>
+<li>SignUp | glyphicon glyphicon-user</li>
+<li>Submit: | glyphicon glyphicon-log-in</li>
+<li>Update: fas fa-sync | glyphicon glyphicon-refresh</li>
+<li>User: | glyphicon glyphicon-user</li>
+<li>Watch Videos: fas fa-tv | glyphicon glyphicon-eye-open</li>
 </ul>
 </p>

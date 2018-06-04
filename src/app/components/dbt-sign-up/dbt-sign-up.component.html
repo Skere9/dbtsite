@@ -93,14 +93,14 @@
             <input class="form-control" type="text" width="50" [(ngModel)]="user.passWord" placeholder="PassWord" name="passWord" id="passWord"
               required />
           </div>
-          <button type="button" class="btn btn-info btn-sm" (click)="togglePassword()"><span class="fas fa-exchange-alt"></span>  {{ theShowOrHideMessage }}</button>
+          <button type="button" class="btn btn-info btn-sm" (click)="togglePassword()"><span class="glyphicon glyphicon-retweet"></span>  {{ theShowOrHideMessage }}</button>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-10 text-center">
-          <button type="reset" class="btn btn-info m-2" (click)="Reset()"><span class="fas fa-undo-alt"></span> Reset</button>
-          <button type="submit" class="btn btn-success m-2" [disabled]="!signUpForm.valid"><span class="fas fa-sign-in-alt"></span> Sign Up</button>
+          <button type="reset" class="btn btn-info m-2" (click)="Reset()"><span class="glyphicon glyphicon-arrow-left"></span> Reset</button>
+          <button type="submit" class="btn btn-success m-2" [disabled]="!signUpForm.valid"><span class="glyphicon glyphicon-user"></span> Sign Up</button>
         </div>
       </div>
 
