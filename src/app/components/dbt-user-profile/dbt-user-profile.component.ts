@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { User } from '../../models/user';
 import { GlobalService } from '../../services/global.service';
@@ -24,7 +25,8 @@ export class DbtUserProfileComponent implements OnInit {
 
   constructor(
     private globalService: GlobalService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {
     this.user = GlobalService.getLoggedInUser();
     this.flagEditProfile = false;
@@ -34,6 +36,12 @@ export class DbtUserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    // This page access requires logged-in status
+    // If user is not logged in, automatically
+    // send user to home page
+    if (!GlobalService.getLoggedInStatus()) {
+      this.router.navigate(['/', 'mustBeLoggedIn']);
+    }
   }
 
   togglePassword() {

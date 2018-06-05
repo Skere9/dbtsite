@@ -5,7 +5,7 @@
 <div *ngIf="!flagEditProfile">
   <div class="row">
     <div class="col-md-2">
-      First Name:
+      <b>First Name:</b>
     </div>
     <div class="col-md-10">
       {{ user.firstName }}
@@ -14,7 +14,7 @@
 
   <div class="row">
     <div class="col-md-2">
-      Last Name:
+      <b>Last Name:</b>
     </div>
     <div class="col-md-10">
       {{ user.lastName }}
@@ -23,7 +23,7 @@
 
   <div class="row">
     <div class="col-md-2">
-      Email:
+      <b>Email:</b>
     </div>
     <div class="col-md-10">
       {{ user.email }}
@@ -32,28 +32,45 @@
 
   <div class="row">
     <div class="col-md-2">
-      User Name:
+      <b>User Name:</b>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-6">
       {{ user.userName }}
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-2">
-      Password:
+      <b>Password:</b>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-6">
       <i>Edit to view</i>
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-2">
+      <b>Bio</b>
+    </div>
+    <div class="col-md-6">
+      {{ user.bio }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <b>Display "You are logged in as" Message</b>
+    </div>
+    <div class="col-md-6">
+      {{ user.displayLoggedInMessage }}
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-md-2">
 
     </div>
-    <div class="col-md-10">
+    <div class="col-md-6">
       <button type="button" class="btn btn-success btn-md" (click)="editProfile()">
         <span class="glyphicon glyphicon-edit"></span> Edit profile</button>
     </div>
@@ -125,6 +142,25 @@
           <span class="glyphicon glyphicon-retweet"></span> {{ theShowOrHideMessage }}</button>
       </div>
 
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        Bio:
+      </div>
+      <div class="col-md-10">
+        <textarea class="form-control" [(ngModel)]="updateThisUser.bio" name="bio" id="bio" #bio="ngModel"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        Display "You are logged in as" message:
+      </div>
+      <div class="col-md-10 pull-left">
+        <input type="checkbox" class="form-check-label" [(ngModel)]="updateThisUser.displayLoggedInMessage" name="bio" id="bio" #bio="ngModel"> 
+        <label class="form-check-label" for="bio">"You are logged in as {{user.userName}}" will display on the top of every page.</label>
+      </div>
     </div>
 
     <div class="row">

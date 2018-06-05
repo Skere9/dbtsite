@@ -95,6 +95,13 @@ export class GlobalService {
     return GlobalService.loggedInUser;
   }
 
+  static getLoggedInUserDisplayMessageStatus(): Boolean {
+    // Return the value of the particular user's selection
+    // specifying if he/she wants the "You are logged in as"
+    // message displayed.
+    return GlobalService.loggedInUser.displayLoggedInMessage;
+  }
+
   setLoggedInUser(pUser: User): void {
     GlobalService.loggedInUser = pUser;
     GlobalService.loggedInUserName = pUser.userName;

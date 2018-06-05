@@ -51,6 +51,10 @@ export class AppComponent {
     return GlobalService.getLoggedInUser();
   }
 
+  getDisplayLoggedInMessageStatus(): Boolean {
+    return GlobalService.getLoggedInUserDisplayMessageStatus();
+  }
+
 
 
   logOff(): void {
