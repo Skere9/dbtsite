@@ -24,7 +24,6 @@ import { TooltipOverviewExampleComponent } from './components/tooltip-overview-e
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { ThankYouCheckEmailComponent } from './components/thank-you-check-email/thank-you-check-email.component';
 import { VideosComponent } from './components/videos/videos.component';
-import { DbtSurveyComponent } from './components/dbt-survey/dbt-survey.component';
 import { MustBeLoggedInComponent } from './components/must-be-logged-in/must-be-logged-in.component';
 
 const routes: Routes = [
@@ -95,10 +94,6 @@ const routes: Routes = [
   {
     path: 'buy/:plan_id',
     component: DbtBuyComponent
-  },
-  {
-    path: 'survey',
-    component: DbtSurveyComponent
   },
   {
     path: 'userProfile',

@@ -16,7 +16,6 @@
     <a routerLink="/post-list" matTooltip="Visit news posts" matTooltipShowDelay="1000">News</a>
     <a routerLink="/list" matTooltip="List available exams." matTooltipShowDelay="1000">List</a>
     <a routerLink="/pricing" matTooltip="Get pricing information" matTooltipShowDelay="1000">Pricing</a>
-    <a routerLink="/survey" matTooltip="Take our survey" matTooltipShowDelay="1000">Survey</a>
 
     <span *ngIf="getLoggedInStatus()">
         <a routerLink="/exam/-1" matTooltip="Create a new exam." matTooltipShowDelay="1000">Create</a>

@@ -20,19 +20,19 @@
                     <a routerLink="/about" matTooltip="Learn a little about us." matTooltipShowDelay="1000">About</a>
                 </li>
                 <li role="separator" class="divider"></li>
+                <li *ngIf="!getLoggedInStatus()">
+                    <a routerLink="/pricing" matTooltip="Get pricing information" matTooltipShowDelay="1000">Pricing</a>
+                </li>
                 <li>
                     <a routerLink="/post-list" matTooltip="Visit news posts" matTooltipShowDelay="1000">News</a>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown" *ngIf="getLoggedInStatus()">
                     <a class="dropdown-toggle" data-toggle="dropdown" routerLink="/list">Exams
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
                             <a routerLink="/list" matTooltip="List available exams." matTooltipShowDelay="1000">List Exams</a>
-                        </li>
-                        <li>
-                            <a routerLink="/pricing" matTooltip="Get pricing information" matTooltipShowDelay="1000">Exam Pricing</a>
                         </li>
                         <li *ngIf="getLoggedInStatus()">
                             <a routerLink="/exam/-1" matTooltip="Create a new exam." matTooltipShowDelay="1000">Create Exam</a>
@@ -44,9 +44,6 @@
                 </li>
                 <li *ngIf="getLoggedInStatus()">
                     <a routerLink="/user-list">User List</a>
-                </li>
-                <li>
-                    <a routerLink="/survey" matTooltip="Take our survey" matTooltipShowDelay="1000">Survey</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

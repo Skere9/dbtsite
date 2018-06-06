@@ -55,7 +55,11 @@
 
         <div class="col-md-2">
             <div class="h-divider"></div>
-            {{ post.userId }}
+            <!-- {{ post.userId }} -->
+            
+            <div class="font-italic">
+                {{ post.postDate | date: 'EEE MMM d, yyyy hh:mm:ss aaa' }}
+            </div>
         </div>
 
         <div class="col-md-10">
@@ -75,10 +79,6 @@
                 </div>
 
                 <div class="display-block p-1">
-                </div>
-
-                <div class="font-italic">
-                    {{ post.postDate | date: 'MMM d, yyyy hh:mm:ss aaa' }}
                 </div>
 
                 <!-- For logged in users only -->

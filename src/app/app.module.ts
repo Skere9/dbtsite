@@ -48,7 +48,6 @@ import { UserService } from './services/user.service';
 
 // Application Pipes
 import { DateTimePostsPipe } from './pipes/date-time-posts.pipe';
-import { DbtSurveyComponent } from './components/dbt-survey/dbt-survey.component';
 import { MustBeLoggedInComponent } from './components/must-be-logged-in/must-be-logged-in.component';
 
 @NgModule({
@@ -80,7 +79,6 @@ import { MustBeLoggedInComponent } from './components/must-be-logged-in/must-be-
     DbtPostListComponent,
     DbtUserListComponent,
     DateTimePostsPipe,
-    DbtSurveyComponent,
     MustBeLoggedInComponent
   ],
   imports: [

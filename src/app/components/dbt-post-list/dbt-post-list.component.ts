@@ -69,6 +69,13 @@ export class DbtPostListComponent implements OnInit {
 
   ngOnInit() {
     this.refreshPostList();
+    console.log(typeof this.post);
+    // for (let thePost of this.posts) {
+      // thePost.authorName = 'Admin';
+    // };
+    console.log('From ngOnInit in dbt-post-list-components.ts');
+    console.log(this.posts);
+
   }
 
   displayInsertPostForm(): void {

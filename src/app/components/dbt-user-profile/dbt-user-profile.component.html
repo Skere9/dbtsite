@@ -4,73 +4,73 @@
 <!-- Show this showing the profile - read-only -->
 <div *ngIf="!flagEditProfile">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-4">
       <b>First Name:</b>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-8">
       {{ user.firstName }}
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-4">
       <b>Last Name:</b>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-8">
       {{ user.lastName }}
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-4">
       <b>Email:</b>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-8">
       {{ user.email }}
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-4">
       <b>User Name:</b>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
       {{ user.userName }}
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-4">
       <b>Password:</b>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
       <i>Edit to view</i>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-4">
       <b>Bio</b>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
       {{ user.bio }}
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-4">
       <b>Display "You are logged in as" Message</b>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
       {{ user.displayLoggedInMessage }}
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-4">
 
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
       <button type="button" class="btn btn-success btn-md" (click)="editProfile()">
         <span class="glyphicon glyphicon-edit"></span> Edit profile</button>
     </div>
@@ -84,40 +84,40 @@
   <div class="form-group">
 
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-4">
         First Name:
       </div>
-      <div class="col-md-10">
+      <div class="col-md-8">
         <input class="form-control" type="text" [(ngModel)]="updateThisUser.firstName" placeholder="First Name" name="firstName"
           id="firstName" #firstName="ngModel" />
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-4">
         Last Name:
       </div>
-      <div class="col-md-10">
+      <div class="col-md-8">
         <input class="form-control" type="text" [(ngModel)]="updateThisUser.lastName" placeholder="Last Name" name="lastName" id="lastName"
           #lastName="ngModel" />
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-4">
         Email:
       </div>
-      <div class="col-md-10">
+      <div class="col-md-8">
         <input class="form-control" type="text" [(ngModel)]="updateThisUser.email" placeholder="Email" name="email" id="email" required
           #email="ngModel" />
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-4">
         User name:
       </div>
-      <div class="col-md-10">
+      <div class="col-md-8">
         <input class="form-control" type="text" [(ngModel)]="updateThisUser.userName" placeholder="UserName" name="userNmail" id="userNmail"
           required #email="ngModel" />
 
@@ -125,11 +125,11 @@
     </div>
 
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-4">
         Password:
       </div>
 
-      <div class="col-md-10">
+      <div class="col-md-8">
         <div *ngIf="!flagShowPassword">
           <input class="form-control" type="password" width="50" [(ngModel)]="updateThisUser.passWord" placeholder="PassWord" name="passWord"
             id="passWord" required #email="ngModel" />
@@ -145,29 +145,46 @@
     </div>
 
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-4">
         Bio:
       </div>
-      <div class="col-md-10">
+      <div class="col-md-8">
         <textarea class="form-control" [(ngModel)]="updateThisUser.bio" name="bio" id="bio" #bio="ngModel"></textarea>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-4">
         Display "You are logged in as" message:
       </div>
-      <div class="col-md-10 pull-left">
-        <input type="checkbox" class="form-check-label" [(ngModel)]="updateThisUser.displayLoggedInMessage" name="bio" id="bio" #bio="ngModel"> 
+      <div class="col-md-8 pull-left">
+        <input type="checkbox" class="form-check-label" [(ngModel)]="updateThisUser.displayLoggedInMessage" name="bio" id="bio" #bio="ngModel">
         <label class="form-check-label" for="bio">"You are logged in as {{user.userName}}" will display on the top of every page.</label>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-4">
+        Role:
+      </div>
+      <div class="col-md-8">
+
+
+        <select>
+          <option>--select--</option>
+          <option *ngFor="let role of roles">Test</option>
+        </select>
+
 
       </div>
-      <div class="col-md-10">
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-4">
+
+      </div>
+      <div class="col-md-8">
         <button type="button" class="btn btn-warning btn-md p-1 m-1" (click)="cancelUpdate()">
           <span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
         <button type="button" class="btn btn-info btn-md p-1 m-1" (click)="resetUpdate()">

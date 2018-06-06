@@ -8,6 +8,7 @@ export class User {
     public bio: string; //
     public emailValidated: Boolean; // defaults to false;
     public displayLoggedInMessage: Boolean; // defaults to false;
+    public role: string;
     constructor(
         pFirstName: string,
         pLastName: string,
@@ -27,7 +28,7 @@ export class User {
 
     public static createBlankUser() {
         return new User(
-            '' // firstName
+              '' // firstName
             , '' // lastName
             , '' // email
             , '' // userName
@@ -39,7 +40,7 @@ export class User {
 
     public static userFromJSON(obj: any): User {
         return new User(
-            obj.firstName // firstName
+              obj.firstName // firstName
             , obj.lastName // lastName
             , obj.email // email
             , obj.userName // userName
