@@ -16,7 +16,8 @@ export class User {
         pUserName: string,
         pPassWord: string,
         pBio: string,
-        pEmailValidated: Boolean) {
+        pEmailValidated: Boolean,
+        pRole: string) {
         this.firstName = pFirstName;
         this.lastName = pLastName;
         this.email = pEmail;
@@ -24,6 +25,7 @@ export class User {
         this.passWord = pPassWord;
         this.bio = pBio;
         this.emailValidated = pEmailValidated;
+        this.role = pRole;
     }
 
     public static createBlankUser() {
@@ -35,6 +37,7 @@ export class User {
             , '' // passWord
             , '' // bio
             , false // emailValidated
+            , '' // role
         );
     }
 
@@ -47,6 +50,7 @@ export class User {
             , obj.passWord // passWord
             , obj.bio // bio
             , obj.emailValidated // emailValidated
+            , obj.role // role
         );
     }
 }

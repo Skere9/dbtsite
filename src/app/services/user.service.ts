@@ -10,7 +10,8 @@ export class UserService {
 
   constructor(
     private http: Http
-  ) { }
+  ) {
+  }
 
   addUser(user: User): Promise<string> {
     console.log('Inside UserService.addUser');

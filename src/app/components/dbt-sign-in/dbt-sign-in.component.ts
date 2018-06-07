@@ -31,11 +31,13 @@ export class DbtSignInComponent implements OnInit {
   }
 
   public SignIn() {
+    console.log('Signing in ...');
     // Check if the username already exists
     // let resultingUser = User.createBlankUser();
     this.globalService.signIn(this.userName, this.passWord)
       .then(
         res => {
+          console.log('In res');
           // If the server finds the
           // userName and passWord, it will
           // return the user object, with the
@@ -52,7 +54,7 @@ export class DbtSignInComponent implements OnInit {
             // console.log(GlobalService.loggedInUser);
             this.router.navigate(['/', 'userProfile']);
           } else {
-            // console.log('Not there');
+            console.log('Not there');
             this.signInAttemptFailed = true;
             this.globalService.setLoggedInStatus(false);
           }

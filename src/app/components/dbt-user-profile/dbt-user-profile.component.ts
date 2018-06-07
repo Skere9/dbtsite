@@ -5,12 +5,6 @@ import { User } from '../../models/user';
 import { GlobalService } from '../../services/global.service';
 import { UserService } from '../../services/user.service';
 
-enum UserRoles {
-  VISITOR,
-  USER,
-  ADMIN
-};
-
 @Component({
   selector: 'app-dbt-user-profile',
   templateUrl: './dbt-user-profile.component.html',
@@ -29,7 +23,11 @@ export class DbtUserProfileComponent implements OnInit {
   public SHOW_PASSWORD_MESSAGE = 'Show Password';
   public HIDE_PASSWORD_MESSAGE = 'Hide Password';
 
-  public roles: UserRoles;
+  public roles = [
+    'VISITOR',
+    'USER',
+    'ADMIN'
+  ];
 
   constructor(
     private globalService: GlobalService,
@@ -41,13 +39,13 @@ export class DbtUserProfileComponent implements OnInit {
     this.flagShowPassword = false;
     console.log(GlobalService.loggedInUser);
     this.theShowOrHideMessage = this.SHOW_PASSWORD_MESSAGE;
-    console.log(this.roles);
   }
 
   ngOnInit() {
     // This page access requires logged-in status
     // If user is not logged in, automatically
     // send user to home page
+    console.log('ngOnInit');
     if (!GlobalService.getLoggedInStatus()) {
       this.router.navigate(['/', 'mustBeLoggedIn']);
     }
@@ -83,12 +81,12 @@ export class DbtUserProfileComponent implements OnInit {
   resetUpdate() {
     console.log('Reset update');
     this.updateThisUser = Object.assign(this.updateThisUser, this.user);
+    console.log(this.updateThisUser);
   }
 
   updateProfile() {
-    console.log('Update profile');
-    // this.pointerToUserToUpdate = Object.assign(this.pointerToUserToUpdate, this.updateThisUser);
     this.userService.updateUser(this.updateThisUser);
+    this.globalService.setLoggedInUser(this.updateThisUser);
     this.user = Object.assign(this.user, this.updateThisUser);
     this.flagEditProfile = !this.flagEditProfile;
   }

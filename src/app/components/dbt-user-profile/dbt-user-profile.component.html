@@ -68,6 +68,15 @@
 
   <div class="row">
     <div class="col-md-4">
+      <b>Role:</b>
+    </div>
+    <div class="col-md-8">
+      {{ user.role }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
 
     </div>
     <div class="col-md-8">
@@ -163,22 +172,19 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-4">
-        Role:
-      </div>
-      <div class="col-md-8">
-
-
-        <select>
-          <option>--select--</option>
-          <option *ngFor="let role of roles">Test</option>
-        </select>
-
-
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="uRole">Role</label>
+        </div>
+        <div class="col-md-8">
+          <select class="form-control" id="uRole" required [(ngModel)]="updateThisUser.role" name="role">
+            <!-- <option>--select--</option> -->
+            <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+          </select>
+        </div>
       </div>
     </div>
-
 
     <div class="row">
       <div class="col-md-4">
