@@ -27,30 +27,52 @@ export class ExamService {
         'description': 'Mock exam for 1Z0-071.',
         'questions': [{
           'questionId': 1,
+          'examId': 1,
+          'topicId': 0,
           'questionText': 'How much wood',
+          'explanationIfWrong': '',
           'answers': this.getAnswerBlanks()
         },
         {
           'questionId': 2,
+          'examId': 1,
+          'topicId': 0,
           'questionText': 'The other thing is ...',
+          'explanationIfWrong': '',
           'answers': [
             {
               'answerId': 1,
+              'questionId': 2,
               'answerText': 'Do',
-              'correctOrNot': false
+              'isCorrect': false,
+              'rationale': '',
+              'vid': 0,
+              'status': ''
             },
             {
               'answerId': 2,
+              'questionId': 2,
               'answerText': 'Re',
-              'correctOrNot': false
+              'isCorrect': false,
+              'rationale': '',
+              'vid': 0,
+              'status': ''
             }, {
               'answerId': 3,
+              'questionId': 2,
               'answerText': 'Mi',
-              'correctOrNot': true
+              'isCorrect': true,
+              'rationale': '',
+              'vid': 0,
+              'status': ''
             }, {
               'answerId': 4,
+              'questionId': 2,
               'answerText': 'Fa',
-              'correctOrNot': false
+              'isCorrect': false,
+              'rationale': '',
+              'vid': 0,
+              'status': ''
             }
           ]
         }
@@ -63,7 +85,10 @@ export class ExamService {
         'description': 'Mock exam for 1Z0-088.',
         'questions': [{
           'questionId': 1,
+          'examId': 2,
+          'topicId': 0,
           'questionText': 'Who is Duke?',
+          'explanationIfWrong': '',
           'answers': this.getAnswerBlanks()
         }],
         'randomizeQuestions': true,
@@ -74,7 +99,10 @@ export class ExamService {
         'description': 'Mock exam for 1Z0-047.',
         'questions': [{
           'questionId': 1,
+          'examId': 3,
+          'topicId': 0,
           'questionText': 'Let us discuss analytics',
+          'explanationIfWrong': '',
           'answers': this.getAnswerBlanks()
         }],
         'randomizeQuestions': true,
@@ -85,7 +113,10 @@ export class ExamService {
         'description': 'Mock exam for 1Z0-147.',
         'questions': [{
           'questionId': 1,
+          'examId': 4,
+          'topicId': 0,
           'questionText': 'If you were to create a program unit, ... ',
+          'explanationIfWrong': '',
           'answers': this.getAnswerBlanks()
         }],
         'randomizeQuestions': true,
@@ -99,23 +130,39 @@ export class ExamService {
     return [
       {
         'answerId': 1,
+        'questionId': 0,
         'answerText': '',
-        'correctOrNot': false
+        'isCorrect': false,
+        'rationale': '',
+        'vid': 0,
+        'status': ''
       },
       {
         'answerId': 2,
+        'questionId': 0,
         'answerText': '',
-        'correctOrNot': false
+        'isCorrect': false,
+        'rationale' : '',
+        'vid': 0,
+        'status': ''
       },
       {
         'answerId': 3,
+        'questionId': 0,
         'answerText': '',
-        'correctOrNot': false
+        'isCorrect': false,
+        'rationale': '',
+        'vid': 0,
+        'status': ''
       },
       {
         'answerId': 4,
+        'questionId': 0,
         'answerText': '',
-        'correctOrNot': false
+        'isCorrect': false,
+        'rationale': '',
+        'vid': 0,
+        'status': ''
       }
     ];
   }
@@ -241,27 +288,46 @@ export class ExamService {
   createBlankQuestion() {
     return new Question(
       -1,
+      0,
+      0,
+      '',
       '',
       [
         {
           'answerId': 1,
+          'questionId': 0,
           'answerText': '',
-          'correctOrNot': false
+          'isCorrect': false,
+          'rationale': '',
+          'vid': 0,
+          'status': ''
         },
         {
           'answerId': 2,
+          'questionId': 0,
           'answerText': '',
-          'correctOrNot': false
+          'isCorrect': false,
+          'rationale': '',
+          'vid': 0,
+          'status': ''
         },
         {
           'answerId': 3,
+          'questionId': 0,
           'answerText': '',
-          'correctOrNot': false
+          'isCorrect': false,
+          'rationale': '',
+          'vid': 0,
+          'status': ''
         },
         {
           'answerId': 4,
+          'questionId': 0,
           'answerText': '',
-          'correctOrNot': false
+          'isCorrect': false,
+          'rationale': '',
+          'vid': 0,
+          'status': ''
         }
       ]
     );
