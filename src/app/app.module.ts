@@ -49,6 +49,7 @@ import { UserService } from './services/user.service';
 // Application Pipes
 import { DateTimePostsPipe } from './pipes/date-time-posts.pipe';
 import { MustBeLoggedInComponent } from './components/must-be-logged-in/must-be-logged-in.component';
+import { SandboxComponent } from './components/sandbox/sandbox.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { MustBeLoggedInComponent } from './components/must-be-logged-in/must-be-
     DbtPostListComponent,
     DbtUserListComponent,
     DateTimePostsPipe,
-    MustBeLoggedInComponent
+    MustBeLoggedInComponent,
+    SandboxComponent
   ],
   imports: [
     BrowserModule,
