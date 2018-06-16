@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { User } from '../../models/user';
@@ -12,6 +12,8 @@ import { UserService } from '../../services/user.service';
 })
 export class DbtUserProfileComponent implements OnInit {
 
+  @Input() userId: number;
+
   user: User;
   updateThisUser: User;
   // pointerToUserToUpdate: User;
@@ -23,11 +25,7 @@ export class DbtUserProfileComponent implements OnInit {
   public SHOW_PASSWORD_MESSAGE = 'Show Password';
   public HIDE_PASSWORD_MESSAGE = 'Hide Password';
 
-  public roles = [
-    'VISITOR',
-    'USER',
-    'ADMIN'
-  ];
+  public roles = GlobalService.roles;
 
   constructor(
     private globalService: GlobalService,

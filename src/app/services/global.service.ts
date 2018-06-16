@@ -11,6 +11,11 @@ export class GlobalService {
   public static loggedInStatus: Boolean;
   public static loggedInUser: User;
   public static loggedInUserName: string;
+  public static roles = [
+    'VISITOR',
+    'USER',
+    'ADMIN'
+  ];
 
   public static users: User[];
   public theSelectedUser: User;
