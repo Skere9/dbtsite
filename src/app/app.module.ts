@@ -50,6 +50,7 @@ import { UserService } from './services/user.service';
 import { DateTimePostsPipe } from './pipes/date-time-posts.pipe';
 import { MustBeLoggedInComponent } from './components/must-be-logged-in/must-be-logged-in.component';
 import { SandboxComponent } from './components/sandbox/sandbox.component';
+import { LaunchExamStartComponent } from './components/examengine/launch-exam-start/launch-exam-start.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { SandboxComponent } from './components/sandbox/sandbox.component';
     DbtUserListComponent,
     DateTimePostsPipe,
     MustBeLoggedInComponent,
-    SandboxComponent
+    SandboxComponent,
+    LaunchExamStartComponent
   ],
   imports: [
     BrowserModule,

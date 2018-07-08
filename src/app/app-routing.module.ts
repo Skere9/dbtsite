@@ -20,6 +20,8 @@ import { DbtBuyComponent } from './components/dbt-buy/dbt-buy.component';
 import { DbtPostListComponent } from './components/dbt-post-list/dbt-post-list.component';
 import { DbtUserListComponent } from './components/dbt-user-list/dbt-user-list.component';
 
+import { LaunchExamStartComponent } from './components/examengine/launch-exam-start/launch-exam-start.component';
+
 import { TooltipOverviewExampleComponent } from './components/tooltip-overview-example/tooltip-overview-example.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { ThankYouCheckEmailComponent } from './components/thank-you-check-email/thank-you-check-email.component';
@@ -99,6 +101,10 @@ const routes: Routes = [
   {
     path: 'buy/:plan_id',
     component: DbtBuyComponent
+  },
+  {
+    path: 'examengine/:exam_id',
+    component: LaunchExamStartComponent
   },
   {
     path: 'userProfile',

@@ -209,6 +209,4 @@ export class DbtPostListComponent implements OnInit {
     return GlobalService.getLoggedInStatus();
   }
 
-  
-
 }

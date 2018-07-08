@@ -10,13 +10,17 @@
       <th>ID</th>
       <th>Title</th>
       <th>Description</th>
+      <th>Edit</th>
+      <th>Launch</th>
     </thead>
     <tbody>
-      <tr *ngFor="let exam of exams" (click)="examClicked(exam.id)" style="cursor: pointer" ng-mouseover="rowStyle={'background-color': 'red'}; grid.appScope.onRowHover(this);"
+      <tr *ngFor="let exam of exams" ng-mouseover="rowStyle={'background-color': 'red'}; grid.appScope.onRowHover(this);"
         matTooltip="Click to see detail." matTooltipShowDelay="1000">
         <td>{{ exam.id }}.</td>
         <td>{{ exam.title }} </td>
         <td>{{ exam.description }}</td>
+        <td><button class="btn btn-success" (click)="examClicked(exam.id)" style="cursor: pointer">Edit</button></td>
+        <td><button class="btn btn-success" (click)="launchExam(exam.id)">Launch Exam</button></td>
       </tr>
     </tbody>
   </table>

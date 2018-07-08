@@ -70,4 +70,8 @@ export class DbtListComponent implements OnInit {
     return GlobalService.getLoggedInStatus();
   }
 
+  launchExam(pId: number): void {
+    this.router.navigate(['/', 'examengine', pId]);
+  }
+
 }
