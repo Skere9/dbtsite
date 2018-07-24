@@ -21,6 +21,7 @@ import { DbtPostListComponent } from './components/dbt-post-list/dbt-post-list.c
 import { DbtUserListComponent } from './components/dbt-user-list/dbt-user-list.component';
 
 import { LaunchExamStartComponent } from './components/examengine/launch-exam-start/launch-exam-start.component';
+import { TheExamComponent } from './components/examengine/the-exam/the-exam.component';
 
 import { TooltipOverviewExampleComponent } from './components/tooltip-overview-example/tooltip-overview-example.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
@@ -105,6 +106,10 @@ const routes: Routes = [
   {
     path: 'examengine/:exam_id',
     component: LaunchExamStartComponent
+  },
+  {
+    path: 'theexam/:exam_id',
+    component: TheExamComponent
   },
   {
     path: 'userProfile',

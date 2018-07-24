@@ -167,6 +167,15 @@ export class ExamService {
     ];
   }
 
+  public findExamById(pExamId: number): Exam {
+    // When an initial call to this component
+    // passes in an exam id, use this function
+    // to query that exam and populate the form
+    // for editing that exam
+    const returnExam = this.getExam(pExamId);
+    return returnExam;
+  }
+
   addExam(exam: Exam): void {
     this.exams.push(exam);
   }

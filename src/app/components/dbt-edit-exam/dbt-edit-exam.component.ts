@@ -47,9 +47,11 @@ export class DbtEditExamComponent implements OnInit {
   // string variable is used for.
   public textForQuestionOrQuestions = 'questions';
 
-  constructor(private examService: ExamService,
+  constructor(
+    private examService: ExamService,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute
+  ) {
     this.theExamService = examService;
   }
 
@@ -67,7 +69,7 @@ export class DbtEditExamComponent implements OnInit {
         // The first paramater is not negative one.
         // Presumably this is an exam ID.
         // Query for the exam ID.
-        this.exam = this.findExamById(parseInt(params.get('exam_id'), 10));
+        this.exam = this.examService.findExamById(parseInt(params.get('exam_id'), 10));
         // Set the flag to show that we are updating an
         // existing exam, so show associated queried
         // data - such as a count of existing questions.
@@ -89,15 +91,6 @@ export class DbtEditExamComponent implements OnInit {
     } else {
       this.textForQuestionOrQuestions = 'questions';
     }
-  }
-
-  public findExamById(pExamId: number): Exam {
-    // When an initial call to this component
-    // passes in an exam id, use this function
-    // to query that exam and populate the form 
-    // for editing that exam
-    const returnExam = this.examService.getExam(pExamId);
-    return returnExam;
   }
 
   public Reset() {

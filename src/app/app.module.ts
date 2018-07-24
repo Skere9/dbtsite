@@ -51,6 +51,7 @@ import { DateTimePostsPipe } from './pipes/date-time-posts.pipe';
 import { MustBeLoggedInComponent } from './components/must-be-logged-in/must-be-logged-in.component';
 import { SandboxComponent } from './components/sandbox/sandbox.component';
 import { LaunchExamStartComponent } from './components/examengine/launch-exam-start/launch-exam-start.component';
+import { TheExamComponent } from './components/examengine/the-exam/the-exam.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { LaunchExamStartComponent } from './components/examengine/launch-exam-st
     DateTimePostsPipe,
     MustBeLoggedInComponent,
     SandboxComponent,
-    LaunchExamStartComponent
+    LaunchExamStartComponent,
+    TheExamComponent
   ],
   imports: [
     BrowserModule,
