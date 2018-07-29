@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('dbtengine App', () => {
+describe('dbtSite App', () => {
   let page: AppPage;
 
   beforeEach(() => {

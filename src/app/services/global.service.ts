@@ -144,7 +144,6 @@ export class GlobalService {
     // }
   }
 
-
   getAllUsers(): Promise<User[]> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
